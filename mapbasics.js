@@ -1,4977 +1,1320 @@
 ﻿ymaps.ready(init);
-
 function init() {
     var myMap = new ymaps.Map('map', {
-            center: [44.601742, 40.10808],
-            zoom: 8,
+            center: [44.737633, 40.529658],
+            zoom: 10,
 			controls:[]
         }, {
-			minZoom:8,
+			minZoom:10,
             searchControlProvider: 'yandex#search'
-        });		
-	
-	//выделение границ регионов	
-	ymaps.regions.load('RU', {
-		lang: 'ru',
-		quality: 3
-	}).then(function (result) {
-		var regions = result.geoObjects; // ссылка на коллекцию GeoObjectCollection
-		regions.options.set('fillOpacity', '0');
-		myMap.geoObjects.add(regions);
-	}, function () {
-		alert('No response');
+        });
+
+ymaps.regions.load('RU', {
+	lang: 'ru',
+	quality: 3
+}).then(function (result) {
+	var regions = result.geoObjects; // ссылка на коллекцию GeoObjectCollection
+	regions.each(function(region) {
+		if (region.properties.get('name') === 'Адыгея') {
+			region.options.set({
+				fillColor: '#ff0000',
+				fillOpacity: 0,
+				strokeColor: '#000000',
+				strokeWidth: 1
+			});
+		} else {
+			region.options.set('visible', false); // скрыть другие регионы
+		}
 	});
-	
-	myGeoObject1 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.5925,40.118611]
-        },
-            
-        properties: {
-		hintContent: 'Поликлиника филиала №3 ФГКУ  «419 ВГ» Минобороны России',
-		balloonContentBody: [
-            '<strong>Поликлиника филиала №3 ФГКУ  «419 ВГ» Минобороны России</strong>',
-            '<br/>',
-            'Прикреплено населения: 18105',
-            '<br/>',
-			'Плановая мощность: 300',
-            '<br/>',
-			'Количество врачей:',
-			'<br/>',
-			'Количество мед.персонала:',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач -',
-			'<br/>',
-			'',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redDotIcon',
-    });
-	
-	myGeoObject2 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.602023,40.094725]
-        },
-            
-        properties: {
-		hintContent: 'Филиал №7 Федеральное государственное казенное учреждение "1602 Военный клинический госпиталь" Министерства обороны Российской Федерации',
-		balloonContentBody: [
-            '<strong>Филиал №7 Федеральное государственное казенное учреждение "1602 Военный клинический госпиталь" Министерства обороны Российской Федерации</strong>',
-            '<br/>',
-            'Прикреплено населения: 18105',
-            '<br/>',
-			'Количество коек: 150',
-            '<br/>',
-			'Количество врачей:',
-			'<br/>',
-			'Количество мед.персонала:',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач -',
-			'<br/>',
-			'',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redDotIcon',
-    });
-	
-	myGeoObject3 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.607986, 40.101414]
-        },
-            
-        properties: {
-		hintContent: 'АРБ СМЭ',
-		balloonContentBody: [
-            '<strong>АРБ СМЭ</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения: 449 171',
-            '<br/>',
-			'Количество врачей: 15',
-			'<br/>',
-			'Количество мед.персонала: 15',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Гончаров И.В.',
-			'<br/>',
-			'52-97-43',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	//Отделение танаталогии
-	myGeoObject4 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.590497, 40.137985]
-        },
-            
-        properties: {
-			hintContent: 'Отделение танаталогии',
-			balloonContent: 'Отделение танаталогии'
+	myMap.geoObjects.add(regions);
+}, function () {
+	alert('No response');
+});
+    
+		function checkState () {
+        var shownObjects,
+		main = myObjects.search('geometry.type = "123"');
+        if ($('#ter').prop('checked'))
+		{
+			terr = myObjects.search('geometry.type = "Polygon"');
+			main = main.add(gran_rajon);
 		}
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	myGeoObject5 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.62556, 40.118725]
-        },
-            
-        properties: {
-		hintContent: 'АРЦМК',
-		balloonContentBody: [
-            '<strong>АРЦМК</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения: 449 171',
-            '<br/>',
-			'Количество врачей: 6',
-			'<br/>',
-			'Количество мед.персонала: 4',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Директор Карант О.Е.',
-			'<br/>',
-			'53-46-81',
-			'<br/>',
-			'Диспетчерская',
-			'<br/>',
-			'52-45-10',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	myGeoObject6 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.611982,40.104444]
-        },
-            
-        properties: {
-		hintContent: 'АРЦМП',
-		balloonContentBody: [
-            '<strong>АРЦМП</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения: 449 171',
-            '<br/>',
-			'Численость прикрепленого населения: 354908',
-			'<br/>',
-			'Плановая мощность: 34',
-			'<br/>',
-			'Количество врачей: 7',
-			'<br/>',
-			'Количество мед.персонала: 15',
-			'<br/>',
-			'График работы: Пн-Пт 8-17 часов',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Метова З.А.',
-			'<br/>',
-			'52-36-36',
-			'<br/>',
-			'Приемная',
-			'<br/>',
-			'52-36-36',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
 
-	myGeoObject7 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.618843, 40.110999]
-        },
-            
-        properties: {
-			hintContent: 'АРЦМП',
-			balloonContent: 'АРЦМП <br/> Плановая мощность: 21'
+        if ($('#fap').prop('checked'))
+		{
+			fap = myObjects.search('geometry.type = "Point"');
+			main = main.add(fap1).add(fap2).add(fap3).add(fap4).add(fap5).add(fap6).add(fap7).add(fap8).add(fap9).add(fap10);
 		}
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	myGeoObject8 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.607357, 40.100354]
-        },
-            
-        properties: {
-		hintContent: 'АРЦМР',
-		balloonContentBody: [
-            '<strong>АРЦМР</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения: 449 171',
-            '<br/>',
-			'Плановая мощность: 246',
-			'<br/>',
-			'Количество врачей: 7',
-			'<br/>',
-			'Количество мед.персонала: 21',
-			'<br/>',
-			'График работы:Пн-Пт 8-18 часов',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Хачегогу Л.С.',
-			'<br/>',
-			'52-59-94',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'52-56-13',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	myGeoObject9 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.611970,40.104434]
-        },
-            
-        properties: {
-		hintContent: 'АРЦПБС',
-		balloonContentBody: [
-            '<strong>АРЦПБС</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения: 449 171',
-            '<br/>',
-			'Плановая мощность: 18',
-			'<br/>',
-			'Количество врачей: 5',
-			'<br/>',
-			'Количество мед.персонала: 5',
-			'<br/>',
-			'График работы:Пн-Пт 8-15 часов',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Мартьянова Л.В.',
-			'<br/>',
-			'52-32-86',
-			'<br/>',
-			'Секретарь',
-			'<br/>',
-			'52-32-86',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	myGeoObject10 = new ymaps.GeoObject({
-        geometry: {
-            type: "Point",
-            coordinates: [44.598231, 40.111412]
-        },
-        properties: {
-		hintContent: 'АРКБ',
-		balloonContentBody: [
-            '<strong>АРДКБ</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения: 449 171',
-            '<br/>',
-			'Количество коек: 217',
-			'<br/>',
-			'Количество врачей: 54',
-			'<br/>',
-			'Количество мед.персонала: 184',
-			'<br/>',
-			'График работы:Пн-Пт 8-17 часов',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач: Гуагова Ж.К.',
-			'<br/>',
-			'52-25-78',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'52-79-35',
-        ].join('')
-        }
-    }, {
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	myGeoObject11 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.595606, 40.136179]
-        },
-            
-        properties: {
-		hintContent: 'АРДР',
-		balloonContentBody: [
-            '<strong>АРДР</strong>',
-            '<br/>',
-			'Количество врачей: 2',
-			'<br/>',
-			'Количество мед.персонала: 17',
-			'<br/>',
-			'График работы: круглосуточно',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Логинова И.Ю.',
-			'<br/>',
-			'54-86-60',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'54-56-17',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	myGeoObject12 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.601357, 40.106535]
-        },
-            
-        properties: {
-		hintContent: 'АРКБ',
-		balloonContentBody: [
-            '<strong>АРКБ</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения: 449 171',
-            '<br/>',
-			'Количество коек: 580',
-			'<br/>',
-			'Количество врачей: 167',
-			'<br/>',
-			'Количество мед.персонала: 399',
-			'<br/>',
-			'График работы:Пн-Пт 7.30-14 часов',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Чеужева Н.С.',
-			'<br/>',
-			'',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'52-18-70',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	//диабетологический центр
-	myGeoObject13 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.592519, 40.117943]
-        },
-            
-        properties: {
-			hintContent: 'Диабетологический центр',
-			balloonContent: 'Диабетологический центр <br/> Плановая мощность: 70'
+
+        if ($('#amb').prop('checked'))
+		{
+			amb = myObjects.search('geometry.type = "Point"');
+			main = main.add(crb).add(amb1).add(amb2).add(amb3).add(amb4).add(amb5).add(amb6);
 		}
-    }, {
-            
-        preset: 'islands#violetCircleDotIcon',
-    });
-	
-	//центр профессиональной патологии
-	myGeoObject14 = new ymaps.GeoObject({
-            
+        shownObjects = main.addToMap(myMap);
+        myObjects.remove(shownObjects).removeFromMap(myMap);
+    }
+	$('#ter').click(checkState);
+    $('#fap').click(checkState);
+    $('#amb').click(checkState);
+
+	var circleLayout = ymaps.templateLayoutFactory.createClass('<div class="placemark_layout_container"><div class="circle_layout">A</div></div>');
+
+
+	fap8 = new ymaps.GeoObject({
         geometry: {
             type: "Point",
-            coordinates: [44.619934, 40.110613]
+            coordinates: [44.667005, 40.664935]
         },
-            
         properties: {
-			hintContent: 'Центр профессиональной патологии',
-			balloonContent: 'Центр профессиональной патологии <br/> Плановая мощность: 102'
-		}
-    }, {
-            
-        preset: 'islands#violetCircleDotIcon',
-    });
-	
-	//Cурдологический  центр
-	myGeoObject15 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.611053, 40.108322]
-        },
-            
-        properties: {
-			hintContent: 'Cурдологический  центр',
-			balloonContent: 'Cурдологический  центр <br/>Адрес: Жуковского 40 <br/> Плановая мощность: 10'
-		}
-    }, {
-            
-        preset: 'islands#violetCircleDotIcon',
-    });
-	
-	//Консультативная  поликлиника
-	myGeoObject16 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.602858, 40.104747]
-        },
-            
-        properties: {
-			hintContent: 'Консультативная  поликлиника',
-			balloonContent: 'Консультативная  поликлиника<br/> Плановая мощность: 197'
-		}
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	//Травматологическая  поликлиника
-	myGeoObject17 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.605188, 40.100803]
-        },
-            
-        properties: {
-			hintContent: 'Травматологическая  поликлиника',
-			balloonContent: 'Травматологическая  поликлиника<br/> Плановая мощность: 130'
-		}
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	myGeoObject18 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.591091,40.139865]
-        },
-            
-        properties: {
-		hintContent: 'АРКИБ',
+		hintContent: 'ФАП х. Казенно-Кужорский<br/>ул. Крупская, 49',
 		balloonContentBody: [
-            '<strong>АРКИБ</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения: 449 171',
-            '<br/>',
-			'Количество коек: 150',
+            '<strong>ФАП х. Казенно-Кужорский',
 			'<br/>',
-			'Количество врачей: 31',
+			'ул. Крупская, 49</strong>',
 			'<br/>',
-			'Количество мед.персонала: 85',
+			'Обслуживаемое население: 487',
 			'<br/>',
-			'График работы:',
+			'Мед.работники:',
+			'<ul><li>Заведующий фельдшер: Ямольская Галина Викторовна</li></ul>',
+			'Укладка: есть',
 			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Крылач Л.Н.',
-			'<br/>',
-			'54-67-62',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'',
+			'Авто: нет',
 			'<br/>',
         ].join('')
         }
     }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	myGeoObject19 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.600099, 40.116659]
-        },
-            
-        properties: {
-		hintContent: 'АРККВД',
-		balloonContentBody: [
-            '<strong>АРККВД</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения: 449 171',
-            '<br/>',
-			'Плановая мощность: 250',
-			'<br/>',
-			'Количество врачей: 20',
-			'<br/>',
-			'Количество мед.персонала: 42',
-			'<br/>',
-			'График работы:Пн-Пт 8-17 часов',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Верба Я.И.',
-			'<br/>',
-			'54-88-80',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'54-99-61',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	
-	myGeoObject20 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.596652, 40.063191]
-        },
-            
-        properties: {
-			hintContent: 'Стационарное отделение',
-			balloonContent: 'Стационарное отделение<br/> Количество коек: 29'
-		}
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	myGeoObject21 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.593368,40.135660]
-        },
-            
-        properties: {
-		hintContent: 'АРКОД',
-		balloonContentBody: [
-            '<strong>АРКОД</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения: 449 171',
-            '<br/>',
-			'Плановая мощность: 163',
-			'<br/>',
-			'Количество коек: 135',
-			'<br/>',
-			'Количество врачей: 40',
-			'<br/>',
-			'Количество мед.персонала: 114',
-			'<br/>',
-			'График работы:Пн-Пт',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Беретарь С.Х.',
-			'<br/>',
-			'54-48-39',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'54-08-41',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	myGeoObject22 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.590084,40.100178]
-        },
-            
-        properties: {
-		hintContent: 'АРКПНД',
-		balloonContentBody: [
-            '<strong>АРКПНД</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения: 449 171',
-            '<br/>',
-			'Плановая мощность: 150',
-			'<br/>',
-			'Количество врачей: 24',
-			'<br/>',
-			'Количество мед.персонала: 99',
-			'<br/>',
-			'График работы:Пн-Пт 8-18 часов',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Подлегаев Р.В.',
-			'<br/>',
-			'57-74-75',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'52-10-02',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	//АРКПНД
-	myGeoObject23 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.622536,40.095289]
-        },
-            
-        properties: {
-			hintContent: 'АРКПНД',
-			balloonContent: 'АРКПНД<br/>Количество коек: 280'
-		}
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	myGeoObject24 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.609029,40.136456]
-        },
-            
-        properties: {
-			hintContent: 'АРКПНД',
-			balloonContent: 'АРКПНД'
-		}
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	myGeoObject25 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.603763, 40.09315]
-        },
-            
-        properties: {
-		hintContent: 'АРКПТД',
-		balloonContentBody: [
-            '<strong>АРКПТД</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения: 449 171',
-            '<br/>',
-			'Плановая мощность: 150',
-			'<br/>',
-			'Количество врачей: 23',
-			'<br/>',
-			'Количество мед.персонала: 68',
-			'<br/>',
-			'График работы:Пн-Пт 8-17 часов',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Мамий Н.М.',
-			'<br/>',
-			'52-48-90',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'52-12-84',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	//Третье стационарное отделение
-	myGeoObject26 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.60386, 40.094991]
-        },
-            
-        properties: {
-			hintContent: 'Третье стационарное отделение',
-			balloonContent: 'Третье стационарное отделение<br/>Количество коек: 65'
-		}
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	//Первое и второе стационарные отделения
-	myGeoObject27 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.602891, 40.094551]
-        },
-            
-        properties: {
-			hintContent: 'Первое и второе стационарные отделения',
-			balloonContent: 'Первое и второе стационарные отделения<br/>Количество коек: 120'
-		}
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	myGeoObject28 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.612029, 40.103651]
-        },
-            
-        properties: {
-		balloonContentBody: [
-            '<strong>АРКСП</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения: 449 171',
-            '<br/>',
-			'Плановая мощность: 324',
-			'<br/>',			
-            'Численость прикрепленного населения: 356 380',
-			'<br/>',
-			'Количество врачей: 70',
-			'<br/>',
-			'Количество мед.персонала: 106',
-			'<br/>',
-			'График работы: пн-пт 7.24 - 20.30, сб-вс 8.30-15.06',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Шовгенов В.Б.',
-			'<br/>',
-			'52-17-31',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'52-27-22',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	myGeoObject29 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.607466, 40.103543]
-        },
-            
-        properties: {
-			hintContent: 'Детское отделение',
-			balloonContent: 'Детское отделение'
-		}
-    }, {
-            
-            // Иконка метки будет растягиваться под размер ее содержимого.
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	myGeoObject30 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.605111, 40.136044]
-        },
-            
-        properties: {
-		hintContent: 'АРНД',
-		balloonContentBody: [
-            '<strong>АРНД</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения: 449 171',
-            '<br/>',
-			'Плановая мощность: 161',
-			'<br/>',
-			'Количество коек: 61',
-			'<br/>',
-			'Количество врачей: 9',
-			'<br/>',
-			'Количество мед.персонала: 36',
-			'<br/>',
-			'График работы:Пн-Пт 8-17 часов',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Паков Р.К.',
-			'<br/>',
-			'54-69-51',
-			'<br/>',
-			'Приемная',
-			'<br/>',
-			'54-92-31',
-			'<br/>',
-			'54-69-51',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });	
-	
-	myGeoObject31 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.608685,40.059804]
-        },
-            
-        properties: {
-		hintContent: 'Адыгейская республиканская станция переливания крови',
-		balloonContentBody: [
-            '<strong>Адыгейская республиканская станция переливания крови</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения: 449 171',
-            '<br/>',
-			'Количество врачей: 5',
-			'<br/>',
-			'Количество мед.персонала: 26',
-			'<br/>',
-			'График работы:Пн-Пт 8-16 часов',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Чеучев М.Г.',
-			'<br/>',
-			'57-44-58',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'55-71-69',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redCircleDotIcon',
-    });
-	
-	myGeoObject32 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.608056,40.063889]
-        },
-            
-        properties: {
-		hintContent: 'Общество с ограниченной ответственностью "АТЛАНТ"',
-		balloonContentBody: [
-            '<strong>Общество с ограниченной ответственностью "АТЛАНТ"</strong>',
-            '<br/>',
-            'Прикреплено населения: 449171',
-            '<br/>',
-			'Количество врачей:',
-			'<br/>',
-			'Количество мед.персонала:',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач -',
-			'<br/>',
-			'',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redDotIcon',
-    });
-	
-	myGeoObject33 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.875697, 39.189238]
-        },
-            
-        properties: {
-		hintContent: 'Адыгейская межрайонная больница  им. К.М. Батмена',
-		balloonContentBody: [
-            '<strong>Адыгейская межрайонная больница  им. К.М. Батмена</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения: 449 171',
-            '<br/>',
-			'Количество коек: 105',
-			'<br/>',
-			'Плановая мощность: 300',
-			'<br/>',
-			'Количество врачей: 96',
-			'<br/>',
-			'Количество мед.персонала: 271',
-			'<br/>',
-			'График работы:Пн-Пт 8-18 часов',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Тлехас Ф.М.',
-			'<br/>',
-			'',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'887772 9-14-83',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#darkOrangeCircleDotIcon',
-    });
-	
-		//ФАП а. Ассоколай
-	myGeoObject34 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.844717, 39.467581]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Ассоколай',
-			balloonContent: 'ФАП а. Ассоколай <br/> Прикреплено населения: 1520'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП с. Красное
-	myGeoObject35 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.874203, 39.455229]
-        },
-            
-        properties: {
-			hintContent: 'ФАП с. Красное',
-			balloonContent: 'ФАП с. Красное <br/> Прикреплено населения: 319'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Кунчукохабль
-	myGeoObject36 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.981763, 39.475405]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Кунчукохабль',
-			balloonContent: 'ФАП а. Кунчукохабль <br/> Прикреплено населения: 543'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Казазов
-	myGeoObject37 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.902697, 39.17579]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Казазов',
-			balloonContent: 'ФАП х. Казазов <br/> Прикреплено населения: 291'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Городской
-	myGeoObject38 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.992919, 39.433068]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Городской',
-			balloonContent: 'ФАП х. Городской <br/> Прикреплено населения: 302'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Петров
-	myGeoObject39 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.934718, 39.504448]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Казазов',
-			balloonContent: 'ФАП х. Казазов <br/> Прикреплено населения: 296'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Гатлукай
-	myGeoObject40 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.894444,39.238889]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Гатлукай',
-			balloonContent: 'ФАП а. Гатлукай <br/> Прикреплено населения: 1558'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Псекупс
-	myGeoObject41 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.831667,39.211111]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Псекупс',
-			balloonContent: 'ФАП а. Псекупс <br/> Прикреплено населения: 916'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Джиджихабльская врачебная амбулатория
-	myGeoObject42 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.948056,39.403611]
-        },
-            
-        properties: {
-			hintContent: 'Джиджихабльская врачебная амбулатория',
-			balloonContent: 'Джиджихабльская врачебная амбулатория <br/> Плановая мощность: 916'
-		}
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-		//ФАП а. Тугургой
-	myGeoObject43 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.9525,39.113056]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Тугургой',
-			balloonContent: 'ФАП а. Тугургой <br/> Прикреплено населения: 380'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Тауйхабль
-	myGeoObject44 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.964444,39.373889]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Тауйхабль',
-			balloonContent: 'ФАП а. Тауйхабль <br/> Прикреплено населения: 212'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Пшикуйхабль
-	myGeoObject45 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.941944,39.369167]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Пшикуйхабль',
-			balloonContent: 'ФАП а. Пшикуйхабль <br/> Прикреплено населения: 279'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Нешукай
-	myGeoObject46 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.901944,39.418611]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Нешукай',
-			balloonContent: 'ФАП а. Нешукай <br/> Прикреплено населения: 939'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП п. Красный
-	myGeoObject47 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.856667,39.163611]
-        },
-            
-        properties: {
-			hintContent: 'ФАП п. Красный',
-			balloonContent: 'ФАП п. Красный <br/> Плановая мощность: 173'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Пчегатлукай
-	myGeoObject48 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.885,39.264722]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Пчегатлукай',
-			balloonContent: 'ФАП а. Пчегатлукай <br/> Прикреплено населения: 868'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Теучежская больница
-	myGeoObject49 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.887283,39.382906]
-        },
-            
-        properties: {
-			hintContent: 'Теучежская больница',
-			balloonContentBody: [
-            '<strong>Теучежская больница</strong>',
-            '<br/>',
-            'Прикреплено населения: 10456',
-            '<br/>',
-			'Плановая мощность: 370',
-            '<br/>',
-			'Количество коек: 33',
-			'<br/>',
-			'Количество врачей:',
-			'<br/>',
-			'Количество мед.персонала:',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Ачох З.З.',
-			'<br/>',
-			'9-34-70',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'',
-        ].join('')
-		}
-    }, {
-            
-        preset: 'islands#darkOrangeCircleDotIcon',
-    });
-	
-	//Тлюстенхабльская врачебная амбулатория
-	myGeoObject50 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.982222,39.101111]
-        },
-            
-        properties: {
-			hintContent: 'Тлюстенхабльская врачебная амбулатория',
-			balloonContent: 'Тлюстенхабльская врачебная амбулатория <br/> Прикреплено населения: 6040<br/> Плановая мощность: 50'
-		}
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//ФАП х. Колос
-	myGeoObject51 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.915278,39.390278]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Колос',
-			balloonContent: 'ФАП х. Колос <br/> Прикреплено населения: 165'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Начерезий
-	myGeoObject52 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.922222,39.383056]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Начерезий',
-			balloonContent: 'ФАП а. Начерезий <br/> Прикреплено населения: 335'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Нововочепший
-	myGeoObject53 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.904444,39.275278]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Нововочепший',
-			balloonContent: 'ФАП х. Нововочепший <br/> Прикреплено населения: 172'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП п. Четук
-	myGeoObject54 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.873056,39.152222]
-        },
-            
-        properties: {
-			hintContent: 'ФАП п. Четук',
-			balloonContent: 'ФАП п. Четук <br/> Прикреплено населения: 344'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Вочепший
-	myGeoObject55 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.872778,39.285556]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Вочепший',
-			balloonContent: 'ФАП а. Вочепший <br/> Прикреплено населения: 1381'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Габукайская врачебная амбулатория
-	myGeoObject56 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.929444,39.559444]
-        },
-            
-        properties: {
-			hintContent: 'Габукайская врачебная амбулатория',
-			balloonContent: 'Габукайская врачебная амбулатория <br/> Прикреплено населения: 2805<br/>Плановая мощность: 96'
-		}
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//ФАП х. Шевченко
-	myGeoObject57 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.899167,39.521944]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Шевченко',
-			balloonContent: 'ФАП х. Шевченко <br/> Прикреплено населения: 671'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	myGeoObject58 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.921389,38.906389]
-        },
-            
-        properties: {
-		hintContent: 'Общество с ограниченной ответственностью "Центр здоровья"',
-		balloonContentBody: [
-            '<strong>Общество с ограниченной ответственностью "Центр здоровья"</strong>',
-            '<br/>',
-            'Прикреплено населения: 92737',
-            '<br/>',
-			'Количество коек: -',
-            '<br/>',
-			'Количество врачей:',
-			'<br/>',
-			'Количество мед.персонала:',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач -',
-			'<br/>',
-			'',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redDotIcon',
-    });
-	
-	myGeoObject59 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.601111,40.115278]
-        },
-            
-        properties: {
-		hintContent: 'Общество с ограниченной ответственностью "ДИАЛИЗНЫЙ ЦЕНТР АДЫГЕИ"',
-		balloonContentBody: [
-            '<strong>Общество с ограниченной ответственностью "ДИАЛИЗНЫЙ ЦЕНТР АДЫГЕИ"</strong>',
-            '<br/>',
-            'Прикреплено населения: 449171',
-            '<br/>',
-			'Плановая мощность: 60',
-            '<br/>',
-			'Количество врачей:',
-			'<br/>',
-			'Количество мед.персонала:',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач -',
-			'<br/>',
-			'',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redDotIcon',
-    });
-	
-	myGeoObject60 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.871456, 40.076558]
-        },
-            
-        properties: {
-		hintContent: 'Гиагинская ЦРБ',
-		balloonContentBody: [
-            '<strong>Гиагинская ЦРБ</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения:',
-            '<br/>',
-			'Прикреплено населения: 31213',
-			'<br/>',
-			'Количество коек: 104',
-			'<br/>',
-			'Количество врачей: 56',
-			'<br/>',
-			'Количество мед.персонала: 202',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Бурмистрова Н.И.',
-			'<br/>',
-			'9-70-70',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#darkOrangeCircleDotIcon',
-    });
-	
-	//ФАП п.Новый
-	myGeoObject61 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.931917, 40.177133]
-        },
-            
-        properties: {
-			hintContent: 'ФАП п.Новый',
-			balloonContent: 'ФАП п.Новый <br/> Прикреплено населения: 1291'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Садовый
-	myGeoObject62 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.836667, 40.236389]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Садовый',
-			balloonContent: 'ФАП х. Садовый <br/> Прикреплено населения: 196'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Гиагинское поликлиническое отделение 
-	myGeoObject63 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.873289, 40.065401]
-        },
-            
-        properties: {
-			hintContent: 'Гиагинское поликлиническое отделение ',
-			balloonContent: 'Гиагинское поликлиническое отделение  <br/> Плановая мощность: 500<br/> Прикреплено населения: 13759'
-		}
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	//ДХ п. Черемушкин
-	myGeoObject64 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.793611, 40.050278]
-        },
-            
-        properties: {
-			hintContent: 'ДХ п. Черемушкин ',
-			balloonContent: 'ДХ п. Черемушкин'
-		}
-    }, {
-            
-        preset: 'islands#yellowCircleDotIcon',
-    });
-	
-	//ДХ х. Карцев
-	myGeoObject65 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.748056,40.358611]
-        },
-            
-        properties: {
-			hintContent: 'ДХ х. Карцев',
-			balloonContent: 'ДХ х. Карцев'
-		}
-    }, {
-            
-        preset: 'islands#yellowCircleDotIcon',
-    });
-	
-	//ФАП х.Вольно-Веселый
-	myGeoObject66 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.9061,40.26321]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х.Вольно-Веселый',
-			balloonContent: 'ФАП х.Вольно-Веселый<br/> Прикреплено населения: 74'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Тамбовский
-	myGeoObject67 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.75915,40.367414]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Тамбовский',
-			balloonContent: 'ФАП х. Тамбовский<br/> Прикреплено населения: 591'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Нижний Айрюм
-	myGeoObject68 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.903056,40.184444]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Нижний Айрюм',
-			balloonContent: 'ФАП х. Нижний Айрюм<br/> Прикреплено населения: 278'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Прогресс
-	myGeoObject69 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.869757,40.191021]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Прогресс',
-			balloonContent: 'ФАП х. Прогресс<br/> Прикреплено населения: 940'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Смолич-Малиновский
-	myGeoObject70 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.867521,40.42655]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Смолич-Малиновский',
-			balloonContent: 'ФАП х. Смолич-Малиновский<br/> Прикреплено населения: 100'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП ст.Келермесская
-	myGeoObject71 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.791706,40.132002]
-        },
-            
-        properties: {
-			hintContent: 'ФАП ст.Келермесская',
-			balloonContent: 'ФАП ст.Келермесская<br/> Прикреплено населения: 2771'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП с. Сергиевское
-	myGeoObject72 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.803333,40.346111]
-        },
-            
-        properties: {
-			hintContent: 'ФАП с. Сергиевское',
-			balloonContent: 'ФАП с. Сергиевское<br/> Прикреплено населения: 1344'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Михельсон
-	myGeoObject73 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.765595,40.306068]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Михельсон',
-			balloonContent: 'ФАП х. Михельсон<br/> Прикреплено населения: 21'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ДХ х. Красный Пахарь
-	myGeoObject74 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.738889,40.298611]
-        },
-            
-        properties: {
-			hintContent: 'ДХ х. Красный Пахарь',
-			balloonContent: 'ДХ х. Красный Пахарь'
-		}
-    }, {
-            
-        preset: 'islands#yellowCircleDotIcon',
-    });
-	
-	//ФАП п.Гончарка
-	myGeoObject75 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.806832,39.955043]
-        },
-            
-        properties: {
-			hintContent: 'ФАП п.Гончарка',
-			balloonContent: 'ФАП п.Гончарка<br/> Прикреплено населения: 1514'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Дондуковская УБ
-	myGeoObject76 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.871475,40.3633]
-        },
-            
-        properties: {
-			hintContent: 'Дондуковская УБ',
-			balloonContentBody: [
-            '<strong>Дондуковская УБ</strong>',
-            '<br/>',
-            'Численость обслуживаемого населения:',
-            '<br/>',
-			'Прикреплено населения: 6771',
-			'<br/>',
-			'Прикреплено населения: 6771',
-			'<br/>',
-			'Плановая мощность: 100',
-			'<br/>',
-			'Количество коек: 10',
-			'<br/>',
-			'Количество врачей:',
-			'<br/>',
-			'Количество мед.персонала:',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Сазонов О.М.',
-			'<br/>',
-			'9-31-14',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'',
-			'<br/>',
-        ].join('')
-		}
-    }, {
-            
-        preset: 'islands#darkOrangeCircleDotIcon',
-    });
-	
-	//ФАП п. Лесной
-	myGeoObject77 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.797778,40.186389]
-        },
-            
-        properties: {
-			hintContent: 'ФАП п. Лесной',
-			balloonContent: 'ФАП п. Лесной<br/> Прикреплено населения: 183'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ДХ с. Владимировское
-	myGeoObject78 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.7475,40.196111]
-        },
-            
-        properties: {
-			hintContent: 'ДХ с. Владимировское',
-			balloonContent: 'ДХ с. Владимировское'
-		}
-    }, {
-            
-        preset: 'islands#yellowCircleDotIcon',
-    });
-	
-	myGeoObject79 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.68,39.959722]
-        },
-            
-        properties: {
-		hintContent: 'Ханская  участковая  больница',
-		balloonContentBody: [
-            '<strong>Кошехабльская ЦРБ</strong>',
-            '<br/>',
-            'Прикреплено населения: 11145',
-            '<br/>',
-			'Плановая мощность: 150',
-            '<br/>',
-			'Количество коек: 13',
-			'<br/>',
-			'Количество врачей: 22',
-			'<br/>',
-			'Количество мед.персонала: 39',
-			'<br/>',
-			'График работы:Пн-Пт 8-18 часов',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Нартокова Л.В.',
-			'<br/>',
-			'56-51-73',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'56-64-61',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#darkOrangeCircleDotIcon',
-    });
-	
-	myGeoObject80 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.598333,40.111389]
-        },
-            
-        properties: {
-		hintContent: 'Общество с ограниченной ответственностью "Изумруд"',
-		balloonContentBody: [
-            '<strong>Общество с ограниченной ответственностью "Изумруд"</strong>',
-            '<br/>',
-            'Прикреплено населения: 449171',
-            '<br/>',
-			'Плановая мощность: 217',
-            '<br/>',
-			'Количество врачей:',
-			'<br/>',
-			'Количество мед.персонала:',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач -',
-			'<br/>',
-			'',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redDotIcon',
-    });
-	
-	 myGeoObject81 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.901389,40.490833]
-        },
-            
-        properties: {
-		hintContent: 'Кошехабльская ЦРБ',
-		balloonContentBody: [
-            '<strong>Кошехабльская ЦРБ</strong>',
-            '<br/>',
-            'Прикреплено населения: 24646',
-            '<br/>',
-			'Плановая мощность: 300',
-            '<br/>',
-			'Количество коек: 87',
-			'<br/>',
-			'Количество врачей: 61',
-			'<br/>',
-			'Количество мед.персонала: 188',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Пшизова З.А.',
-			'<br/>',
-			'9-14-50',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#darkOrangeCircleDotIcon',
-    });
-	
-	//Вольненская врачебная амбулатория
-	myGeoObject82 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.608611,40.716944]
-        },
-            
-        properties: {
-		hintContent: 'Вольненская врачебная амбулатория',
-		balloonContentBody: [
-            '<strong>Вольненская врачебная амбулатория</strong>',
-            '<br/>',
-            'Прикреплено населения: 4498',
-            '<br/>',
-			'Плановая мощность: 30',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//ФАП п. Комсомольский
-	myGeoObject83 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.9025, 40.422222]
-        },
-            
-        properties: {
-			hintContent: 'ФАП п. Комсомольский',
-			balloonContent: 'ФАП п. Комсомольский<br/>Прикреплено населения: 158'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Политотдел
-	myGeoObject84 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.950278, 40.347222]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Политотдел',
-			balloonContent: 'ФАП х. Политотдел<br/>Прикреплено населения: 231'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Ходзенская врачебная амбулатория
-	myGeoObject85 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.511111,40.711389]
-        },
-            
-        properties: {
-		hintContent: 'Ходзенская врачебная амбулатория',
-		balloonContentBody: [
-            '<strong>Ходзенская врачебная амбулатория</strong>',
-            '<br/>',
-            'Прикреплено населения: 2872',
-            '<br/>',
-			'Плановая мощность: 35',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//ФАП х.Казенно-Кужорский
-	myGeoObject86 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.671111, 40.662222]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х.Казенно-Кужорский',
-			balloonContent: 'ФАП х.Казенно-Кужорский<br/>Прикреплено населения: 801'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Врачебная амбулатория п. Дружба
-	myGeoObject87 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.933889,40.375833]
-        },
-            
-        properties: {
-		hintContent: 'Врачебная амбулатория п. Дружба',
-		balloonContentBody: [
-            '<strong>Врачебная амбулатория п. Дружба</strong>',
-            '<br/>',
-            'Прикреплено населения: 5282',
-            '<br/>',
-			'Плановая мощность: 35',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//ФАП х. Красный Фарс
-	myGeoObject88 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.914167, 40.353333]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Красный Фарс',
-			balloonContent: 'ФАП х. Красный Фарс<br/>Прикреплено населения: 150'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Майская врачебная амбулатория
-	myGeoObject89 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.783333,40.546111]
-        },
-            
-        properties: {
-		hintContent: 'Майская врачебная амбулатория',
-		balloonContentBody: [
-            '<strong>Майская врачебная амбулатория</strong>',
-            '<br/>',
-            'Прикреплено населения: 2626',
-            '<br/>',
-			'Плановая мощность: 70',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//Врачебная амбулатория а. Блечепсин
-	myGeoObject90 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.821389,40.496111]
-        },
-            
-        properties: {
-		hintContent: 'Врачебная амбулатория а. Блечепсин',
-		balloonContentBody: [
-            '<strong>Врачебная амбулатория а. Блечепсин</strong>',
-            '<br/>',
-            'Прикреплено населения: 3099',
-            '<br/>',
-			'Плановая мощность: 50',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//ФАП х. Кармолино-Гидроицкий
-	myGeoObject91 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.573056, 46.683333]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Кармолино-Гидроицкий',
-			balloonContent: 'ФАП х. Кармолино-Гидроицкий<br/>Прикреплено населения: 218'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Хачемзий
-	myGeoObject92 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.950833, 40.318333]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Хачемзий',
-			balloonContent: 'ФАП а. Хачемзий<br/>Прикреплено населения: 685'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	myGeoObject93 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.731944,40.6225]
-        },
-            
-        properties: {
-		hintContent: 'Натырбовская врачебная амбулатория',
-		balloonContentBody: [
-            '<strong>Натырбовская врачебная амбулатория</strong>',
-            '<br/>',
-            'Прикреплено населения: 3914',
-            '<br/>',
-			'Плановая мощность: 70',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//ФАП а. Егерухай
-	myGeoObject94 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.000278, 40.393611]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Егерухай',
-			balloonContent: 'ФАП а. Егерухай<br/>Прикреплено населения: 1620'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Шелковников
-	myGeoObject95 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.574722, 40.717778]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Шелковников',
-			balloonContent: 'ФАП х. Шелковников<br/>Прикреплено населения: 213'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Игнатьевский
-	myGeoObject96 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.841111, 40.461111]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Игнатьевский',
-			balloonContent: 'ФАП х. Игнатьевский<br/>Прикреплено населения: 958'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Красный
-	myGeoObject97 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.773611, 40.519167]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Красный',
-			balloonContent: 'ФАП х. Красный<br/>Прикреплено населения: 220'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	myGeoObject98 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.1425,39.577778]
-        },
-            
-        properties: {
-		hintContent: 'Красногвардейская центральна районная больница',
-		balloonContentBody: [
-            '<strong>Красногвардейская центральна районная больница</strong>',
-            '<br/>',
-            'Прикреплено населения: 31157',
-            '<br/>',
-			'Количество коек: 115',
-			'<br/>',
-			'Количество врачей: 61',
-			'<br/>',
-			'Количество мед.персонала: 193',
-			'<br/>',
-			'График работы:Пн-Пт 8-17 часов',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Тхитлянов Э.А.',
-			'<br/>',
-			'',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'887778 5-20-75',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#darkOrangeCircleDotIcon',
-    });
-	
-	//Врачебная амбулатория с.Садовое
-	myGeoObject99 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.001667, 39.697778]
-        },
-            
-        properties: {
-			hintContent: 'Врачебная амбулатория с.Садовое',
-			balloonContent: 'Врачебная амбулатория с.Садовое <br/>Прикреплено населения: 2951<br/> Плановая мощность: 10'
-		}
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//ФАП Бжедугхабль
-	myGeoObject100 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.977222, 39.706667]
-        },
-            
-        properties: {
-			hintContent: 'ФАП Бжедугхабль',
-			balloonContent: 'ФАП Бжедугхабль <br/>Прикреплено населения: 1013'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Хатукайская врачебная амбулатория
-	myGeoObject101 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.189722,39.665833]
-        },
-            
-        properties: {
-		hintContent: 'Хатукайская врачебная амбулатория',
-		balloonContentBody: [
-            '<strong>Хатукайская врачебная амбулатория</strong>',
-            '<br/>',
-            'Прикреплено населения: 5032',
-            '<br/>',
-			'Плановая мощность: 25',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//ДХ х. Папенков
-	myGeoObject102 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.074167, 39.587222]
-        },
-            
-        properties: {
-			hintContent: 'ДХ х. Папенков',
-			balloonContent: 'ДХ х. Папенков'
-		}
-    }, {
-            
-        preset: 'islands#yellowCircleDotIcon',
-    });
-	
-	//ДХ п. Свободный
-	myGeoObject103 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.188611, 39.591667]
-        },
-            
-        properties: {
-			hintContent: 'ДХ п. Свободный',
-			balloonContent: 'ДХ п. Свободный'
-		}
-    }, {
-            
-        preset: 'islands#yellowCircleDotIcon',
-    });
-	
-	//Врачебная амбулатория с.Белое
-	myGeoObject104 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.049978,39.648537]
-        },
-            
-        properties: {
-		hintContent: 'Врачебная амбулатория с.Белое',
-		balloonContentBody: [
-            '<strong>Врачебная амбулатория с.Белое</strong>',
-            '<br/>',
-            'Прикреплено населения: 5483',
-            '<br/>',
-			'Плановая мощность: 15',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//ФАП Преображенское
-	myGeoObject105 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.083611, 39.628611]
-        },
-            
-        properties: {
-			hintContent: 'ФАП Преображенское',
-			balloonContent: 'ФАП Преображенское<br/>Прикреплено населения: 1444'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Еленовская врачебная амбулатория
-	myGeoObject106 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.109444,39.688056]
-        },
-            
-        properties: {
-		hintContent: 'Еленовская врачебная амбулатория',
-		balloonContentBody: [
-            '<strong>Еленовская врачебная амбулатория</strong>',
-            '<br/>',
-            'Прикреплено населения: 3138',
-            '<br/>',
-			'Плановая мощность: 15',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//ФАП №1
-	myGeoObject107 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.125, 39.654167]
-        },
-            
-        properties: {
-			hintContent: 'ФАП №1',
-			balloonContent: 'ФАП №1<br/>Прикреплено населения: 476'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП №3
-	myGeoObject108 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.086111, 39.7475]
-        },
-            
-        properties: {
-			hintContent: 'ФАП №3',
-			balloonContent: 'ФАП №3<br/>Прикреплено населения: 883'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП Саратовский
-	myGeoObject109 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.100833, 39.758333]
-        },
-            
-        properties: {
-			hintContent: 'ФАП Саратовский',
-			balloonContent: 'ФАП Саратовский<br/>Прикреплено населения: 478'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП Джамбичий
-	myGeoObject110 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.088611, 39.858889]
-        },
-            
-        properties: {
-			hintContent: 'ФАП Джамбичий',
-			balloonContent: 'ФАП Джамбичий<br/>Прикреплено населения: 552'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП В-Назаровское
-	myGeoObject111 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.003333, 39.753333]
-        },
-            
-        properties: {
-			hintContent: 'ФАП В-Назаровское',
-			balloonContent: 'ФАП В-Назаровское<br/>Прикреплено населения: 564'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП Штурбино
-	myGeoObject112 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.061389, 39.908056]
-        },
-            
-        properties: {
-			hintContent: 'ФАП Штурбино',
-			balloonContent: 'ФАП Штурбино<br/>Прикреплено населения: 510'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ДХ п. Набережный
-	myGeoObject113 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.211389, 39.632222]
-        },
-            
-        properties: {
-			hintContent: 'ДХ п. Набережный',
-			balloonContent: 'ДХ п. Набережный'
-		}
-    }, {
-            
-        preset: 'islands#yellowCircleDotIcon',
-    });
-	
-	//ФАП Н-Севастопольское
-	myGeoObject114 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.063889, 39.709722]
-        },
-            
-        properties: {
-			hintContent: 'ФАП Н-Севастопольское',
-			balloonContent: 'ФАП Н-Севастопольское<br/>Прикреплено населения: 822'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Адамиевская врачебная амбулатория
-	myGeoObject115 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.073333,39.500833]
-        },
-            
-        properties: {
-		hintContent: 'Адамиевская врачебная амбулатория',
-		balloonContentBody: [
-            '<strong>Адамиевская врачебная амбулатория</strong>',
-            '<br/>',
-            'Прикреплено населения: 1316',
-            '<br/>',
-			'Плановая мощность: 10',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//ДХ п. Мирный
-	myGeoObject116 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.059167, 39.5775]
-        },
-            
-        properties: {
-			hintContent: 'ДХ п. Мирный',
-			balloonContent: 'ДХ п. Мирный'
-		}
-    }, {
-            
-        preset: 'islands#yellowCircleDotIcon',
-    });
-	
-	myGeoObject117 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.530096,40.176930]
-        },
-            
-        properties: {
-		hintContent: 'ЦРБ Майкопского района',
-		balloonContentBody: [
-            '<strong>ЦРБ Майкопского района</strong>',
-            '<br/>',
-            'Прикреплено населения: 59643',
-            '<br/>',
-			'Количество коек: 153',
-			'<br/>',
-			'Количество врачей: 119',
-			'<br/>',
-			'Количество мед.персонала: 399',
-			'<br/>',
-			'График работы:Пн-Пт 8-16 часов',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Хаконов Р.А.',
-			'<br/>',
-			'2-92-25',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#darkOrangeCircleDotIcon',
-    });
-	
-	//Амбулатория х.Северо-Восточные Сады
-	myGeoObject118 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.637778,40.137778]
-        },
-            
-        properties: {
-		hintContent: 'Амбулатория х.Северо-Восточные Сады',
-		balloonContentBody: [
-            '<strong>Амбулатория х.Северо-Восточные Сады</strong>',
-            '<br/>',
-            'Прикреплено населения: 6800',
-            '<br/>',
-			'Плановая мощность: 50',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//Побединская амбулатория
-	myGeoObject119 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.558889,40.145]
-        },
-            
-        properties: {
-		hintContent: 'Побединская амбулатория',
-		balloonContentBody: [
-            '<strong>Побединская амбулатория</strong>',
-            '<br/>',
-            'Прикреплено населения: 5142',
-            '<br/>',
-			'Плановая мощность: 75',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//Районная поликлиника
-	myGeoObject120 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.509595,40.179493]
-        },
-            
-        properties: {
-		hintContent: 'Районная поликлиника',
-		balloonContentBody: [
-            '<strong>Районная поликлиника</strong>',
-            '<br/>',
-            'Прикреплено населения: 10875',
-            '<br/>',
-			'Плановая мощность: 600',
-			'<br/>',
-			'График работы:Пн-Пт 8-16 часов',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'88772 5-12-74',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	//Стоматологическая поликлиника
-	myGeoObject121 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.509783,40.176074]
-        },
-            
-        properties: {
-		hintContent: 'Стоматологическая поликлиника',
-		balloonContentBody: [
-            '<strong>Стоматологическая поликлиника</strong>',
-            '<br/>',
-            'Прикреплено населения: 10875',
-            '<br/>',
-			'Плановая мощность: -',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	//Краснооктябрьская амбулатория
-	myGeoObject122 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.578611,40.076111]
-        },
-            
-        properties: {
-		hintContent: 'Краснооктябрьская амбулатория',
-		balloonContentBody: [
-            '<strong>Краснооктябрьская амбулатория</strong>',
-            '<br/>',
-            'Прикреплено населения: 8010',
-            '<br/>',
-			'Плановая мощность: 100',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//Отделение скорой медицинской помощи
-	myGeoObject123 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.509483,40.179861]
-        },
-            
-        properties: {
-		hintContent: 'Отделение скорой медицинской помощи',
-		balloonContentBody: [
-            '<strong>Отделение скорой медицинской помощи</strong>',
-            '<br/>',
-            'Прикреплено населения: 60024',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#grayCircleDotIcon',
-    });
-	
-	//Абадзехская амбулатория
-	myGeoObject124 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.389444,40.218611]
-        },
-            
-        properties: {
-		hintContent: 'Абадзехская амбулатория',
-		balloonContentBody: [
-            '<strong>Абадзехская амбулатория</strong>',
-            '<br/>',
-            'Прикреплено населения: 6489',
-			'<br/>',
-			'Плановая мощность: 100',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//Каменномостская поликлиника
-	myGeoObject125 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.312509,40.194346]
-        },
-            
-        properties: {
-		hintContent: 'Каменномостская поликлиника',
-		balloonContentBody: [
-            '<strong>Каменномостская поликлиника</strong>',
-            '<br/>',
-            'Прикреплено населения: 7357',
-			'<br/>',
-			'Плановая мощность: 250',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	//Каменномостская участковая больница
-	myGeoObject126 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.311577,40.193316]
-        },
-            
-        properties: {
-		hintContent: 'Каменномостская участковая больница',
-		balloonContentBody: [
-            '<strong>Каменномостская участковая больница</strong>',
-            '<br/>',
-            'Прикреплено населения: 7357',
-			'<br/>',
-			'Количество коек: 30',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#darkOrangeCircleDotIcon',
-    });
-	
-	//Кужорская амбулатория
-	myGeoObject127 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.681111,40.313889]
-        },
-            
-        properties: {
-		hintContent: 'Кужорская амбулатория',
-		balloonContentBody: [
-            '<strong>Кужорская амбулатория</strong>',
-            '<br/>',
-            'Прикреплено населения: 3825',
-			'<br/>',
-			'Плановая мощность: 100',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#blueCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт п.Тимирязева
-	myGeoObject128 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.470278, 40.168333]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт п.Тимирязева',
-			balloonContent: 'Фельдшерско-акушерский пункт п.Тимирязева<br/>Прикреплено населения: 1152'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт с.Хамышки
-	myGeoObject129 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.096944, 40.131111]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт с.Хамышки',
-			balloonContent: 'Фельдшерско-акушерский пункт с.Хамышки<br/>Прикреплено населения: 781'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт ст.Новосвободная
-	myGeoObject130 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.351389, 40.412222]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт ст.Новосвободная',
-			balloonContent: 'Фельдшерско-акушерский пункт ст.Новосвободная<br/>Прикреплено населения: 618'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт п.Трехречный
-	myGeoObject131 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.665, 40.383333]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт п.Трехречный',
-			balloonContent: 'Фельдшерско-акушерский пункт п.Трехречный<br/>Прикреплено населения: 653'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт ст.Дагестанская
-	myGeoObject132 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.368611, 40.015278]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт ст.Дагестанская',
-			balloonContent: 'Фельдшерско-акушерский пункт ст.Дагестанская<br/>Прикреплено населения: 513'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт ст.Безводная
-	myGeoObject133 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.375833, 39.913611]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт ст.Безводная',
-			balloonContent: 'Фельдшерско-акушерский пункт ст.Безводная<br/>Прикреплено населения: 62'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт п.Табачный
-	myGeoObject134 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.565278, 40.080278]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт п.Табачный',
-			balloonContent: 'Фельдшерско-акушерский пункт п.Табачный<br/>Прикреплено населения: 1926'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт п.Совхозный
-	myGeoObject135 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.543333, 40.150833]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт п.Совхозный',
-			balloonContent: 'Фельдшерско-акушерский пункт п.Совхозный<br/>Прикреплено населения: 1468'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт п.Цветочный
-	myGeoObject136 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.491389, 40.144167]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт п.Цветочный',
-			balloonContent: 'Фельдшерско-акушерский пункт п.Цветочный<br/>Прикреплено населения: 1432'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт с.Новопрохладное
-	myGeoObject137 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.1375, 40.286667]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт с.Новопрохладное',
-			balloonContent: 'Фельдшерско-акушерский пункт с.Новопрохладное<br/>Прикреплено населения: 155'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт п.Победа
-	myGeoObject138 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.294722, 40.31]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт п.Победа',
-			balloonContent: 'Фельдшерско-акушерский пункт п.Победа<br/>Прикреплено населения: 157'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт ст.Севастопольская
-	myGeoObject139 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.348889, 40.316944]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт ст.Севастопольская',
-			balloonContent: 'Фельдшерско-акушерский пункт ст.Севастопольская<br/>Прикреплено населения: 617'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт х.Красная Улька
-	myGeoObject140 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.695833, 40.1775]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт х.Красная Улька',
-			balloonContent: 'Фельдшерско-акушерский пункт х.Красная Улька<br/>Прикреплено населения: 406'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт х.Пролеарский
-	myGeoObject141 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.616389, 40.175833]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт х.Пролеарский',
-			balloonContent: 'Фельдшерско-акушерский пункт х.Пролеарский<br/>Прикреплено населения: 1064'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт ст.Абадзехская
-	myGeoObject142 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.39, 40.199167]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт ст.Абадзехская',
-			balloonContent: 'Фельдшерско-акушерский пункт ст.Абадзехская<br/>Прикреплено населения: 3643'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт х.Садовый
-	myGeoObject143 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.5525, 40.106944]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт х.Садовый',
-			balloonContent: 'Фельдшерско-акушерский пункт х.Садовый<br/>Прикреплено населения: 437'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт х.Гражданский
-	myGeoObject144 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.689444, 40.146111]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт х.Гражданский',
-			balloonContent: 'Фельдшерско-акушерский пункт х.Гражданский<br/>Прикреплено населения: 381'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт х.Советский
-	myGeoObject145 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.670556, 40.096667]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт х.Советский',
-			balloonContent: 'Фельдшерско-акушерский пункт х.Советский<br/>Прикреплено населения: 490'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт х.Причтовский
-	myGeoObject146 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.530278, 40.141944]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт х.Причтовский',
-			balloonContent: 'Фельдшерско-акушерский пункт х.Причтовский<br/>Прикреплено населения: 390'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт п.Подгорный
-	myGeoObject147 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.460556, 40.180556]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт п.Подгорный',
-			balloonContent: 'Фельдшерско-акушерский пункт п.Подгорный<br/>Прикреплено населения: 121'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт ст.Даховская
-	myGeoObject148 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.232778, 40.204167]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт ст.Даховская',
-			balloonContent: 'Фельдшерско-акушерский пункт ст.Даховская<br/>Прикреплено населения: 1388'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт п.Усть-Сахрай
-	myGeoObject149 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.21, 40.28]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт п.Усть-Сахрай',
-			balloonContent: 'Фельдшерско-акушерский пункт п.Усть-Сахрай<br/>Прикреплено населения: 306'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт п.Первомайский
-	myGeoObject150 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.412222, 40.177778]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт п.Первомайский',
-			balloonContent: 'Фельдшерско-акушерский пункт п.Первомайский<br/>Прикреплено населения: 1277'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт ст.Курджипская
-	myGeoObject151 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.462222, 40.051667]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт ст.Курджипская',
-			balloonContent: 'Фельдшерско-акушерский пункт ст.Курджипская<br/>Прикреплено населения: 1590'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт х.Калинин
-	myGeoObject152 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.699722, 40.132222]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт х.Калинин',
-			balloonContent: 'Фельдшерско-акушерский пункт х.Калинин<br/>Прикреплено населения: 276'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт х.Ткачев
-	myGeoObject153 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.725833, 40.201389]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт х.Ткачев',
-			balloonContent: 'Фельдшерско-акушерский пункт х.Ткачев<br/>Прикреплено населения: 227'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт а.Мафэхабль
-	myGeoObject154 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.635833, 40.183056]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт а.Мафэхабль',
-			balloonContent: 'Фельдшерско-акушерский пункт а.Мафэхабль<br/>Прикреплено населения: 177'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт п.Удобный
-	myGeoObject155 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.551667, 40.156944]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт п.Удобный',
-			balloonContent: 'Фельдшерско-акушерский пункт п.Удобный<br/>Прикреплено населения: 1407'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Фельдшерско-акушерский пункт х.Грозный
-	myGeoObject156 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.558611, 40.131389]
-        },
-            
-        properties: {
-			hintContent: 'Фельдшерско-акушерский пункт х.Грозный',
-			balloonContent: 'Фельдшерско-акушерский пункт х.Грозный<br/>Прикреплено населения: 670'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	myGeoObject157 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.610556,40.09]
-        },
-            
-        properties: {
-		hintContent: 'Майкопская городская детская поликлиника №1',
-		balloonContentBody: [
-            '<strong>Майкопская городская детская поликлиника №1</strong>',
-            '<br/>',
-            'Прикреплено населения: 16429',
-            '<br/>',
-			'Плановая мощность: 700',
-            '<br/>',
-			'Количество врачей: 34',
-			'<br/>',
-			'Количество мед.персонала: 89',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Владимирова Е. В.',
-			'<br/>',
-			'53-47-38',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'53-46-09',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	myGeoObject158 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.593448,40.122124]
-        },
-            
-        properties: {
-		hintContent: 'Майкопская детская городская поликлиника № 2',
-		balloonContentBody: [
-            '<strong>Майкопская детская городская поликлиника № 2</strong>',
-            '<br/>',
-            'Прикреплено населения: 8442',
-            '<br/>',
-			'Плановая мощность: 483',
-            '<br/>',
-			'Количество врачей: 24',
-			'<br/>',
-			'Количество мед.персонала: 74',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Швецова Н.М.',
-			'<br/>',
-			'54-17-80',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'54-02-82',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
+        preset: 'islands#redHomeCircleIcon',
     });
 
-	myGeoObject159 = new ymaps.GeoObject({
-            
+	fap3 = new ymaps.GeoObject({
         geometry: {
             type: "Point",
-            coordinates: [44.617105,40.104722]
+            coordinates: [44.950829, 40.318267]
         },
-            
         properties: {
-		hintContent: '«Майкопская детская городская поликлиника № 2», 2-ое педиатрическое отделение',
+		hintContent: 'ФАП а. Хачемзий<br/>ул. Ленина, 4б',
 		balloonContentBody: [
-            '<strong>«Майкопская детская городская поликлиника № 2», 2-ое педиатрическое отделение </strong>',
-            '<br/>',
-            'Прикреплено населения: 5786',
-            '<br/>',
-			'Плановая мощность: 282',
+            '<strong>ФАП а. Хачемзий',
 			'<br/>',
-			'Регистратура',
+			'ул. Ленина, 4б</strong>',
 			'<br/>',
-			'53-76-20',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	myGeoObject160 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.5975,40.109444]
-        },
-            
-        properties: {
-		hintContent: 'Майкопская городская клиническая больница',
-		balloonContentBody: [
-            '<strong>Майкопская городская клиническая больница</strong>',
-            '<br/>',
-			'Плановая мощность: 217',
-            '<br/>',
-			'Количество коек: 498',
+			'Обслуживаемое население: 421 (взрослое: 333, детское: 88)',
 			'<br/>',
-			'Количество врачей: 78',
+			'Мед.работники:',
+			'<ul><li>Заведующая мед.сестра: Пашаева Оксана Магамедиминовна</li></ul>',
+			'Укладка: есть',
 			'<br/>',
-			'Количество мед.персонала: 178',
-			'<br/>',
-			'График работы:Пн-Пт 8-17 часов',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Намитоков М.А.',
-			'<br/>',
-			'52-95-15',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'52-51-80',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#darkOrangeCircleDotIcon',
-    });
-	
-	myGeoObject161 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.616111,40.064444]
-        },
-            
-        properties: {
-		hintContent: 'Майкопская городская поликлиника №1',
-		balloonContentBody: [
-            '<strong>Майкопская городская поликлиника №1</strong>',
-            '<br/>',
-			'Плановая мощность: 643',
-            '<br/>',
-			'Количество коек: 61021',
-			'<br/>',
-			'Количество врачей: 60',
-			'<br/>',
-			'Количество мед.персонала: 123',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Хакунова А.К.',
-			'<br/>',
-			'55-65-92',
-			'<br/>',
-			'Регистратура:',
-			'<br/>',
-			'55-65-80',
-			'<br/>',
-			'55-03-03',
+			'Авто: нет',
 			'<br/>',
         ].join('')
         }
     }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	//Отделение  поселка  Западный
-	myGeoObject162 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.628889,40.076389]
-        },
-            
-        properties: {
-		hintContent: 'Отделение  поселка  Западный',
-		balloonContentBody: [
-            '<strong>Отделение  поселка  Западный</strong>',
-            '<br/>',
-            'Прикреплено населения: 8546',
-            '<br/>',
-			'Плановая мощность: 59',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	// Клинико-диагностическая  лаборатория
-	myGeoObject163 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.611389,40.094444]
-        },
-            
-        properties: {
-		hintContent: ' Клинико-диагностическая  лаборатория',
-		balloonContentBody: [
-            '<strong>Клинико-диагностическая лаборатория</strong>',
-            '<br/>',
-            'Прикреплено населения: 61021',
-            '<br/>',
-			'Плановая мощность: 120',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	// кабинет уролога, кабинет ЭФГДС
-	myGeoObject164 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.611667,40.065278]
-        },
-            
-        properties: {
-		hintContent: 'кабинет уролога, кабинет ЭФГДС',
-		balloonContentBody: [
-            '<strong>кабинет уролога, кабинет ЭФГДС</strong>',
-            '<br/>',
-            'Прикреплено населения: 61021',
-            '<br/>',
-			'Плановая мощность: -',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	//  Фельдшерско-акушерский  пункт
-	myGeoObject165 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.613056,40.028333]
-        },
-            
-        properties: {
-		hintContent: 'Фельдшерско-акушерский  пункт',
-		balloonContentBody: [
-            '<strong>Фельдшерско-акушерский  пункт</strong>',
-            '<br/>',
-            'Прикреплено населения: 4842',
-            '<br/>',
-			'Плановая мощность: 18',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	myGeoObject166 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.601389,40.113889]
-        },
-            
-        properties: {
-		hintContent: 'Майкопская  городская  поликлиника  № 2',
-		balloonContentBody: [
-            '<strong>Майкопская  городская  поликлиника  № 2</strong>',
-            '<br/>',
-            'Прикреплено населения: 20696',
-            '<br/>',
-			'Плановая мощность: 55',
-            '<br/>',
-			'Количество врачей: 40',
-			'<br/>',
-			'Количество мед.персонала: 60',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Сосновский Д.Г.',
-			'<br/>',
-			'54-44-77',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'52-10-86',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	//Поликлиническое отделение № 2
-	myGeoObject167 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.573333,40.127778]
-        },
-            
-        properties: {
-		hintContent: 'Поликлиническое отделение № 2',
-		balloonContentBody: [
-            '<strong>Поликлиническое отделение № 2</strong>',
-            '<br/>',
-            'Прикреплено населения: 11374',
-            '<br/>',
-			'Плановая мощность: 182',
-			'Регистратура',
-			'<br/>',
-			'54-37-80',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	//Поликлиническое отделение № 3 Женская консультация
-	myGeoObject168 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.588889,40.120556]
-        },
-            
-        properties: {
-		hintContent: 'Поликлиническое отделение № 3 Женская консультация',
-		balloonContentBody: [
-            '<strong>Поликлиническое отделение № 3<br/>Женская консультация</strong>',
-            '<br/>',
-            'Прикреплено населения: 19638',
-            '<br/>',
-			'Плановая мощность: 83',
-			'Регистратура',
-			'<br/>',
-			'54-96-67',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	// Филиал поликлинического отделения № 2
-	myGeoObject169 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.593333,40.132778]
-        },
-            
-        properties: {
-		hintContent: ' Филиал поликлинического отделения № 2',
-		balloonContentBody: [
-            '<strong> Филиал поликлинического отделения № 2</strong>',
-            '<br/>',
-            'Прикреплено населения: 3414',
-            '<br/>',
-			'Плановая мощность: -',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	myGeoObject170 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.618333,40.110833]
-        },
-            
-        properties: {
-		hintContent: 'Майкопская городская поликлиника № 3',
-		balloonContentBody: [
-            '<strong>Майкопская городская поликлиника № 3</strong>',
-            '<br/>',
-            'Прикреплено населения: 35313',
-            '<br/>',
-			'Плановая мощность: 572',
-            '<br/>',
-			'Количество врачей: 75',
-			'<br/>',
-			'Количество мед.персонала: 133',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Макрищева Е. С.',
-			'<br/>',
-			'52-11-16',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'52-12-40',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	myGeoObject171 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.603056,40.101944]
-        },
-            
-        properties: {
-		hintContent: 'Общество с ограниченной ответственностью "МРТ-ЭКСПЕРТ МАЙКОП"',
-		balloonContentBody: [
-            '<strong>Общество с ограниченной ответственностью "МРТ-ЭКСПЕРТ МАЙКОП"</strong>',
-            '<br/>',
-            'Прикреплено населения: 437942',
-            '<br/>',
-			'Плановая мощность: -',
-            '<br/>',
-			'Количество врачей:',
-			'<br/>',
-			'Количество мед.персонала:',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач -',
-			'<br/>',
-			'',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redDotIcon',
-    });
-	
-	myGeoObject172 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.0275,40.222778]
-        },
-            
-        properties: {
-		hintContent: 'Шовгеновская центральная районная больница',
-		balloonContentBody: [
-            '<strong>Шовгеновская центральная районная больница</strong>',
-            '<br/>',
-            'Прикреплено населения: 14644',
-            '<br/>',
-			'Плановая мощность: 250',
-            '<br/>',
-			'Количество коек: 40',
-			'<br/>',
-			'Количество врачей: 20',
-			'<br/>',
-			'Количество мед.персонала: 126',
-			'<br/>',
-			'График работы:Пн-Пт 8-18 часов',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Панов Р.Г.',
-			'<br/>',
-			'9-21-96',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'887773 9-27-65',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#darkOrangeCircleDotIcon',
-    });
-	
-	//ФАП х. Дукмасов
-	myGeoObject173 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.005833, 39.918611]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Дукмасов',
-			balloonContent: 'ФАП х. Дукмасов<br/>Прикреплено населения: 513'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Кабехабль
-	myGeoObject174 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.055556, 40.180833]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Кабехабль',
-			balloonContent: 'ФАП а. Кабехабль<br/>Прикреплено населения: 1070'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Свободный Труд
-	myGeoObject175 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.984167, 40.298056]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Свободный Труд',
-			balloonContent: 'ФАП х. Свободный Труд<br/>Прикреплено населения: 339'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Веселый
-	myGeoObject176 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.058056, 40.065833]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Веселый',
-			balloonContent: 'ФАП х. Веселый<br/>Прикреплено населения: 276'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП п. Зарево
-	myGeoObject177 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.997222, 40.080278]
-        },
-            
-        properties: {
-			hintContent: 'ФАП п. Зарево',
-			balloonContent: 'ФАП п. Зарево<br/>Прикреплено населения: 998'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Пшизов
-	myGeoObject178 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.093333, 40.105556]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Пшизов',
-			balloonContent: 'ФАП а. Пшизов<br/>Прикреплено населения: 895'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Семено-Макаренский
-	myGeoObject179 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.919167, 40.245278]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Семено-Макаренский',
-			balloonContent: 'ФАП х. Семено-Макаренский<br/>Прикреплено населения: 96'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Мамацев
-	myGeoObject180 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.942778, 39.991389]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Мамацев',
-			balloonContent: 'ФАП х. Мамацев<br/>Прикреплено населения: 433'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Тихонов
-	myGeoObject181 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.968611, 39.951944]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Тихонов',
-			balloonContent: 'ФАП х. Тихонов<br/>Прикреплено населения: 584'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Чернышев
-	myGeoObject182 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.049167, 40.036944]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Чернышев',
-			balloonContent: 'ФАП х. Чернышев<br/>Прикреплено населения: 785'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Михайлов
-	myGeoObject183 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.976667, 40.150556]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Михайлов',
-			balloonContent: 'ФАП х. Михайлов<br/>Прикреплено населения: 489'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Мокроназаров
-	myGeoObject184 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.984444, 39.955278]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Мокроназаров',
-			balloonContent: 'ФАП х. Мокроназаров<br/>Прикреплено населения: 525'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП п. Ульский
-	myGeoObject185 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.035556, 40.067778]
-        },
-            
-        properties: {
-			hintContent: 'ФАП п. Ульский',
-			balloonContent: 'ФАП п. Ульский<br/>Прикреплено населения: 137'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Хатажукай
-	myGeoObject186 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.070556, 40.183611]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Хатажукай',
-			balloonContent: 'ФАП а. Хатажукай<br/>Прикреплено населения: 933'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Пшичо
-	myGeoObject187 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.066944, 40.1775]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Пшичо',
-			balloonContent: 'ФАП а. Пшичо<br/>Прикреплено населения: 1083'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Киров
-	myGeoObject188 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.0925, 40.264722]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Киров',
-			balloonContent: 'ФАП х. Киров<br/>Прикреплено населения: 107'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	myGeoObject189 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.000278,38.7775]
-        },
-            
-        properties: {
-		hintContent: 'Современный медицинский центр им. Х.М. Совмена - клиника XXI века',
-		balloonContentBody: [
-            '<strong>Современный медицинский центр им. Х.М. Совмена - клиника XXI века</strong>',
-            '<br/>',
-            'Прикреплено населения: 356434',
-            '<br/>',
-			'Плановая мощность: -',
-            '<br/>',
-			'Количество врачей:',
-			'<br/>',
-			'Количество мед.персонала:',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач -',
-			'<br/>',
-			'',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#redDotIcon',
-    });
-	
-	myGeoObject190 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.593611,40.109167]
-        },
-            
-        properties: {
-		hintContent: 'Станция скорой медицинской помощи города Майкопа',
-		balloonContentBody: [
-            '<strong>Станция скорой медицинской помощи города Майкопа</strong>',
-            '<br/>',
-            'Прикреплено населения: 229737',
-            '<br/>',
-			'Количество врачей: 25',
-			'<br/>',
-			'Количество мед.персонала: 147',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Есауленко И.В.',
-			'<br/>',
-			'52-25-60',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#grayCircleDotIcon',
-    });
-	
-	myGeoObject191 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.927778,38.983611]
-        },
-            
-        properties: {
-		hintContent: 'Тахтамукайская ЦРБ',
-		balloonContentBody: [
-            '<strong>Тахтамукайская ЦРБ</strong>',
-            '<br/>',
-            'Прикреплено населения: 73762',
-            '<br/>',
-			'Плановая мощность: 110',
-            '<br/>',
-			'Количество коек: 70',
-			'<br/>',
-			'Количество врачей: 42',
-			'<br/>',
-			'Количество мед.персонала: 100',
-			'<br/>',
-			'График работы:',
-			'<br/>',
-			'Контактные телефоны:',
-			'<br/>',
-			'Главный врач Нехай С.Д.',
-			'<br/>',
-			'9-63-56',
-			'<br/>',
-			'Регистратура',
-			'<br/>',
-			'',
-			'<br/>',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#darkOrangeCircleDotIcon',
-    });
-	
-	//Тахтамукайская поликлиника
-	myGeoObject192 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.919211,38.986261]
-        },
-            
-        properties: {
-		hintContent: 'Тахтамукайская поликлиника',
-		balloonContentBody: [
-            '<strong>Тахтамукайская поликлиника</strong>',
-            '<br/>',
-            'Прикреплено населения: 0',
-            '<br/>',
-			'Плановая мощность: 0',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	//Яблоновская поликлиника
-	myGeoObject193 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.99,38.931667]
-        },
-            
-        properties: {
-		hintContent: 'Яблоновская поликлиника',
-		balloonContentBody: [
-            '<strong>Яблоновская поликлиника</strong>',
-            '<br/>',
-            'Прикреплено населения: 32765',
-            '<br/>',
-			'Плановая мощность: 500',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	//Энемская районная больница
-	myGeoObject194 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.919444,38.902778]
-        },
-            
-        properties: {
-		hintContent: 'Энемская районная больница',
-		balloonContentBody: [
-            '<strong>Энемская районная больница</strong>',
-            '<br/>',
-            'Прикреплено населения: 21463',
-            '<br/>',
-			'Количество коек: 107',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#darkOrangeCircleDotIcon',
-    });
-	
-	//Энемская поликлиника
-	myGeoObject195 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.924167,38.908333]
-        },
-            
-        properties: {
-		hintContent: 'Энемская поликлиника',
-		balloonContentBody: [
-            '<strong>Энемская поликлиника</strong>',
-            '<br/>',
-            'Прикреплено населения: 21463',
-            '<br/>',
-			'Плановая мощность: -',
-        ].join('')
-        }
-    }, {
-            
-        preset: 'islands#nightCircleDotIcon',
-    });
-	
-	//ФАП х. Новый сад
-	myGeoObject196 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.904444, 38.907778]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Новый сад',
-			balloonContent: 'ФАП х. Новый сад<br/>Прикреплено населения: 1309'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП п. Дружный
-	myGeoObject197 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.955556, 38.892222]
-        },
-            
-        properties: {
-			hintContent: 'ФАП п. Дружный',
-			balloonContent: 'ФАП п. Дружный<br/>Прикреплено населения: 445'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Панахес
-	myGeoObject198 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.986667, 38.718333]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Панахес',
-			balloonContent: 'ФАП а. Панахес<br/>Прикреплено населения: 1509'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Хаштук
-	myGeoObject199 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.042222, 38.751667]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Хаштук',
-			balloonContent: 'ФАП а. Хаштук<br/>Прикреплено населения: 274'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Старобжегокай
-	myGeoObject200 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.033611, 38.895556]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Старобжегокай',
-			balloonContent: 'ФАП а. Старобжегокай<br/>Прикреплено населения: 2275'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Новая Адыгея
-	myGeoObject201 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.024722, 38.936111]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Новая Адыгея',
-			balloonContent: 'ФАП а. Новая Адыгея<br/>Прикреплено населения: 2609'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Натухай
-	myGeoObject202 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.864722, 38.988333]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Натухай',
-			balloonContent: 'ФАП а. Натухай<br/>Прикреплено населения: 328'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП п Прикубанский
-	myGeoObject203 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.956944, 39.026944]
-        },
-            
-        properties: {
-			hintContent: 'ФАП п Прикубанский',
-			balloonContent: 'ФАП п Прикубанский<br/>Прикреплено населения: 1080'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а.Новообжегокай
-	myGeoObject204 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.933056, 38.835833]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а.Новообжегокай',
-			balloonContent: 'ФАП а.Новообжегокай<br/>Прикреплено населения: 369'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП п.Кубаньстрой
-	myGeoObject205 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.997222, 38.792222]
-        },
-            
-        properties: {
-			hintContent: 'ФАП п.Кубаньстрой',
-			balloonContent: 'ФАП п.Кубаньстрой<br/>Прикреплено населения: 396'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Псейтук
-	myGeoObject206 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.051944, 38.708333]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Псейтук',
-			balloonContent: 'ФАП а. Псейтук<br/>Прикреплено населения: 614'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП а. Шенджий
-	myGeoObject207 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.883611, 39.068889]
-        },
-            
-        properties: {
-			hintContent: 'ФАП а. Шенджий',
-			balloonContent: 'ФАП а. Шенджий<br/>Прикреплено населения: 1934'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х.Суповский
-	myGeoObject208 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.904444, 38.946944]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х.Суповский',
-			balloonContent: 'ФАП х.Суповский<br/>Прикреплено населения: 553'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП п. Новый
-	myGeoObject209 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [45.008056, 38.981667]
-        },
-            
-        properties: {
-			hintContent: 'ФАП п. Новый',
-			balloonContent: 'ФАП п. Новый<br/>Прикреплено населения: 2003'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП х. Хомуты
-	myGeoObject210 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.998889, 38.869167]
-        },
-            
-        properties: {
-			hintContent: 'ФАП х. Хомуты',
-			balloonContent: 'ФАП х. Хомуты<br/>Прикреплено населения: 586'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//ФАП п. Отрадный
-	myGeoObject211 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.875833, 38.955]
-        },
-            
-        properties: {
-			hintContent: 'ФАП п. Отрадный',
-			balloonContent: 'ФАП п. Отрадный<br/>Прикреплено населения: 677'
-		}
-    }, {
-            
-        preset: 'islands#darkGreenCircleDotIcon',
-    });
-	
-	//Домовое хозяйство х. Старомогилевский
-	myGeoObject212 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.831667, 39.114167]
-        },
-            
-        properties: {
-			hintContent: 'Домовое хозяйство х. Старомогилевский',
-			balloonContent: 'Домовое хозяйство х. Старомогилевский<br/>Прикреплено населения: 42'
-		}
-    }, {
-            
-        preset: 'islands#yellowCircleDotIcon',
-    });
-	
-	//Домовое хозяйство п. Супс
-	myGeoObject213 = new ymaps.GeoObject({
-            
-        geometry: {
-            type: "Point",
-            coordinates: [44.930162, 38.946127]
-        },
-            
-        properties: {
-			hintContent: 'Домовое хозяйство п. Супс',
-			balloonContent: 'Домовое хозяйство п. Супс<br/>Прикреплено населения: 72'
-		}
-    }, {
-            
-        preset: 'islands#yellowCircleDotIcon',
+        preset: 'islands#redHomeCircleIcon',
     });
 
-	//Афипсипская врачебная амбулатория
-	myGeoObject214 = new ymaps.GeoObject({
-            
+	fap10 = new ymaps.GeoObject({
         geometry: {
             type: "Point",
-            coordinates: [45.001944,38.776667]
+            coordinates: [44.574586, 40.718151]
         },
-            
         properties: {
-		hintContent: 'Афипсипская врачебная амбулатория',
+		hintContent: 'ФАП х. Шелковников<br/>ул. Мира, 86',
 		balloonContentBody: [
-            '<strong>Афипсипская врачебная амбулатория</strong>',
-            '<br/>',
-            'Прикреплено населения: 4953',
-            '<br/>',
-			'Плановая мощность: 27',
+            '<strong>ФАП х. Шелковников',
+			'<br/>',
+			'ул. Мира, 86</strong>',
+			'<br/>',
+			'Обслуживаемое население: 241 (взрослое: 175, детское: 66)',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующий фельдшер: Оситлева Дариет Яхьявна</li></ul>',
+			'Укладка: есть',
+			'<br/>',
+			'Авто: нет',
+			'<br/>',
         ].join('')
         }
     }, {
-            
-        preset: 'islands#blueCircleDotIcon',
+        preset: 'islands#redHomeCircleIcon',
     });
-	
-	//Козетская врачебная амбулатория
-	myGeoObject215 = new ymaps.GeoObject({
-            
+
+	fap6 = new ymaps.GeoObject({
         geometry: {
             type: "Point",
-            coordinates: [44.9925,39.003611]
+            coordinates: [44.841873, 40.462289]
         },
-            
         properties: {
-		hintContent: 'Козетская врачебная амбулатория',
+		hintContent: 'ФАП х. Игнатьевский<br/>ул. Партизанская, 3',
 		balloonContentBody: [
-            '<strong>Козетская врачебная амбулатория</strong>',
-            '<br/>',
-            'Прикреплено населения: 1917',
-            '<br/>',
-			'Плановая мощность: 10',
+            '<strong>ФАП х. Игнатьевский',
+			'<br/>',
+			'ул. Партизанская, 3</strong>',
+			'<br/>',
+			'Обслуживаемое население: 685 (взрослое: 533, детское: 152)',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующий фельдшер: Яковлева Людмила Владимировна</li></ul>',
+			'Укладка: есть',
+			'<br/>',
+			'Авто: нет',
+			'<br/>',
         ].join('')
         }
     }, {
-            
-        preset: 'islands#blueCircleDotIcon',
+        preset: 'islands#redHomeCircleIcon',
     });
-	
+
+	fap9 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.573152, 40.682832]
+        },
+        properties: {
+		hintContent: 'ФАП х. Кармалино-Гидройцкий<br/>ул. Свободы Мира, 69В',
+		balloonContentBody: [
+            '<strong>ФАП х. Кармалино-Гидройцкий',
+			'<br/>',
+			'ул. Свободы Мира, 69В</strong>',
+			'<br/>',
+			'Обслуживаемое население: 120 (взрослое: 98, детское: 22)',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующий фельдшер: Агинских Надежда Алексеевна</li></ul>',
+			'Укладка: есть',
+			'<br/>',
+			'Авто: нет',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	fap1 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.999933, 40.392491]
+        },
+        properties: {
+		hintContent: 'ФАП а. Егерухай<br/>ул. Шовгенова, 2б',
+		balloonContentBody: [
+            '<strong>ФАП а. Егерухай',
+			'<br/>',
+			'ул. Шовгенова, 2б</strong>',
+			'<br/>',
+			'Обслуживаемое население: 1049 (взрослое: 779, детское: 270)',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующий фельдшер: Ешева Мууминат Заурбиевна</li></ul>',
+			'Укладка: есть',
+			'<br/>',
+			'Авто: есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	fap4 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.914069, 40.353260]
+        },
+        properties: {
+		hintContent: 'ФАП х. Красный Фарс<br/>ул. Речная, 2',
+		balloonContentBody: [
+            '<strong>ФАП х. Красный Фарс',
+			'<br/>',
+			'ул. Речная, 2</strong>',
+			'<br/>',
+			'Обслуживаемое население: 146 (взрослое: 112, детское: 34)',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медицинская сестра: Кайдаева Фаина Алимурадовна</li></ul>',
+			'Укладка: есть',
+			'<br/>',
+			'Авто: нет',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	fap2 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.950590, 40.347159]
+        },
+        properties: {
+		hintContent: 'ФАП х. Политотдел<br/>ул. Кирова, 27',
+		balloonContentBody: [
+            '<strong>ФАП х. Политотдел',
+			'<br/>',
+			'ул. ул. Кирова, 27</strong>',
+			'<br/>',
+			'Обслуживаемое население: 174 (взрослое: 133, детское: 41)',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: Вергасова Сания Сафона</li></ul>',
+			'Укладка: есть',
+			'<br/>',
+			'Авто: нет',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	fap5 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.902494, 40.421731]
+        },
+        properties: {
+		hintContent: 'ФАП пос. Комсомольский<br/>ул. Центральная, 32',
+		balloonContentBody: [
+            '<strong>ФАП пос. Комсомольский',
+			'<br/>',
+			'ул. ул. Центральная, 32</strong>',
+			'<br/>',
+			'Обслуживаемое население: 110 (взрослое: 79, детское: 31)',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующий фельдшер: Бравкова Александра Васильевна</li></ul>',
+			'Укладка: есть',
+			'<br/>',
+			'Авто: нет',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	fap7 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.773556, 40.518971]
+        },
+        properties: {
+		hintContent: 'ФАП х. Красный<br/>ул. Красная, 65А',
+		balloonContentBody: [
+            '<strong>ФАП х. Красный',
+			'<br/>',
+			'ул. Красная, 65А</strong>',
+			'<br/>',
+			'Обслуживаемое население: 176 (взрослое: 113, детское: 63)',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующий фельдшер: Тлишев Ислам Аликович</li></ul>',
+			'Укладка: есть',
+			'<br/>',
+			'Авто: нет',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+
+
+
+	crb = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.901809, 40.488416]
+        },
+        properties: {
+		hintContent: 'Кошехабльская ЦРБ - Районная поликлиника<br/>ул. Аслана Джаримова, 7',
+		balloonContentBody: [
+            '<strong>Кошехабльская ЦРБ - Районная поликлиника',
+			'<br/>',
+			'ул. Аслана Джаримова, 7</strong>',
+			'<br/>',
+			'Обслуживаемое население: 7130 (взрослое: 5742, детское: 1388)',
+			'<br/>',
+			'<ul><li>Заведующий: Фокотлев Нурдин Хамедович</li></ul>',
+			'Укладка: есть',
+			'<br/>',
+			'Авто: есть',
+			'<br/>',
+			'Неотложный кабинет',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#nightHomeCircleIcon',
+    });
+
+
+	amb1 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.933591, 40.375841]
+        },
+        properties: {
+		hintContent: 'Амбулатория п. Дружба(amb1)<br/>ул.Центральная, 5',
+		balloonContentBody: [
+            '<strong>Амбулатория п. Дружба',
+			'<br/>',
+			'ул.Центральная, 5</strong>',
+			'<br/>',
+			'Обслуживаемое население: 1662 (взрослое: 1300, детское: 362)',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая: Белбус Виктория Алексеевна</li></ul>',
+			'Укладка: есть',
+			'<br/>',
+			'Авто: есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#darkBlueHomeCircleIcon',
+    });
+
+	amb2 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.783343, 40.547271]
+        },
+        properties: {
+		hintContent: 'Амбулатория п. Майский (amb2)<br/>ул.Заводская, 7',
+		balloonContentBody: [
+            '<strong>Амбулатория п. Майский',
+			'<br/>',
+			'ул.Заводская, 7</strong>',
+			'<br/>',
+			'Обслуживаемое население: 2362 (взрослое: 2029, детское: 333)',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая: Кемечева Марина Амербиевна</li></ul>',
+			'Укладка: есть',
+			'<br/>',
+			'Авто: есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#darkBlueHomeCircleIcon',
+    });
+
+	amb3 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.820484, 40.490906]
+        },
+        properties: {
+		hintContent: 'Амбулатория а. Блечепсин (amb3)<br/>ул.Ленина, 37',
+		balloonContentBody: [
+            '<strong>Амбулатория а. Блечепсин',
+			'<br/>',
+			'ул.Ленина, 37</strong>',
+			'<br/>',
+			'Обслуживаемое население: 3106 (взрослое: 2542, детское: 564)',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая: Кемечева Марина Амербиевна</li></ul>',
+			'Укладка: есть',
+			'<br/>',
+			'Авто: есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#darkBlueHomeCircleIcon',
+    });
+
+	amb4 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.731948, 40.621287]
+        },
+        properties: {
+		hintContent: 'Амбулатория с. Натырбово (amb4)<br/>ул.Ямпольского, 48Б',
+		balloonContentBody: [
+            '<strong>Амбулатория с. Натырбово',
+			'<br/>',
+			'ул.Ямпольского, 48Б</strong>',
+			'<br/>',
+			'Обслуживаемое население: 2362 (взрослое: 2029, детское: 333)????',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая: Афашагова Валентина Васильевна</li></ul>',
+			'Укладка: есть',
+			'<br/>',
+			'Авто: есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#darkBlueHomeCircleIcon',
+    });
+
+	amb5 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.618827, 40.702721]
+        },
+        properties: {
+		hintContent: 'Амбулатория с. Вольное (amb5)<br/>пер.Почтовый, 2',
+		balloonContentBody: [
+            '<strong>Амбулатория с. Вольное',
+			'<br/>',
+			'пер.Почтовый, 2</strong>',
+			'<br/>',
+			'Обслуживаемое население: 3018 (взрослое: 2415, детское: 603)',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая: Шевченко Галина Анатольевна</li></ul>',
+			'Укладка: есть',
+			'<br/>',
+			'Авто: есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#darkBlueHomeCircleIcon',
+    });
+
+	amb6 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.515981, 40.710920]
+        },
+        properties: {
+		hintContent: 'Амбулатория а. Ходзь (amb6)<br/>ул.Краснооктябрьская, 126',
+		balloonContentBody: [
+            '<strong>Амбулатория а. Ходзь',
+			'<br/>',
+			'ул.Краснооктябрьская, 126</strong>',
+			'<br/>',
+			'Обслуживаемое население: 1903 (взрослое: 1509, детское: 394)',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая: Шевченко Галина Анатольевна</li></ul>',
+			'Укладка: есть',
+			'<br/>',
+			'Авто: есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#darkBlueHomeCircleIcon',
+    });
+
+
+
+
+		var gran_drujba = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.934521,40.370112999999996],[44.935693,40.370537999999996],[44.935655999999994,40.37162],[44.936617,40.371911999999995],[44.936875,40.372108999999995],[44.937551,40.370259999999995],[44.938162999999996,40.371113],[44.937875,40.371649999999995],[44.937639999999995,40.372302],[44.936167999999995,40.378021],[44.936299,40.378108999999995],[44.936375,40.378220999999996],[44.937602,40.380494],[44.938075,40.381868],[44.938567,40.383171999999995],[44.938618,40.383418],[44.938629,40.383659],[44.938192,40.383344],[44.938002,40.383289],[44.937796,40.383297999999996],[44.937695,40.383342],[44.937228,40.383725],[44.936997,40.383782],[44.936788,40.383944],[44.936661,40.383961],[44.936558,40.383876],[44.936465999999996,40.383573999999996],[44.936557,40.383271],[44.936518,40.383007],[44.936453,40.382915],[44.936284,40.382801],[44.935908,40.382726999999996],[44.935807,40.382791999999995],[44.935631,40.382998],[44.935486,40.383057],[44.935144,40.382863],[44.935027999999996,40.382861],[44.93493,40.382943999999995],[44.934791999999995,40.383288],[44.934681999999995,40.383404],[44.934514,40.383403],[44.934217,40.383255999999996],[44.93402,40.38325],[44.933915999999996,40.383345999999996],[44.933855,40.383599],[44.933748,40.383626],[44.933676999999996,40.383568],[44.933468,40.383192],[44.933333,40.383019999999995],[44.933004,40.382771],[44.932587999999996,40.382672],[44.932424999999995,40.382728],[44.93219,40.382892999999996],[44.932119,40.382861999999996],[44.932064,40.38276],[44.931973,40.382124],[44.93194,40.382036],[44.931839,40.381932],[44.931599999999996,40.381865999999995],[44.931444,40.381884],[44.930541999999996,40.382388],[44.930403,40.382359],[44.929790999999994,40.381842],[44.929663999999995,40.381781],[44.929559,40.381859999999996],[44.929434,40.382047],[44.929336,40.382132999999996],[44.929120999999995,40.382068],[44.929001,40.381921],[44.928875,40.381664],[44.928566,40.380784],[44.928506,40.380694],[44.928343,40.380617],[44.928050999999996,40.380660999999996],[44.927817999999995,40.380775],[44.927679,40.38079],[44.927108,40.380596],[44.926942,40.380601999999996],[44.926598999999996,40.380738],[44.925985999999995,40.380521],[44.925408,40.380508],[44.925191,40.380572],[44.924934,40.380797],[44.924592,40.380949],[44.924344999999995,40.381139999999995],[44.924003,40.381205],[44.924718,40.378343],[44.926832999999995,40.379115],[44.927516,40.374914],[44.927655,40.374871999999996],[44.927813,40.374896],[44.928222,40.375172],[44.928810999999996,40.375304],[44.92944,40.376014],[44.929479,40.376104],[44.929491,40.376303],[44.929638999999995,40.376536],[44.929984,40.376925],[44.93027,40.377145],[44.930577,40.377303999999995],[44.930962,40.377393],[44.931475999999996,40.377369],[44.931698999999995,40.377293],[44.931753,40.377229],[44.931794,40.3771],[44.931767,40.37672],[44.931841,40.376362],[44.93181,40.376225999999996],[44.931697,40.375980999999996],[44.931695999999995,40.375622],[44.931798,40.375381999999995],[44.932258,40.374697999999995],[44.932306999999994,40.374559999999995],[44.932314,40.374342999999996],[44.932247,40.373985],[44.931666,40.372171],[44.931638,40.372006999999996],[44.931656,40.371865],[44.931712999999995,40.37178],[44.93176,40.371767999999996],[44.932722,40.371735],[44.932873,40.371798],[44.933071999999996,40.372082999999996],[44.933187,40.372157],[44.93356,40.372246],[44.933788,40.372229999999995],[44.934045999999995,40.371964999999996],[44.934211,40.371649],[44.934385,40.371055999999996]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: '00B7EB',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_krasn = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.778833999999996,40.516518],[44.779278999999995,40.516560999999996],[44.77977,40.51669],[44.780293,40.516957999999995],[44.780772999999996,40.518966999999996],[44.779005999999995,40.51898],[44.778908,40.520168999999996],[44.778937,40.520511],[44.779043,40.520821999999995],[44.779216999999996,40.521057],[44.779407,40.521217],[44.78129,40.521785],[44.780943,40.524184],[44.777496,40.522966],[44.777076,40.52288],[44.776782,40.522859],[44.776534999999996,40.522901999999995],[44.776258,40.523063],[44.775493999999995,40.523824],[44.775096999999995,40.524082],[44.774637999999996,40.524274999999996],[44.774428,40.524322999999995],[44.774231,40.524262],[44.774065,40.524071],[44.773844,40.523331],[44.767123999999995,40.525171],[44.766711,40.521107],[44.76688,40.519219],[44.772631,40.517199],[44.777752,40.516566]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: 'FF2400',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_chehrak1 = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.939612,40.386221],[44.939703,40.386269999999996],[44.939851999999995,40.386416],[44.940934,40.388261],[44.940461,40.390691],[44.940137,40.390589],[44.939432,40.392556],[44.937881999999995,40.392067],[44.937965999999996,40.391324999999995],[44.937200999999995,40.391014],[44.937349,40.387929],[44.93834,40.386057]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: '00B7EB',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_chehrak2 = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.938234,40.371015],[44.941719,40.376143],[44.939537,40.379345],[44.940027,40.380145],[44.940124999999995,40.381285999999996],[44.939954,40.381243999999995],[44.939648,40.381405],[44.939527,40.381499],[44.939364999999995,40.381685999999995],[44.939124,40.382244],[44.938946,40.382456999999995],[44.938915,40.382525],[44.938829999999996,40.383083],[44.938749,40.383294],[44.938748,40.38335],[44.938809,40.38353],[44.938804999999995,40.383598],[44.938783,40.383644],[44.938719999999996,40.383686],[44.938629,40.383659],[44.938618,40.383418],[44.938567,40.383171999999995],[44.938075,40.381868],[44.937768,40.380927],[44.937602,40.380494],[44.936375,40.378220999999996],[44.936299,40.378108999999995],[44.936167999999995,40.378021],[44.937639999999995,40.372302],[44.937875,40.371649999999995],[44.938068,40.371268]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: '00B7EB',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_otradn = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.941449999999996,40.335781999999995],[44.944308,40.339504999999996],[44.943656999999995,40.340548],[44.944024999999996,40.340866999999996],[44.943872,40.341383],[44.943911,40.341712],[44.943996999999996,40.341906],[44.944137,40.342048],[44.945713,40.342893],[44.945926,40.343362],[44.946028,40.343481],[44.946335999999995,40.34343],[44.946632,40.343593],[44.946737999999996,40.343737999999995],[44.946815,40.343989],[44.94683,40.344271],[44.946787,40.344581999999996],[44.946508,40.345118],[44.946403,40.345537],[44.946217,40.345723],[44.946110999999995,40.345742],[44.945893999999996,40.345566],[44.94576,40.345119],[44.945392999999996,40.344378],[44.945121,40.344204999999995],[44.944812,40.344269],[44.944567,40.344519999999996],[44.944083,40.345544],[44.943692,40.346070999999995],[44.943442999999995,40.346148],[44.943054,40.345883],[44.942921,40.345861],[44.942445,40.346087999999995],[44.942332,40.346365],[44.942284,40.34701],[44.94216,40.347485],[44.941617,40.348529],[44.94144,40.34878],[44.941204,40.348954],[44.94101,40.349007],[44.940799999999996,40.348969],[44.940523,40.34881],[44.940332,40.348816],[44.939906,40.349466],[44.939879,40.349745],[44.940604,40.351056],[44.941143,40.351102999999995],[44.941767,40.351304],[44.942094999999995,40.351509],[44.942423,40.351822],[44.942795,40.351974999999996],[44.942839,40.352091],[44.942837999999995,40.352531],[44.942972999999995,40.352891],[44.94298,40.353094999999996],[44.942842,40.353305999999996],[44.942661,40.353344],[44.942508,40.353235999999995],[44.941970999999995,40.352595],[44.941674,40.352461999999996],[44.94088,40.353373999999995],[44.940394,40.355188],[44.939423999999995,40.356586],[44.93915,40.357386],[44.938904,40.358563],[44.938644,40.359018],[44.938424,40.359138],[44.938306999999995,40.359414],[44.938286999999995,40.359654],[44.938337999999995,40.360132],[44.938676,40.361546],[44.938714999999995,40.361914],[44.938607999999995,40.362913999999996],[44.938522999999996,40.363231],[44.938325999999996,40.363479],[44.937599,40.363766],[44.937422999999995,40.363973],[44.937242999999995,40.364394999999995],[44.937044,40.365294999999996],[44.936769999999996,40.366102999999995],[44.936544999999995,40.366620999999995],[44.936234999999996,40.367157999999996],[44.936046999999995,40.367964],[44.935856,40.368196999999995],[44.935213,40.368407],[44.934903,40.368635999999995],[44.934691,40.369022],[44.934552,40.369881],[44.932338,40.367688],[44.933347999999995,40.366592],[44.934658999999996,40.365474],[44.934419,40.364686999999996],[44.934204,40.364259],[44.932283999999996,40.362203],[44.936101,40.354645999999995],[44.935894,40.354408],[44.936647,40.352731999999996],[44.934270999999995,40.350477],[44.936462,40.346222999999995],[44.936761,40.345993],[44.937371,40.345859],[44.937508,40.345907],[44.937881999999995,40.346224],[44.939468999999995,40.343098999999995],[44.937999,40.340824999999995]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: '00B7EB',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_novoaleks = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.926209,40.361483],[44.929213999999995,40.364703999999996],[44.929393,40.364534],[44.929601999999996,40.36446],[44.932584999999996,40.363659999999996],[44.931379,40.365986],[44.932007999999996,40.366634999999995],[44.932269,40.366510999999996],[44.932869,40.367098999999996],[44.932338,40.367688],[44.934552,40.369881],[44.934385,40.371055999999996],[44.934297,40.371398],[44.934135,40.371821],[44.933862999999995,40.372181999999995],[44.933651,40.372257],[44.933187,40.372157],[44.933071999999996,40.372082999999996],[44.932873,40.371798],[44.932722,40.371735],[44.93176,40.371767999999996],[44.931712999999995,40.37178],[44.931656,40.371865],[44.931638,40.372006999999996],[44.931666,40.372171],[44.932247,40.373985],[44.932314,40.374342999999996],[44.932306999999994,40.374559999999995],[44.932258,40.374697999999995],[44.931798,40.375381999999995],[44.931695999999995,40.375622],[44.931697,40.375980999999996],[44.93181,40.376225999999996],[44.931841,40.376362],[44.931767,40.37672],[44.931794,40.3771],[44.931753,40.377229],[44.931698999999995,40.377293],[44.931475999999996,40.377369],[44.930962,40.377393],[44.930577,40.377303999999995],[44.930164999999995,40.377074],[44.929898,40.376838],[44.929573999999995,40.376446],[44.929491,40.376303],[44.929479,40.376104],[44.92944,40.376014],[44.928863,40.375349],[44.928754,40.375271999999995],[44.928298,40.375201],[44.928146999999996,40.375130999999996],[44.927813,40.374896],[44.927655,40.374871999999996],[44.927516,40.374914],[44.927037999999996,40.375172],[44.926874999999995,40.375195999999995],[44.926688,40.375164999999996],[44.924983,40.374272999999995],[44.925917999999996,40.372071],[44.925748,40.371251],[44.925746,40.370967],[44.925802,40.370759],[44.927549,40.367585999999996],[44.924692,40.364464999999996]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: '00B7EB',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_dmtr = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.945605,40.350834],[44.948423999999996,40.354793],[44.943428,40.363212],[44.941354,40.366371],[44.938162999999996,40.371113],[44.936778,40.369181999999995],[44.937416,40.366799],[44.938880999999995,40.363974999999996],[44.939378999999995,40.364204],[44.940646,40.362609],[44.940708,40.362352],[44.940701,40.362095],[44.94037,40.361301],[44.940228999999995,40.360821],[44.940180999999995,40.360448999999996],[44.940205,40.360026],[44.940495,40.359276],[44.941978,40.356355],[44.942246,40.356659],[44.944388,40.353018999999996]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: '00B7EB',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_plod = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.933181999999995,40.363167],[44.934042,40.364058],[44.934129,40.36416],[44.934276999999994,40.364368],[44.934374,40.36457],[44.934419,40.364686999999996],[44.934658999999996,40.365474],[44.93372,40.366257],[44.933521999999996,40.366433],[44.933192,40.366748],[44.932869,40.367098999999996],[44.932269,40.366510999999996],[44.932007999999996,40.366634999999995],[44.931379,40.365986],[44.932584999999996,40.363659999999996],[44.932792,40.363597],[44.932896,40.36355],[44.932963,40.363504],[44.93306,40.363394]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: '00B7EB',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+
+
+		var gran_egeruhay = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[45.010619,40.382951999999996],[45.010926,40.383658],[45.011196999999996,40.383537],[45.012073,40.385588999999996],[45.012159,40.385908],[45.010152,40.388207],[45.010622999999995,40.390186],[45.010484,40.390563],[45.010346999999996,40.390685999999995],[45.009986999999995,40.390741],[45.009398999999995,40.390981],[45.00987,40.393023],[45.008423,40.393622],[45.008676,40.395024],[45.008665,40.395975],[45.00857,40.396353999999995],[45.008871,40.397503],[45.008145999999996,40.397993],[45.007832,40.397859],[45.006699,40.398528999999996],[45.006603999999996,40.398970999999996],[45.006060999999995,40.399274999999996],[45.005880999999995,40.399271],[45.005914,40.400286],[45.005507,40.400403],[45.005474,40.399451],[45.005022,40.399629999999995],[45.003893999999995,40.399857],[45.002185999999995,40.399752],[45.002247999999994,40.402100999999995],[45.001436999999996,40.402144],[45.000901999999996,40.401751],[45.00036,40.401928],[45.000018,40.402288],[44.998906999999996,40.403020999999995],[44.996826999999996,40.403858],[44.99687,40.40405],[44.996553,40.404232],[44.996207,40.403082],[44.995799999999996,40.403262999999995],[44.995414,40.401604],[44.994872,40.401845],[44.994955999999995,40.402353999999995],[44.994364999999995,40.402783],[44.993724,40.403782],[44.993413,40.403394],[44.992954999999995,40.404081],[44.993218999999996,40.404593999999996],[44.991985,40.40615],[44.993649999999995,40.406189999999995],[44.993632999999996,40.407585],[44.992733,40.407562999999996],[44.992743,40.406738999999995],[44.992428,40.406731],[44.992365,40.411992999999995],[44.992154,40.412],[44.992208999999995,40.412873],[44.991932999999996,40.413633],[44.990749,40.411071],[44.989146999999996,40.408198999999996],[44.98873,40.408572],[44.985959,40.401043],[44.988375999999995,40.399822],[44.989193,40.398852],[44.99127,40.398269],[44.990657,40.396859],[44.990668,40.395970999999996],[44.990148999999995,40.395207],[44.990733,40.394334],[44.991201,40.395157999999995],[44.992315999999995,40.393538],[44.993173999999996,40.393305],[44.993047,40.392668],[44.994040999999996,40.392312],[44.994167999999995,40.392949],[44.994890999999996,40.392713],[44.994809,40.392077],[44.999189,40.390724],[44.999027,40.389198],[44.999036,40.388436999999996],[44.999182,40.387553],[44.999227999999995,40.387426999999995],[44.999455,40.387242],[45.00002,40.388152999999996],[45.005725999999996,40.385816],[45.005855,40.386327],[45.006352,40.386148999999996],[45.006229,40.385194],[45.006636,40.385014],[45.006676,40.385394999999995],[45.008483999999996,40.384676999999996],[45.008396999999995,40.384422],[45.008804,40.384304]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: 'FF2400',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_polit = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.952892,40.342481],[44.954256,40.345037],[44.948423999999996,40.354793],[44.945605,40.350834],[44.946306,40.349514],[44.945581999999995,40.348388],[44.948401,40.343377],[44.948941999999995,40.344198],[44.948934,40.345555],[44.950275,40.346655],[44.952328,40.342867999999996]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: 'FF2400',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_chatchemsiy = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.957474999999995,40.307564],[44.959261999999995,40.312836999999995],[44.960043999999996,40.317578999999995],[44.959725,40.317664],[44.959604999999996,40.317851999999995],[44.959540999999994,40.318159],[44.959523,40.318551],[44.959599999999995,40.319089],[44.959702,40.319309],[44.960443,40.319995999999996],[44.960592,40.3202],[44.960875,40.320781],[44.961045,40.321],[44.961282,40.321146],[44.961954,40.321356],[44.962091,40.321542],[44.962131,40.32184],[44.962056,40.321965999999996],[44.961694,40.322151999999996],[44.961012,40.322095999999995],[44.960732,40.322136],[44.960555,40.322224],[44.9602,40.322886],[44.960014,40.323125999999995],[44.959872999999995,40.323214],[44.959323,40.323353999999995],[44.959081999999995,40.323544999999996],[44.958937999999996,40.323904],[44.958960999999995,40.324352999999995],[44.958394999999996,40.32431],[44.958242,40.32423],[44.95774,40.323429999999995],[44.957507,40.323167],[44.957203,40.323098],[44.9569,40.323184999999995],[44.956747,40.323335],[44.956389,40.324467],[44.956092,40.32481],[44.95578,40.324816],[44.955003,40.324563],[44.954771,40.324584],[44.954564999999995,40.324712999999996],[44.954364,40.325174],[44.954131,40.326198999999995],[44.953959999999995,40.327701],[44.953956,40.328495],[44.954093,40.329057999999996],[44.954454999999996,40.329691],[44.954589999999996,40.329833],[44.954907999999996,40.329969999999996],[44.955259999999996,40.329958],[44.956047,40.329739],[44.956229,40.329741999999996],[44.956395,40.329817999999996],[44.956796,40.330200999999995],[44.957361999999996,40.330901999999995],[44.957294,40.331007],[44.956933,40.330954999999996],[44.956725999999996,40.331046],[44.956401,40.331395],[44.956106,40.331987999999996],[44.955638,40.332207],[44.955501,40.332344],[44.955375,40.332663],[44.95525,40.333780999999995],[44.954806,40.335221],[44.954589999999996,40.335665],[44.953905999999996,40.336799],[44.953393,40.337554999999995],[44.952973,40.337903],[44.952017,40.338463],[44.951679999999996,40.338561],[44.951316999999996,40.338516999999996],[44.950089999999996,40.337458999999996],[44.949870999999995,40.337362],[44.949670999999995,40.337364],[44.94949,40.337465],[44.948781,40.320496999999996],[44.948834999999995,40.320143],[44.949017,40.319691999999996],[44.949444,40.319295],[44.94789,40.315495999999996],[44.95088,40.312261]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: 'FF2400',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_krasnfars = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.914119,40.350052999999996],[44.915293999999996,40.350874],[44.916889,40.350353999999996],[44.917884,40.350927],[44.920156,40.353184],[44.919838,40.353867],[44.919793,40.354051],[44.919793999999996,40.354236],[44.91981,40.354366],[44.919878999999995,40.35454],[44.920237,40.35505],[44.919376,40.356237],[44.920668,40.357659999999996],[44.918253,40.361653],[44.912454,40.354960999999996],[44.912580999999996,40.354211],[44.912731,40.353547999999996],[44.913055,40.352606],[44.913173,40.352329],[44.913345,40.352067],[44.913497,40.35188],[44.913992,40.351436],[44.914072999999995,40.351318],[44.91415,40.35114],[44.914209,40.350718],[44.914198,40.35049]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: 'FF2400',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_komsomol = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.902114,40.418788],[44.903544,40.418942],[44.903779,40.419049],[44.903945,40.419199],[44.904095999999996,40.419472],[44.904201,40.419771999999995],[44.904277,40.420116],[44.904323,40.420513],[44.904360999999994,40.422519],[44.904402,40.422836],[44.904472999999996,40.423099],[44.904574,40.423345999999995],[44.904675999999995,40.423550999999996],[44.904599999999995,40.424687999999996],[44.903219,40.424462],[44.903239,40.424186],[44.902484,40.424084],[44.902350999999996,40.425574999999995],[44.90105,40.425337999999996],[44.901458,40.419726999999995],[44.902072,40.419764]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: 'FF2400',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_ignat = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.856653,40.43253],[44.857943,40.434965999999996],[44.859569,40.433436],[44.860569,40.435739999999996],[44.860305,40.435899],[44.859839,40.436479999999996],[44.859828,40.437507],[44.859654,40.437888],[44.858547,40.438621],[44.858208,40.438967],[44.858086,40.439226999999995],[44.858090999999995,40.4396],[44.858419999999995,40.440546999999995],[44.85845,40.440957],[44.858360999999995,40.441302],[44.859642,40.444013999999996],[44.858382999999996,40.445237],[44.857704,40.444454],[44.856311,40.445924],[44.857859999999995,40.448595],[44.854828,40.452206],[44.855126999999996,40.452681999999996],[44.852323,40.455788],[44.852942999999996,40.457183],[44.849705,40.460623999999996],[44.84963,40.460906],[44.849736,40.461349999999996],[44.849712,40.461616],[44.848765,40.462741],[44.849267,40.463463],[44.847985,40.465047],[44.845189,40.460021999999995],[44.844983,40.460484],[44.844868,40.461396],[44.844425,40.462007],[44.844080999999996,40.462118],[44.843678,40.463068],[44.843357,40.463218999999995],[44.84307,40.463595999999995],[44.842828,40.464479999999995],[44.842884999999995,40.465177],[44.84558,40.469941],[44.843176,40.472591],[44.842329,40.471894],[44.841302,40.472867],[44.840516,40.473008],[44.839014999999996,40.474304],[44.83891,40.474095999999996],[44.838428,40.474595],[44.838017,40.474841],[44.837027,40.474951],[44.836569,40.475111999999996],[44.83643,40.475327],[44.83609,40.476397],[44.836068999999995,40.476869],[44.836237999999994,40.477720999999995],[44.836106,40.478350999999996],[44.835913,40.478791],[44.835767999999995,40.478989],[44.835558,40.479016],[44.835141,40.478775999999996],[44.834911999999996,40.478502999999996],[44.833633,40.480171],[44.832330999999996,40.480301999999995],[44.830456999999996,40.479011],[44.830994,40.477381],[44.830996999999996,40.476943],[44.830892,40.476631999999995],[44.83032,40.476988999999996],[44.828618,40.477585],[44.827616,40.478432],[44.826871999999995,40.478738],[44.824166999999996,40.475528],[44.82871,40.469508999999995],[44.830726999999996,40.468711],[44.834294,40.465703999999995],[44.83553,40.464084],[44.836253,40.462061999999996],[44.847099,40.450054],[44.853314,40.440629],[44.851431,40.437377],[44.851413,40.436988],[44.85268,40.436007],[44.85474,40.435207],[44.85601,40.433257]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: 'FF2400',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_kazen = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.672286,40.656310999999995],[44.674053,40.662796],[44.674323,40.662684],[44.674861,40.664899999999996],[44.66759,40.668932999999996],[44.667179,40.667429999999996],[44.666592,40.668033],[44.66504,40.669824999999996],[44.664626,40.670136],[44.664054,40.670339],[44.65667,40.672312999999995],[44.655096,40.672941],[44.653085,40.67417],[44.652432999999995,40.671856999999996],[44.651416,40.669626],[44.652636,40.669287],[44.652097999999995,40.665653999999996],[44.661922999999994,40.663081999999996],[44.661806,40.66169],[44.662818,40.660806],[44.663599999999995,40.660612],[44.664041999999995,40.661713999999996],[44.664347,40.662665],[44.664978,40.660761]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: 'FF2400',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_karmolin = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.584148,40.674265999999996],[44.584714,40.678567],[44.578765,40.685963],[44.574813999999996,40.686833],[44.574587,40.685223],[44.569477,40.686147],[44.56811,40.688297],[44.563789,40.690417],[44.561434999999996,40.690829],[44.560992999999996,40.686510999999996],[44.561583999999996,40.686336999999995],[44.561304,40.684227],[44.574028999999996,40.680414],[44.578421999999996,40.677039]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: 'FF2400',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_shelk = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.580152,40.713141],[44.584326,40.713524],[44.584762999999995,40.717844],[44.583220999999995,40.719134],[44.583023,40.71996],[44.580619,40.720510999999995],[44.580386999999995,40.720506],[44.580093999999995,40.720414999999996],[44.578647,40.719463],[44.578406,40.719342999999995],[44.578143999999995,40.719404],[44.577366,40.71978],[44.576429,40.719985],[44.575949,40.720147999999995],[44.575554,40.720364],[44.574973,40.720827],[44.57474,40.720909],[44.574149999999996,40.720852],[44.573696,40.720628999999995],[44.573572,40.720498],[44.573138,40.719767],[44.572846,40.719615999999995],[44.572665,40.719608],[44.572202999999995,40.719736999999995],[44.571388,40.720386],[44.570704,40.720759],[44.569852999999995,40.720949],[44.569038,40.720973],[44.568557999999996,40.720904999999995],[44.567463,40.719974],[44.566888,40.719640999999996],[44.566438,40.719603],[44.564613,40.719812],[44.564329,40.715157],[44.575126,40.713668999999996],[44.579557,40.713153999999996]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: 'FF2400',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_blech = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.827481999999996,40.478508],[44.827568,40.479046],[44.831252,40.483905],[44.836085,40.489996],[44.835015999999996,40.491155],[44.838842,40.497062],[44.838693,40.497354],[44.83732,40.497032999999995],[44.834412,40.496718],[44.834419,40.496921],[44.833804,40.496915],[44.833304,40.497098],[44.807055,40.521304],[44.804373999999996,40.517683],[44.804153,40.517666],[44.803751,40.516404],[44.803723999999995,40.516037],[44.803833,40.515347],[44.803546999999995,40.514548],[44.803511,40.513825],[44.803134,40.51302],[44.803123,40.512442],[44.803259,40.511798999999996],[44.803486,40.511277],[44.806295999999996,40.507867],[44.806677,40.507267999999996],[44.807247,40.505991],[44.807615,40.505742],[44.808087,40.505592],[44.808313,40.505326],[44.809737,40.502373],[44.809850999999995,40.50203],[44.809897,40.501394],[44.810261,40.500625],[44.812636,40.492315999999995],[44.813373,40.488988],[44.813575,40.488499999999995],[44.813919,40.488029999999995],[44.814794,40.487280999999996],[44.815137,40.486875999999995],[44.817208,40.483686],[44.817876999999996,40.482113999999996],[44.818055,40.481899999999996],[44.819612,40.481159999999996],[44.822438999999996,40.480052]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: '00B7EB',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_may = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.780350999999996,40.534799],[44.781003,40.538039999999995],[44.781048,40.538543],[44.781039,40.539162999999995],[44.781462,40.539564],[44.781312,40.539868999999996],[44.781783,40.540357],[44.782931,40.541318],[44.782624999999996,40.542352],[44.782607999999996,40.542615],[44.78301,40.543502],[44.783218999999995,40.544061],[44.783319,40.544278999999996],[44.785737999999995,40.547934999999995],[44.780091,40.55609],[44.778589,40.553534],[44.776724,40.556111],[44.777034,40.556543999999995],[44.775476,40.558791],[44.774660999999995,40.55766],[44.775023,40.557131999999996],[44.772321999999996,40.553446],[44.772678,40.552154],[44.770449,40.54775],[44.771376,40.546661],[44.770967,40.545685999999996],[44.77337,40.543332],[44.772822,40.541989]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: '00B7EB',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_nat = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.739329,40.604886],[44.741727999999995,40.616411],[44.741513,40.616851],[44.742537,40.621683],[44.742374999999996,40.622144999999996],[44.744082,40.630281],[44.742264999999996,40.631074],[44.741755,40.630728999999995],[44.736702,40.632909999999995],[44.736851,40.633657],[44.736458,40.633877999999996],[44.736548,40.634347999999996],[44.731984999999995,40.636252],[44.731178,40.636129],[44.729855,40.636564],[44.729487999999996,40.636595],[44.727636,40.637447],[44.726296,40.637037],[44.725023,40.637541999999996],[44.724905,40.636759],[44.722750999999995,40.637716],[44.721951999999995,40.632850999999995],[44.72056,40.625499999999995],[44.718119,40.6134],[44.720752,40.612114],[44.726490999999996,40.609563],[44.726907,40.609511999999995],[44.727872999999995,40.609643],[44.733394,40.607178]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: '00B7EB',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_voln = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.638489,40.683385],[44.638566,40.685364],[44.638853999999995,40.686716],[44.639523,40.686479999999996],[44.639793999999995,40.687295999999996],[44.638633,40.68834],[44.639404,40.690818],[44.633336,40.695709],[44.633472,40.696191],[44.631268,40.698246999999995],[44.630416,40.701294999999995],[44.629889,40.701963],[44.629058,40.702569],[44.627511999999996,40.702886],[44.627258999999995,40.704944999999995],[44.625999,40.707944999999995],[44.625779,40.708735],[44.625589,40.709997],[44.625350999999995,40.710364],[44.623546999999995,40.710499999999996],[44.622689,40.711098],[44.621621,40.712112999999995],[44.621095,40.712773999999996],[44.620283,40.714109],[44.618581,40.718278],[44.618154999999994,40.718944],[44.617193,40.719611],[44.616492,40.719848999999996],[44.609879,40.721644999999995],[44.610085,40.723068],[44.598023,40.726417999999995],[44.596762999999996,40.716888],[44.612280999999996,40.712230999999996],[44.610517,40.706876],[44.617331,40.701946],[44.618756,40.700772],[44.619209,40.700207],[44.622943,40.694145999999996],[44.623988999999995,40.692946],[44.636298,40.68414],[44.637192,40.683673999999996]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: '00B7EB',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_hodz = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.530232999999996,40.698721],[44.531763,40.699535999999995],[44.531811999999995,40.701586],[44.534825999999995,40.701844],[44.534780999999995,40.700264],[44.53982,40.699346],[44.541031,40.70532],[44.535381,40.708867999999995],[44.534625999999996,40.710355],[44.529782999999995,40.713918],[44.527702999999995,40.71517],[44.526801,40.714946],[44.526277,40.715098999999995],[44.52615,40.715021],[44.525842999999995,40.714405],[44.525473,40.714262999999995],[44.524712,40.714667999999996],[44.523754,40.714850999999996],[44.522028,40.716122999999996],[44.521439,40.716235999999995],[44.519842,40.715970999999996],[44.515557,40.715769],[44.508659,40.715807999999996],[44.506433,40.715965],[44.504126,40.715579999999996],[44.503792999999995,40.715737],[44.50237,40.717031999999996],[44.502044999999995,40.717214],[44.501701,40.717293],[44.500385,40.717127999999995],[44.499528,40.717419],[44.499216,40.71768],[44.498309,40.71886],[44.497752,40.719153],[44.497183,40.718938],[44.495411999999995,40.717043],[44.494675,40.716767],[44.494399,40.71677],[44.493876,40.717022],[44.491572999999995,40.718834],[44.491077999999995,40.718893],[44.489332,40.717513],[44.487935,40.715661999999995],[44.487306,40.715134],[44.486809,40.714886],[44.486889,40.714116],[44.487488,40.713764],[44.487688999999996,40.712455],[44.493297,40.710881],[44.495048999999995,40.710909],[44.495267999999996,40.709958],[44.496987999999995,40.709928999999995],[44.497183,40.710595999999995],[44.499295,40.710118],[44.502199,40.710135],[44.502407999999996,40.709455],[44.505463,40.709776999999995],[44.506777,40.711217],[44.507622,40.711234999999995],[44.507894,40.709748999999995],[44.509381,40.708524],[44.50924,40.708092],[44.511804999999995,40.705436999999996],[44.512474,40.706208],[44.514379999999996,40.705957],[44.514995,40.706486],[44.518861,40.704648999999996],[44.520613,40.702991999999995],[44.524724,40.702171],[44.527882999999996,40.700039],[44.528186,40.699099]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: '00B7EB',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_kosh = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.90266,40.473619],[44.907478999999995,40.48643],[44.912220999999995,40.5051],[44.912324999999996,40.505891999999996],[44.912259,40.506384],[44.912085999999995,40.506873],[44.906514,40.518267],[44.90341,40.523398],[44.902763,40.524640999999995],[44.901801999999996,40.527361],[44.901801999999996,40.527784],[44.901923,40.528188],[44.902463999999995,40.528894],[44.900636999999996,40.532408],[44.894397999999995,40.522071],[44.893744999999996,40.520699],[44.893260999999995,40.518994],[44.893086,40.517734999999995],[44.893073,40.516548],[44.893372,40.51224],[44.89232,40.512352],[44.888495999999996,40.513244],[44.887406,40.513206],[44.887209999999996,40.511444],[44.887327,40.495162],[44.887465999999996,40.492979],[44.887701,40.491481],[44.888577999999995,40.487234],[44.889112999999995,40.484066999999996],[44.889703999999995,40.484336],[44.890291999999995,40.484395],[44.894065,40.48395],[44.894335999999996,40.484142999999996],[44.894501,40.484431],[44.895001,40.486011],[44.895364,40.486098999999996],[44.895641999999995,40.48437],[44.896332,40.481307],[44.896436,40.4799],[44.899060999999996,40.481795999999996],[44.902076,40.475159]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: '00B7EB',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+		var gran_rajon = new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+				[
+
+						[44.939189999999996,40.267012],[44.973425,40.319444999999995],[44.969674,40.322500999999995],[44.97013,40.319451],[44.968305,40.315270999999996],[44.967408999999996,40.315787],[44.968329999999995,40.318093],[44.967439,40.319144],[44.965267999999995,40.316724],[44.963436,40.316966],[44.962862,40.318771],[44.961996,40.316893],[44.959812,40.317613],[44.959647,40.319210999999996],[44.962101,40.321906],[44.958960999999995,40.324352999999995],[44.957203,40.323098],[44.954653,40.324638],[44.953945,40.328162],[44.954589999999996,40.329833],[44.957361999999996,40.330901999999995],[44.955148,40.334143],[44.974126999999996,40.360472],[44.978925,40.354012],[44.989585999999996,40.371089999999995],[44.989591,40.368533],[44.991102999999995,40.367742],[44.991425,40.365314999999995],[44.990383,40.364571999999995],[44.990190999999996,40.352509],[44.997961,40.344570999999995],[45.003021,40.336717],[45.013293,40.330878999999996],[45.017252,40.334685],[45.017207,40.327794],[45.018527,40.327615],[45.01728,40.323071999999996],[45.022622999999996,40.320498],[45.028894,40.33023],[45.028977999999995,40.334112],[45.032941,40.332086],[45.052437,40.359677],[45.034006999999995,40.388753],[45.003316999999996,40.424462],[45.004039999999996,40.426071],[45.001428999999995,40.428602999999995],[45.002140999999995,40.430901999999996],[45.001106,40.433444],[44.996165999999995,40.434174],[44.988099,40.441829],[44.985872,40.446267999999996],[44.980033,40.450461],[44.955906999999996,40.490066],[44.936479999999996,40.518567999999995],[44.937177999999996,40.523590999999996],[44.933673999999996,40.526475],[44.932254,40.531856],[44.925526999999995,40.535485],[44.914268,40.537484],[44.90779,40.540603],[44.897631,40.538838],[44.897332,40.544675],[44.889734,40.558743],[44.882214,40.564561999999995],[44.878961,40.564408],[44.875704,40.567603],[44.868573999999995,40.56991],[44.867298999999996,40.579468999999996],[44.865003,40.583698],[44.864059999999995,40.589583999999995],[44.861306,40.589279999999995],[44.858871,40.586237],[44.852627,40.59206],[44.849154999999996,40.59144],[44.843984,40.594632999999995],[44.842357,40.593775],[44.83909,40.587491],[44.830784,40.585885999999995],[44.823561,40.595313999999995],[44.816502,40.595431],[44.809233,40.606071],[44.804632999999995,40.607262],[44.803301999999995,40.614450999999995],[44.793983999999995,40.624106],[44.787262999999996,40.62367],[44.779893,40.628533],[44.775963999999995,40.627311999999996],[44.772926999999996,40.63072],[44.764587999999996,40.628130999999996],[44.760196,40.630224999999996],[44.757526999999996,40.62936],[44.747465,40.63489],[44.744693999999996,40.638577],[44.72616,40.643249999999995],[44.72325,40.646111999999995],[44.715999,40.648855999999995],[44.709309999999995,40.647886],[44.704595999999995,40.653846],[44.696897,40.651668],[44.690211999999995,40.654354],[44.688482,40.653388],[44.687992,40.657894],[44.684456,40.660126],[44.684303,40.665124999999996],[44.679282,40.665017999999996],[44.678025999999996,40.667978999999995],[44.671157,40.670989],[44.667612999999996,40.676489],[44.660153,40.683727999999995],[44.649589999999996,40.684121999999995],[44.6438,40.688863999999995],[44.63915,40.696645],[44.637747999999995,40.702599],[44.634409999999995,40.702988],[44.6259,40.721759999999996],[44.622988,40.719625],[44.620107,40.724517],[44.616535999999996,40.723831],[44.616153,40.726791999999996],[44.612686,40.730258],[44.608107,40.730765999999996],[44.600179999999995,40.736871],[44.596748999999996,40.737514999999995],[44.59375,40.733199],[44.587452,40.734657],[44.586087,40.731204999999996],[44.583715,40.729351],[44.575689999999994,40.730222999999995],[44.573554,40.726529],[44.567805,40.728356999999995],[44.565324,40.723095],[44.550899,40.730702],[44.535962,40.73038],[44.531222,40.733385999999996],[44.531188,40.739255],[44.528400999999995,40.742577],[44.519798,40.743604999999995],[44.517821,40.745722],[44.509298,40.748835],[44.506695,40.747761],[44.50391,40.752385],[44.493915,40.756172],[44.492374999999996,40.763217],[44.488099,40.770402],[44.480336,40.775633],[44.476057999999995,40.773680999999996],[44.469491999999995,40.773675999999995],[44.466432999999995,40.770351999999995],[44.464014,40.762874],[44.464875,40.629649],[44.463283999999994,40.628524999999996],[44.464642999999995,40.624519],[44.464079999999996,40.618945],[44.467614,40.620101999999996],[44.468582999999995,40.621984999999995],[44.469113,40.618877999999995],[44.471457,40.619111],[44.474044,40.616793],[44.476096999999996,40.617846],[44.478198,40.616344],[44.482363,40.618842],[44.482597999999996,40.661296],[44.519470999999996,40.662302],[44.527688,40.659678],[44.529981,40.65663],[44.536739,40.669222],[44.539237,40.669129],[44.541647999999995,40.666979999999995],[44.545322999999996,40.672323],[44.552119999999995,40.664072999999995],[44.556723,40.66365],
+						[44.559362,40.658364],[44.562069,40.658249999999995],[44.566634,40.653490999999995],[44.569103,40.653355999999995],[44.571501999999995,40.647985999999996],[44.576232,40.648863],[44.579865999999996,40.643730999999995],[44.635723999999996,40.643763],[44.635771999999996,40.618672],[44.653652,40.618688],[44.65389,40.568286],[44.740489,40.567684],[44.741181,40.565017999999995],[44.741858,40.566091],[44.743942999999994,40.564578999999995],[44.743953,40.531002],[44.741169,40.518994],[44.745658999999996,40.521184999999996],[44.747516,40.519777],[44.747372,40.521634999999996],[44.748712999999995,40.520120999999996],[44.752387,40.521414],[44.756899999999995,40.526806],[44.757867,40.525545],[44.762122,40.527032],[44.762451,40.464576],[44.797852,40.443323],[44.82526,40.415003],[44.825466999999996,40.39226],[44.835302999999996,40.392351999999995],[44.836528,40.402564999999996],[44.838727,40.399525],[44.841699,40.389647],[44.845171,40.392981],[44.846444,40.404644],[44.862035999999996,40.437998],[44.867404,40.437684999999995],[44.868874,40.435333],[44.869447,40.428844999999995],[44.871184,40.430161],[44.872304,40.428413],[44.876281999999996,40.433999],[44.888317,40.418006999999996],[44.90089,40.416733],[44.904019999999996,40.377545],[44.90636,40.372043],[44.907751,40.372946],[44.909698,40.369887999999996],[44.907474,40.362218],[44.909548,40.36089],[44.908282,40.360555],[44.9079,40.358678999999995],[44.910326999999995,40.359649],[44.909689,40.356316],[44.912217,40.355942999999996],[44.91419,40.350904],[44.913694,40.349331],[44.908649,40.349821999999996],[44.915513,40.337077],[44.915642,40.295491],[44.916984,40.297579]
+
+
+				]
+            ],
+        },
+        properties:{
+        }
+    }, {
+        fillColor: '#00FF00',
+        strokeColor: '#0000FF',
+        opacity: 0.3,
+        strokeWidth: 1
+    });
+
+
+
+
+fap1.events.add('balloonopen', function () {
+myMap.geoObjects.add(gran_egeruhay);
+});
+fap1.events.add('balloonclose', function () {
+myMap.geoObjects.remove(gran_egeruhay);
+});
+
+fap2.events.add('balloonopen', function () {
+myMap.geoObjects.add(gran_polit);
+});
+fap2.events.add('balloonclose', function () {
+myMap.geoObjects.remove(gran_polit);
+});
+
+fap3.events.add('balloonopen', function () {
+myMap.geoObjects.add(gran_chatchemsiy);
+});
+fap3.events.add('balloonclose', function () {
+myMap.geoObjects.remove(gran_chatchemsiy);
+});
+
+fap4.events.add('balloonopen', function () {
+myMap.geoObjects.add(gran_krasnfars);
+});
+fap4.events.add('balloonclose', function () {
+myMap.geoObjects.remove(gran_krasnfars);
+});
+
+fap5.events.add('balloonopen', function () {
+myMap.geoObjects.add(gran_komsomol);
+});
+fap5.events.add('balloonclose', function () {
+myMap.geoObjects.remove(gran_komsomol);
+});
+
+fap6.events.add('balloonopen', function () {
+myMap.geoObjects.add(gran_ignat);
+});
+fap6.events.add('balloonclose', function () {
+myMap.geoObjects.remove(gran_ignat);
+});
+
+fap7.events.add('balloonopen', function () {
+myMap.geoObjects.add(gran_krasn);
+});
+fap7.events.add('balloonclose', function () {
+myMap.geoObjects.remove(gran_krasn);
+});
+
+fap8.events.add('balloonopen', function () {
+myMap.geoObjects.add(gran_kazen);
+});
+fap8.events.add('balloonclose', function () {
+myMap.geoObjects.remove(gran_kazen);
+});
+
+fap9.events.add('balloonopen', function () {
+myMap.geoObjects.add(gran_karmolin);
+});
+fap9.events.add('balloonclose', function () {
+myMap.geoObjects.remove(gran_karmolin);
+});
+
+fap10.events.add('balloonopen', function () {
+myMap.geoObjects.add(gran_shelk);
+});
+fap10.events.add('balloonclose', function () {
+myMap.geoObjects.remove(gran_shelk);
+});
+
+
+
+
+crb.events.add('balloonopen', function () {
+removeFaps(faps);
+addObjs(fap1, fap2, fap3, fap4, fap5);
+removeAmbs(ambs);
+addObjs(amb1);
+addObjs(gran_kosh, gran_drujba, gran_drujba, gran_chehrak1, gran_chehrak2, gran_otradn, gran_novoaleks, gran_dmtr, gran_plod)
+addGranF(gran_faps);
+removeObjs(gran_ignat, gran_krasn, gran_kazen, gran_karmolin, gran_shelk);
+});
+crb.events.add('balloonclose', function () {
+removeGranA(gran_ambs);
+removeGranF(gran_faps);
+if ($('#fap').prop('checked'))
+    addFaps(faps);
+else
+	removeFaps(faps);
+if ($('#ter').prop('checked'))
+    myMap.geoObjects.add(gran_rajon);
+if ($('#amb').prop('checked'))
+    addAmbs(ambs);
+});
+
+
+
+
+amb1.events.add('balloonopen', function () {
+removeFaps(faps);
+removeObjs(crb, amb2, amb3, amb4, amb5, amb6);
+addObjs(fap1, fap2, fap3, fap4, fap5);
+addObjs(gran_drujba, gran_drujba, gran_chehrak1, gran_chehrak2, gran_otradn, gran_novoaleks, gran_dmtr, gran_plod);
+addObjs(gran_egeruhay, gran_polit, gran_chatchemsiy, gran_krasnfars, gran_komsomol);
+});
+amb1.events.add('balloonclose', function () {
+removeGranA(gran_ambs);
+removeGranF(gran_faps);
+if ($('#fap').prop('checked'))
+    addObjs(fap6, fap7, fap8, fap9, fap10);
+else
+	removeFaps(faps);
+if ($('#ter').prop('checked'))
+    addObjs(gran_rajon);
+if ($('#amb').prop('checked'))
+    addObjs(crb, amb1, amb2, amb3, amb4, amb5, amb6);
+});
+
+
+amb2.events.add('balloonopen', function () {
+myMap.geoObjects.remove(fap8).remove(fap3).remove(fap10).remove(fap6).remove(fap9).remove(fap1).remove(fap4).remove(fap2).remove(fap5).remove(fap7);
+myMap.geoObjects.remove(crb).remove(amb1).remove(amb3).remove(amb4).remove(amb5).remove(amb6);
+myMap.geoObjects.add(fap7);
+myMap.geoObjects.add(gran_may);
+myMap.geoObjects.add(gran_krasn);
+});
+amb2.events.add('balloonclose', function () {
+myMap.geoObjects.remove(gran_may);
+myMap.geoObjects.remove(gran_krasn);
+if ($('#fap').prop('checked'))
+    myMap.geoObjects.add(fap8).add(fap3).add(fap10).add(fap6).add(fap9).add(fap1).add(fap4).add(fap2).add(fap5);
+else
+    myMap.geoObjects.remove(fap8).remove(fap3).remove(fap10).remove(fap6).remove(fap9).remove(fap1).remove(fap4).remove(fap2).remove(fap5).remove(fap7);
+if ($('#ter').prop('checked'))
+    myMap.geoObjects.add(gran_rajon);
+if ($('#amb').prop('checked'))
+    myMap.geoObjects.add(crb).add(amb1).add(amb2).add(amb3).add(amb4).add(amb5).add(amb6);
+});
+
+
+amb3.events.add('balloonopen', function () {
+myMap.geoObjects.remove(fap8).remove(fap3).remove(fap10).remove(fap6).remove(fap9).remove(fap1).remove(fap4).remove(fap2).remove(fap5).remove(fap7);
+myMap.geoObjects.remove(crb).remove(amb1).remove(amb2).remove(amb4).remove(amb5).remove(amb6);
+myMap.geoObjects.add(fap6);
+myMap.geoObjects.add(gran_blech);
+myMap.geoObjects.add(gran_ignat);
+});
+amb3.events.add('balloonclose', function () {
+myMap.geoObjects.remove(gran_blech);
+myMap.geoObjects.remove(gran_ignat);
+if ($('#fap').prop('checked'))
+    myMap.geoObjects.add(fap8).add(fap3).add(fap10).add(fap9).add(fap1).add(fap4).add(fap2).add(fap5).add(fap7);
+else
+    myMap.geoObjects.remove(fap8).remove(fap3).remove(fap10).remove(fap6).remove(fap9).remove(fap1).remove(fap4).remove(fap2).remove(fap5).remove(fap7);
+if ($('#ter').prop('checked'))
+    myMap.geoObjects.add(gran_rajon);
+if ($('#amb').prop('checked'))
+    myMap.geoObjects.add(crb).add(amb1).add(amb2).add(amb3).add(amb4).add(amb5).add(amb6);
+});
+
+
+amb4.events.add('balloonopen', function () {
+myMap.geoObjects.remove(fap8).remove(fap3).remove(fap10).remove(fap6).remove(fap9).remove(fap1).remove(fap4).remove(fap2).remove(fap5).remove(fap7);
+myMap.geoObjects.remove(crb).remove(amb1).remove(amb2).remove(amb3).remove(amb5).remove(amb6);
+myMap.geoObjects.add(fap8);
+myMap.geoObjects.add(gran_nat);
+myMap.geoObjects.add(gran_kazen);
+});
+amb4.events.add('balloonclose', function () {
+myMap.geoObjects.remove(gran_nat);
+myMap.geoObjects.remove(gran_kazen);
+if ($('#fap').prop('checked'))
+    myMap.geoObjects.add(fap3).add(fap10).add(fap6).add(fap9).add(fap1).add(fap4).add(fap2).add(fap5).add(fap7);
+else
+    myMap.geoObjects.remove(fap8).remove(fap3).remove(fap10).remove(fap6).remove(fap9).remove(fap1).remove(fap4).remove(fap2).remove(fap5).remove(fap7);
+if ($('#ter').prop('checked'))
+    myMap.geoObjects.add(gran_rajon);
+if ($('#amb').prop('checked'))
+    myMap.geoObjects.add(crb).add(amb1).add(amb2).add(amb3).add(amb4).add(amb5).add(amb6);
+});
+
+
+amb5.events.add('balloonopen', function () {
+myMap.geoObjects.remove(fap8).remove(fap3).remove(fap10).remove(fap6).remove(fap9).remove(fap1).remove(fap4).remove(fap2).remove(fap5).remove(fap7);
+myMap.geoObjects.remove(crb).remove(amb1).remove(amb2).remove(amb3).remove(amb4).remove(amb6);
+myMap.geoObjects.add(fap10).add(fap9);
+myMap.geoObjects.add(gran_voln);
+myMap.geoObjects.add(gran_karmolin).add(gran_shelk);
+});
+amb5.events.add('balloonclose', function () {
+myMap.geoObjects.remove(gran_voln);
+myMap.geoObjects.remove(gran_karmolin).remove(gran_shelk);
+if ($('#fap').prop('checked'))
+    myMap.geoObjects.add(fap8).add(fap3).add(fap6).add(fap1).add(fap4).add(fap2).add(fap5).add(fap7);
+else
+    myMap.geoObjects.remove(fap8).remove(fap3).remove(fap10).remove(fap6).remove(fap9).remove(fap1).remove(fap4).remove(fap2).remove(fap5).remove(fap7);
+if ($('#ter').prop('checked'))
+    myMap.geoObjects.add(gran_rajon);
+if ($('#amb').prop('checked'))
+    myMap.geoObjects.add(crb).add(amb1).add(amb2).add(amb3).add(amb4).add(amb5).add(amb6);
+});
+
+
+amb6.events.add('balloonopen', function () {
+myMap.geoObjects.remove(fap8).remove(fap3).remove(fap10).remove(fap6).remove(fap9).remove(fap1).remove(fap4).remove(fap2).remove(fap5).remove(fap7);
+myMap.geoObjects.remove(crb).remove(amb1).remove(amb2).remove(amb3).remove(amb4).remove(amb5);
+myMap.geoObjects.add(gran_hodz);
+});
+amb6.events.add('balloonclose', function () {
+myMap.geoObjects.remove(gran_hodz);
+if ($('#fap').prop('checked'))
+    myMap.geoObjects.add(fap8).add(fap3).add(fap10).add(fap6).add(fap9).add(fap1).add(fap4).add(fap2).add(fap5).add(fap7);
+else
+    myMap.geoObjects.remove(fap8).remove(fap3).remove(fap10).remove(fap6).remove(fap9).remove(fap1).remove(fap4).remove(fap2).remove(fap5).remove(fap7);
+if ($('#ter').prop('checked'))
+    myMap.geoObjects.add(gran_rajon);
+if ($('#amb').prop('checked'))
+    myMap.geoObjects.add(crb).add(amb1).add(amb2).add(amb3).add(amb4).add(amb5).add(amb6);
+});
+
+
+
+
+const faps = [fap1, fap2, fap3, fap4, fap5, fap6, fap7, fap8, fap9, fap10];
+const ambs = [amb1, amb2, amb3, amb4, amb5, amb6];
+const gran_faps = [gran_egeruhay, gran_polit, gran_chatchemsiy, gran_krasnfars, gran_komsomol, gran_ignat, gran_krasn, gran_kazen, gran_karmolin, gran_shelk];
+const gran_ambs = [gran_blech, gran_chehrak1, gran_chehrak2, gran_dmtr, gran_drujba, gran_hodz, gran_kosh, gran_may, gran_nat, gran_novoaleks, gran_otradn, gran_plod, gran_voln];
+
+
+
+
+function removeFaps(objects) {
+objects.forEach(fap => myMap.geoObjects.remove(fap));
+}
+function addFaps(objects) {
+objects.forEach(fap => myMap.geoObjects.add(fap));
+}
+
+
+function removeAmbs(objects) {
+objects.forEach(amb => myMap.geoObjects.remove(amb));
+}
+function addAmbs(objects) {
+objects.forEach(amb => myMap.geoObjects.add(amb));
+}
+
+
+function removeGranF(objects) {
+objects.forEach(gran_ => myMap.geoObjects.remove(gran_));
+}
+function addGranF(objects) {
+objects.forEach(gran_ => myMap.geoObjects.add(gran_));
+}
+
+
+function removeGranA(objects) {
+objects.forEach(gran_ => myMap.geoObjects.remove(gran_));
+}
+function addGranA(objects) {
+objects.forEach(gran_ => myMap.geoObjects.add(gran_));
+}
+
+
+function removeObjs(...objs) {
+    objs.forEach(obj => myMap.geoObjects.remove(obj));
+}
+function addObjs(...objs) {
+    objs.forEach(obj => myMap.geoObjects.add(obj));
+}
+
+
+
+
 	var obj = 
 	[
-	myGeoObject1,
-	myGeoObject2,
-	myGeoObject3,
-	myGeoObject4,
-	myGeoObject5,
-	myGeoObject6,
-	myGeoObject7,
-	myGeoObject8,
-	myGeoObject9,
-	myGeoObject10,
-	myGeoObject11,
-	myGeoObject12,
-	myGeoObject13,
-	myGeoObject14,
-	myGeoObject15,
-	myGeoObject16,
-	myGeoObject17,
-	myGeoObject18,
-	myGeoObject19,
-	myGeoObject20,
-	myGeoObject21,
-	myGeoObject22,
-	myGeoObject23,
-	myGeoObject24,
-	myGeoObject25,
-	myGeoObject26,
-	myGeoObject27,
-	myGeoObject28,
-	myGeoObject29,
-	myGeoObject30,
-	myGeoObject31,
-	myGeoObject32,
-	myGeoObject33,
-	myGeoObject34,
-	myGeoObject35,
-	myGeoObject36,
-	myGeoObject37,
-	myGeoObject38,
-	myGeoObject39,
-	myGeoObject40,
-	myGeoObject41,
-	myGeoObject42,
-	myGeoObject43,
-	myGeoObject44,
-	myGeoObject45,
-	myGeoObject46,
-	myGeoObject47,
-	myGeoObject48,
-	myGeoObject49,
-	myGeoObject50,
-	myGeoObject51,
-	myGeoObject52,
-	myGeoObject53,
-	myGeoObject54,
-	myGeoObject55,
-	myGeoObject56,
-	myGeoObject57,
-	myGeoObject58,
-	myGeoObject59,
-	myGeoObject60,
-	myGeoObject61,
-	myGeoObject62,
-	myGeoObject63,
-	myGeoObject64,
-	myGeoObject65,
-	myGeoObject66,
-	myGeoObject67,
-	myGeoObject68,
-	myGeoObject69,
-	myGeoObject70,
-	myGeoObject71,
-	myGeoObject72,
-	myGeoObject73,
-	myGeoObject74,
-	myGeoObject75,
-	myGeoObject76,
-	myGeoObject77,
-	myGeoObject78,
-	myGeoObject79,
-	myGeoObject80,
-	myGeoObject81,
-	myGeoObject82,
-	myGeoObject83,
-	myGeoObject84,
-	myGeoObject85,
-	myGeoObject86,
-	myGeoObject87,
-	myGeoObject89,
-	myGeoObject90,
-	myGeoObject91,
-	myGeoObject92,
-	myGeoObject93,
-	myGeoObject94,
-	myGeoObject95,
-	myGeoObject96,
-	myGeoObject97,
-	myGeoObject98,
-	myGeoObject99,
-	myGeoObject100,
-	myGeoObject101,
-	myGeoObject102,
-	myGeoObject103,
-	myGeoObject104,
-	myGeoObject105,
-	myGeoObject106,
-	myGeoObject107,
-	myGeoObject108,
-	myGeoObject109,
-	myGeoObject110,
-	myGeoObject111,
-	myGeoObject112,
-	myGeoObject113,
-	myGeoObject114,
-	myGeoObject115,
-	myGeoObject116,
-	myGeoObject117,
-	myGeoObject118,
-	myGeoObject119,
-	myGeoObject120,
-	myGeoObject121,
-	myGeoObject122,
-	myGeoObject123,
-	myGeoObject124,
-	myGeoObject125,
-	myGeoObject126,
-	myGeoObject127,
-	myGeoObject128,
-	myGeoObject129,
-	myGeoObject130,
-	myGeoObject131,
-	myGeoObject132,
-	myGeoObject133,
-	myGeoObject134,
-	myGeoObject135,
-	myGeoObject136,
-	myGeoObject137,
-	myGeoObject138,
-	myGeoObject139,
-	myGeoObject140,
-	myGeoObject141,
-	myGeoObject142,
-	myGeoObject143,
-	myGeoObject144,
-	myGeoObject145,
-	myGeoObject146,
-	myGeoObject147,
-	myGeoObject148,
-	myGeoObject149,
-	myGeoObject150,
-	myGeoObject151,
-	myGeoObject152,
-	myGeoObject153,
-	myGeoObject154,
-	myGeoObject155,
-	myGeoObject156,
-	myGeoObject157,
-	myGeoObject158,
-	myGeoObject159,
-	myGeoObject160,
-	myGeoObject161,
-	myGeoObject162,
-	myGeoObject163,
-	myGeoObject164,
-	myGeoObject165,
-	myGeoObject166,
-	myGeoObject167,
-	myGeoObject168,
-	myGeoObject169,
-	myGeoObject170,
-	myGeoObject171,
-	myGeoObject172,
-	myGeoObject173,
-	myGeoObject174,
-	myGeoObject175,
-	myGeoObject176,
-	myGeoObject177,
-	myGeoObject178,
-	myGeoObject179,
-	myGeoObject180,
-	myGeoObject181,
-	myGeoObject182,
-	myGeoObject183,
-	myGeoObject184,
-	myGeoObject185,
-	myGeoObject186,
-	myGeoObject187,
-	myGeoObject188,
-	myGeoObject189,
-	myGeoObject190,
-	myGeoObject191,
-	myGeoObject192,
-	myGeoObject193,
-	myGeoObject194,
-	myGeoObject195,
-	myGeoObject196,
-	myGeoObject198,
-	myGeoObject199,
-	myGeoObject200,
-	myGeoObject201,
-	myGeoObject202,
-	myGeoObject203,
-	myGeoObject204,
-	myGeoObject205,
-	myGeoObject206,
-	myGeoObject207,
-	myGeoObject208,
-	myGeoObject209,
-	myGeoObject210,
-	myGeoObject211,
-	myGeoObject212,
-	myGeoObject213,
-	myGeoObject214,
-	myGeoObject215
-	];
+		fap1,
+		fap2,
+		fap3,
+		fap4,
+		fap5,
+		fap6,
+		fap7,
+		fap8,
+		fap9,
+		fap10,
+		gran_drujba,
+		gran_rajon,
+		crb,
+		amb1,
+		amb2,
+		amb3,
+		amb4,
+		amb5,
+		amb6,
+	]
 	window.myObjects = ymaps.geoQuery(obj).addToMap(myMap);
+	ymaps.ready(checkState);
 }
-	

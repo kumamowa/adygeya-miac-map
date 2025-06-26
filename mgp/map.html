@@ -11,7 +11,28 @@
 </head>
 
 <body>
-<input type='checkbox' style="transform:scale(2);" id='ter' checked=true>Границы Кошехабльского района&#8195 </input>
+
+<style>
+    .checkbox-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 8px;
+    }
+    .checkbox-label input[type="checkbox"] {
+        width: 20px;
+        height: 20px
+    }
+</style>
+<label class=checkbox-label" for="ter">
+    <input type="checkbox" id="ter" checked>
+    Границы
+</label>
+
+
+<input type='checkbox' id='ter' checked=true>Границы Кошехабльского района&#8195 </input>
 <input type='checkbox' id='fap' checked=true>ФАПы&#8195 </input>
 <input type='checkbox' id='amb' checked=true>Амбулатории и ЦРБ&#8195 </input>
 </select><br>

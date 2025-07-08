@@ -1,4 +1,102 @@
- body, html {
+/* Основное */
+body, html {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+}
+
+/* Карта на весь экран */
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+/* Контейнер для пользовательских меток */
+.placemark_layout_container {
+    position: relative;
+    font-family: Georgia;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Круглая метка */
+.circle_layout {
+    background-color: white;
+    position: absolute;
+    left: -9px;
+    top: -9px;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #225D9C;
+    color: #225D9C;
+    line-height: 15px;
+    border-radius: 50px;
+}
+
+/* Бургер-кнопка */
+.menu-button {
+    font-size: 28px;
+    padding: 10px;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    z-index: 1001;
+}
+
+/* Скрытый переключатель меню */
+#menu-toggle {
+    display: none;
+}
+
+/* Меню сбоку */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 250px;
+    height: 100%;
+    background-color: #f8f8f8;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+/* Показать меню, если чекбокс активен */
+#menu-toggle:checked ~ .side-menu {
+    left: 0;
+}
+
+/* Заголовок меню */
+.side-menu h3 {
+    text-align: center;
+    margin-top: 60px; /* чтобы не налезал на бургер */
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+
+/* Чекбоксы и текст */
+.side-menu label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.side-menu input[type="checkbox"] {
+    width: 28px;
+    height: 28px;
+    margin-right: 12px;
+}
+
+
+/* body, html {
             padding: 0;
             margin: 0;
             width: 100%;
@@ -15,7 +113,6 @@
             text-align: center;
             font-weight: bold;
         }
-		/* Круглый макет метки */
         .circle_layout {
             background-color: white;
             position: absolute;
@@ -26,6 +123,5 @@
             border: 2px solid #225D9C;
             color: #225D9C;
             line-height: 15px;
-            /* Это CSS свойство не будет работать в Internet Explorer 8 */
             border-radius: 50px;
-        }
+        }*/

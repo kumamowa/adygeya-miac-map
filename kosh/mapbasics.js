@@ -40,11 +40,11 @@ ymaps.regions.load('RU', {
 			main = main.add(neotl);
 		}
 
-        if ($('#ter').prop('checked'))
-		{
-			terr = myObjects.search('geometry.type = "Polygon"');
-			main = main.add(gran_egeruhay_sel).add(gran_dmitr_sel).add(gran_kosh_sel).add(gran_ignat_sel).add(gran_blech_sel).add(gran_may_sel).add(gran_nat_sel).add(gran_voln_sel).add(gran_hodz_sel);
-		}
+  //       if ($('#ter').prop('checked'))
+		// {
+		// 	terr = myObjects.search('geometry.type = "Polygon"');
+		// 	main = main.add(gran_egeruhay_sel).add(gran_dmitr_sel).add(gran_kosh_sel).add(gran_ignat_sel).add(gran_blech_sel).add(gran_may_sel).add(gran_nat_sel).add(gran_voln_sel).add(gran_hodz_sel);
+		// }
 
         if ($('#grans').prop('checked'))
 		{

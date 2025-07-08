@@ -528,16 +528,16 @@ ymaps.regions.load('RU', {
 	shovgcrb1 = new ymaps.GeoObject({
         geometry: {
             type: "Point",
-            coordinates: [44.871112, 40.076254]
+            coordinates: [45.027501, 40.222691]
         },
         properties: {
-		hintContent: 'Гиагинская ЦРБ<br/>ул. Братская, 2',
+		hintContent: 'Шовгеновская ЦРБ<br/>ул. Гагарина, 52',
 		balloonContentBody: [
-            '<strong>Гиагинская ЦРБ',
+            '<strong>Шовгеновская ЦРБ',
 			'<br/>',
-			'ул. Братская 2</strong>',
+			'ул. Гагарина, 52</strong>',
 			'<br/>',
-			'Обслуживаемое население: 14338',
+			'Обслуживаемое население: OOOOO',
 			'<br/>',
 			'Мед.работники:',
 			'<ul><li>Заведующая медсестра: OOO</li></ul>',
@@ -548,7 +548,7 @@ ymaps.regions.load('RU', {
         ].join('')
         }
     }, {
-        preset: 'islands#blueHomeCircleIcon',
+        preset: 'islands#nightHomeCircleIcon',
     });
 
 

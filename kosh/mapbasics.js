@@ -1,4 +1,4 @@
-ymaps.ready(init);
+﻿ymaps.ready(init);
 function init() {
     var myMap = new ymaps.Map('map', {
             center: [44.737633, 40.529658],
@@ -37,7 +37,7 @@ ymaps.regions.load('RU', {
         if ($('#neotlozh').prop('checked'))
 		{
 			fap = myObjects.search('geometry.type = "Point"');
-			main = main.add(neotl).add(shovg_neotl1).add(shovg_neotl2).add(shovg_neotl3).add(shovg_neotl4).add(shovg_neotl5).add(shovg_neotl6).add(shovg_neotl7);
+			main = main.add(neotl).add(shovg_neotl1).add(shovg_neotl2).add(shovg_neotl3).add(shovg_neotl4).add(shovg_neotl5).add(shovg_neotl6).add(shovg_neotl7).add(mkpr_neotl1).add(mkpr_neotl2).add(mkpr_neotl3).add(mkpr_neotl4).add(mkpr_neotl5).add(mkpr_neotl6).add(mkpr_neotl7);
 		}
 
   //       if ($('#ter').prop('checked'))
@@ -49,19 +49,19 @@ ymaps.regions.load('RU', {
         if ($('#grans').prop('checked'))
 		{
 			grans = myObjects.search('geometry.type = "Point"');
-			main = main.add(gran_egeruhay).add(gran_polit).add(gran_chatchemsiy).add(gran_krasnfars).add(gran_komsomol).add(gran_ignat).add(gran_blech).add(gran_may).add(gran_krasn).add(gran_nat).add(gran_kazen).add(gran_voln).add(gran_karmolin).add(gran_shelk).add(gran_hodz).add(gran_drujba).add(gran_kosh).add(gran_giagpol1).add(gran_giagcrb1).add(gran_giagfap1).add(gran_giagfap2).add(gran_giagfap3).add(gran_giagfap4).add(gran_giagfap5).add(gran_giagfap6).add(gran_giagfap7).add(gran_giagfap8).add(gran_giagfap9).add(gran_giagfap10).add(gran_shovgmamh1).add(gran_shovgcrb1).add(gran_shovgfap1).add(gran_shovgfap2).add(gran_shovgfap3).add(gran_shovgfap4).add(gran_shovgfap5).add(gran_shovgfap6).add(gran_shovgfap7).add(gran_shovgfap8).add(gran_shovgfap9).add(gran_shovgfap10).add(gran_shovgfap11).add(gran_shovgfap12).add(gran_shovgfap13).add(gran_shovgfap14).add(gran_shovgfap15).add(gran_shovgfap16);
+			main = main.add(gran_egeruhay).add(gran_polit).add(gran_chatchemsiy).add(gran_krasnfars).add(gran_komsomol).add(gran_ignat).add(gran_blech).add(gran_may).add(gran_krasn).add(gran_nat).add(gran_kazen).add(gran_voln).add(gran_karmolin).add(gran_shelk).add(gran_hodz).add(gran_drujba).add(gran_kosh).add(gran_giagpol1).add(gran_giagcrb1).add(gran_giagfap1).add(gran_giagfap2).add(gran_giagfap3).add(gran_giagfap4).add(gran_giagfap5).add(gran_giagfap6).add(gran_giagfap7).add(gran_giagfap8).add(gran_giagfap9).add(gran_giagfap10).add(gran_shovgmamh1).add(gran_shovgcrb1).add(gran_shovgfap1).add(gran_shovgfap2).add(gran_shovgfap3).add(gran_shovgfap4).add(gran_shovgfap5).add(gran_shovgfap6).add(gran_shovgfap7).add(gran_shovgfap8).add(gran_shovgfap9).add(gran_shovgfap10).add(gran_shovgfap11).add(gran_shovgfap12).add(gran_shovgfap13).add(gran_shovgfap14).add(gran_shovgfap15).add(gran_shovgfap16).add(gran_mkprcrb1);
 		}
 
         if ($('#fap').prop('checked'))
 		{
 			fap = myObjects.search('geometry.type = "Point"');
-			main = main.add(fap1).add(fap2).add(fap3).add(fap4).add(fap5).add(fap6).add(fap7).add(fap8).add(fap9).add(fap10).add(giagfap1).add(giagfap2).add(giagfap3).add(giagfap4).add(giagfap5).add(giagfap6).add(giagfap7).add(giagfap8).add(giagfap9).add(giagfap10).add(shovgfap1).add(shovgfap2).add(shovgfap3).add(shovgfap4).add(shovgfap5).add(shovgfap6).add(shovgfap7).add(shovgfap8).add(shovgfap9).add(shovgfap10).add(shovgfap11).add(shovgfap12).add(shovgfap13).add(shovgfap14).add(shovgfap15).add(shovgfap16);
+			main = main.add(fap1).add(fap2).add(fap3).add(fap4).add(fap5).add(fap6).add(fap7).add(fap8).add(fap9).add(fap10).add(giagfap1).add(giagfap2).add(giagfap3).add(giagfap4).add(giagfap5).add(giagfap6).add(giagfap7).add(giagfap8).add(giagfap9).add(giagfap10).add(shovgfap1).add(shovgfap2).add(shovgfap3).add(shovgfap4).add(shovgfap5).add(shovgfap6).add(shovgfap7).add(shovgfap8).add(shovgfap9).add(shovgfap10).add(shovgfap11).add(shovgfap12).add(shovgfap13).add(shovgfap14).add(shovgfap15).add(shovgfap16).add(mkprfap1).add(mkprfap2).add(mkprfap3).add(mkprfap4).add(mkprfap5).add(mkprfap6).add(mkprfap7).add(mkprfap8).add(mkprfap9).add(mkprfap10).add(mkprfap11).add(mkprfap12).add(mkprfap13).add(mkprfap14).add(mkprfap15).add(mkprfap16).add(mkprfap17).add(mkprfap18).add(mkprfap19).add(mkprfap20).add(mkprfap21).add(mkprfap22).add(mkprfap23).add(mkprfap24).add(mkprfap25).add(mkprfap26).add(mkprfap27).add(mkprfap28).add(mkprfap29).add(mkprfap30);
 		}
 
         if ($('#amb').prop('checked'))
 		{
 			amb = myObjects.search('geometry.type = "Point"');
-			main = main.add(crb).add(amb1).add(amb2).add(amb3).add(amb4).add(amb5).add(amb6).add(giagcrb1).add(giagpol1).add(shovgcrb1);
+			main = main.add(crb).add(amb1).add(amb2).add(amb3).add(amb4).add(amb5).add(amb6).add(giagcrb1).add(giagpol1).add(shovgcrb1).add(mkprcrb1).add(mkpramb1).add(mkpramb2).add(mkpramb3).add(mkpramb4).add(mkpramb5).add(mkprpol1).add(mkprpol2);
 		}
         shownObjects = main.addToMap(myMap);
         myObjects.remove(shownObjects).removeFromMap(myMap);
@@ -74,6 +74,1404 @@ ymaps.regions.load('RU', {
     $('#neotlozh').click(checkState);
 
 	var circleLayout = ymaps.templateLayoutFactory.createClass('<div class="placemark_layout_container"><div class="circle_layout">A</div></div>');
+
+	mkprfap1 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.468751, 40.169048]
+        },
+        properties: {
+		hintContent: 'ФАП п. Тимирязева<br/>Майкопский район, п. Тимирязева,  ул. Садовая, 13',
+		balloonContentBody: [
+            '<strong>ФАП п. Тимирязева',
+			'<br/>',
+			'Майкопский район, п. Тимирязева,  ул. Садовая, 13</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOO</li></ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap2 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.490862, 40.144255]
+        },
+        properties: {
+		hintContent: 'ФАП п.Цветочный<br/>Майкопский район, п. Цветочный,  ул. Буденного, 13',
+		balloonContentBody: [
+            '<strong>ФАП п.Цветочный',
+			'<br/>',
+			'Майкопский район, п. Цветочный,  ул. Буденного, 13</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap3 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.458973, 40.179298]
+        },
+        properties: {
+		hintContent: 'ФАП п.Подгорный<br/>Майкопский район, п. Подгорный,  ул. Научная, 2',
+		balloonContentBody: [
+            '<strong>ФАП п.Подгорный',
+			'<br/>',
+			'Майкопский район, п. Подгорный,  ул. Научная, 2</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap4 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.290796,40.313578]
+        },
+        properties: {
+		hintContent: 'ФАП п.Победа<br/>Майкопский район, п. Победа,  ул. Дружбы, 7',
+		balloonContentBody: [
+            '<strong>ФАП п.Победа',
+			'<br/>',
+			'Майкопский район, п. Победа,  ул. Дружбы, 7</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap5 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.138456,40.287967]
+        },
+        properties: {
+		hintContent: 'ФАП с.Новопрохладное<br/>Майкопский район, ст.  Новопрохладное, ул. Нагорная, 13',
+		balloonContentBody: [
+            '<strong>ФАП с.Новопрохладное',
+			'<br/>',
+			'Майкопский район, ст.  Новопрохладное, ул. Нагорная, 13</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap6 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.21055,40.280368]
+        },
+        properties: {
+		hintContent: 'ФАП п.Усть-Сахрай<br/>Майкопский район, п. Усть-Сахрай, ул. Советская, 19',
+		balloonContentBody: [
+            '<strong>ФАП п.Усть-Сахрай',
+			'<br/>',
+			'Майкопский район, п. Усть-Сахрай, ул. Советская, 19</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap7 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.230157,40.204083]
+        },
+        properties: {
+		hintContent: 'ФАП ст.Даховская<br/>Майкопский район,  ст. Даховская,  ул. Ленина, 18',
+		balloonContentBody: [
+            '<strong>ФАП ст.Даховская',
+			'<br/>',
+			'Майкопский район,  ст. Даховская,  ул. Ленина, 18</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap8 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [43.996337,40.133906]
+        },
+        properties: {
+		hintContent: 'ФАП п.Гузерипль<br/>Майкопский район, п. Гузерипль',
+		balloonContentBody: [
+            '<strong>ФАП п.Гузерипль',
+			'<br/>',
+			'Майкопский район, п. Гузерипль</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap9 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.096708,40.130196]
+        },
+        properties: {
+		hintContent: 'ФАП с.Хамышки<br/>Майкопский район, с. Хамышки,  ул. Советская, 11Б',
+		balloonContentBody: [
+            '<strong>ФАП с.Хамышки',
+			'<br/>',
+			'Майкопский район, с. Хамышки,  ул. Советская, 11Б</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap10 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.661647,40.379955]
+        },
+        properties: {
+		hintContent: 'ФАП п.Трехречный<br/>Майкопский район, п. Трехречный,  ул. Центральная, 1',
+		balloonContentBody: [
+            '<strong>ФАП п.Трехречный',
+			'<br/>',
+			'Майкопский район, п. Трехречный,  ул. Центральная, 1</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap11 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.351262,40.313578]
+        },
+        properties: {
+		hintContent: 'ФАП ст.Севастопольская<br/>Майкопский район,  ст. Севастопольская,  ул. Школьная, 25Б',
+		balloonContentBody: [
+            '<strong>ФАП ст.Севастопольская',
+			'<br/>',
+			'Майкопский район,  ст. Севастопольская,  ул. Школьная, 25Б</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap12 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.351075,40.412159]
+        },
+        properties: {
+		hintContent: 'ФАП ст.Новосвободная<br/>Майкопский район,  ст. Новосвободная,  ул. Калинина, 1',
+		balloonContentBody: [
+            '<strong>ФАП ст.Новосвободная',
+			'<br/>',
+			'Майкопский район,  ст. Новосвободная,  ул. Калинина, 1</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap13 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.412039,40.177771]
+        },
+        properties: {
+		hintContent: 'ФАП п.Первомайский<br/>Майкопский район, п. Первомайский, п. Северный 1',
+		balloonContentBody: [
+            '<strong>ФАП п.Первомайский',
+			'<br/>',
+			'Майкопский район, п. Первомайский, п. Северный 1</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap14 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.558732,40.088308]
+        },
+        properties: {
+		hintContent: 'ФАП п.Табачный<br/>Майкопский район, п.Табачный,  ул. Шоссеная 51',
+		balloonContentBody: [
+            '<strong>ФАП п.Табачный',
+			'<br/>',
+			'Майкопский район, п.Табачный,  ул. Шоссеная 51</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap15 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.551307,40.107056]
+        },
+        properties: {
+		hintContent: 'ФАП х. Садовый<br/>Майкопский район, х. Садовый,  ул. Садовая, 22А',
+		balloonContentBody: [
+            '<strong>ФАП х. Садовый',
+			'<br/>',
+			'Майкопский район, х. Садовый,  ул. Садовая, 22А</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap16 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.456747,40.04738]
+        },
+        properties: {
+		hintContent: 'ФАП ст.Курджипская<br/>Майкопский район,  ст. Курджипская, ул. Первомайская, 86А',
+		balloonContentBody: [
+            '<strong>ФАП ст.Курджипская',
+			'<br/>',
+			'Майкопский район,  ст. Курджипская, ул. Первомайская, 86А</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap17 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.36959,40.016056]
+        },
+        properties: {
+		hintContent: 'ФАП ст.Дагестанская<br/>Майкопский район,  ст. Дагестанская,  ул. Почтовая, 4А',
+		balloonContentBody: [
+            '<strong>ФАП ст.Дагестанская',
+			'<br/>',
+			'Майкопский район,  ст. Дагестанская,  ул. Почтовая, 4А</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap18 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.376498,39.916918]
+        },
+        properties: {
+		hintContent: 'ФАП ст.Безводная<br/>Майкопский район,  ст. Безводная,  ул. Красных Командиров, 36А',
+		balloonContentBody: [
+            '<strong>ФАП ст.Безводная',
+			'<br/>',
+			'Майкопский район,  ст. Безводная,  ул. Красных Командиров, 36А</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap19 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.619125,40.176459]
+        },
+        properties: {
+		hintContent: 'ФАП х.Пролетарский<br/>Майкопский район, х. Пролетарский,  ул. Комсомольская, 43А',
+		balloonContentBody: [
+            '<strong>ФАП х.Пролетарский',
+			'<br/>',
+			'Майкопский район, х. Пролетарский,  ул. Комсомольская, 43А</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap20 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.667731,40.093769]
+        },
+        properties: {
+		hintContent: 'ФАП х.Советский<br/>Майкопский район, х. Советский, ул.  Западная, 4',
+		balloonContentBody: [
+            '<strong>ФАП х.Советский',
+			'<br/>',
+			'Майкопский район, х. Советский, ул.  Западная, 4</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap21 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.635201,40.183493]
+        },
+        properties: {
+		hintContent: 'ФАП а.Мафэхабль<br/>Майкопский район, а.Мафэхабль, ул. Российская, 2Б',
+		balloonContentBody: [
+            '<strong>ФАП а.Мафэхабль',
+			'<br/>',
+			'Майкопский район, а.Мафэхабль, ул. Российская, 2Б</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap22 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.692445,40.146734]
+        },
+        properties: {
+		hintContent: 'ФАП х.Гражданский<br/>Майкопский район, х. Гражданский,  ул. Красная, 149',
+		balloonContentBody: [
+            '<strong>ФАП х.Гражданский',
+			'<br/>',
+			'Майкопский район, х. Гражданский,  ул. Красная, 149</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap23 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.699307,40.13219]
+        },
+        properties: {
+		hintContent: 'ФАП х.Калинин<br/>Майкопский район, х. Калинин, ул.  Газовая, 11',
+		balloonContentBody: [
+            '<strong>ФАП х.Калинин',
+			'<br/>',
+			'Майкопский район, х. Калинин, ул.  Газовая, 11</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap24 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.722842,40.200543]
+        },
+        properties: {
+		hintContent: 'ФАП х.Ткачев<br/>Майкопский район, х. Ткачев,  ул. Речная, 23',
+		balloonContentBody: [
+            '<strong>ФАП х.Ткачев',
+			'<br/>',
+			'Майкопский район, х. Ткачев,  ул. Речная, 23</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap25 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.695822,40.177214]
+        },
+        properties: {
+		hintContent: 'ФАП х.Красная Улька<br/>Майкопский район, х. Красная Улька,  ул. Новая,17 ',
+		balloonContentBody: [
+            '<strong>ФАП х.Красная Улька',
+			'<br/>',
+			'Майкопский район, х. Красная Улька,  ул. Новая,17 </strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap26 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.558533,40.133062]
+        },
+        properties: {
+		hintContent: 'ФАП х.Грозный<br/>Майкопский район, х. Грозный (Побединское с/п), ул. Мостовая,1',
+		balloonContentBody: [
+            '<strong>ФАП х.Грозный',
+			'<br/>',
+			'Майкопский район, х. Грозный (Побединское с/п), ул. Мостовая,1</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap27 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.527709,40.142674]
+        },
+        properties: {
+		hintContent: 'ФАП х.Причтовский<br/>Майкопский район, х. Причтовский,  ул. Ленина, 52',
+		balloonContentBody: [
+            '<strong>ФАП х.Причтовский',
+			'<br/>',
+			'Майкопский район, х. Причтовский,  ул. Ленина, 52</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap28 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.551994,40.159661]
+        },
+        properties: {
+		hintContent: 'ФАП п.Удобный<br/>Майкопский район, п. Удобный,  ул. Ленина, 13',
+		balloonContentBody: [
+            '<strong>ФАП п.Удобный',
+			'<br/>',
+			'Майкопский район, п. Удобный,  ул. Ленина, 13</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap29 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.542461,40.150839]
+        },
+        properties: {
+		hintContent: 'ФАП п.Совхозный<br/>Майкопский район, п. Совхозный,  ул. Пушкина, 13/1',
+		balloonContentBody: [
+            '<strong>ФАП п.Совхозный',
+			'<br/>',
+			'Майкопский район, п. Совхозный,  ул. Пушкина, 13/1</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	mkprfap30 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.389911, 40.198625]
+        },
+        properties: {
+		hintContent: 'ФАП х.Шевченко<br/>Майкопский район, х. Шевченко,  ул. Полевая, 1',
+		balloonContentBody: [
+            '<strong>ФАП х.Шевченко',
+			'<br/>',
+			'Майкопский район, х. Шевченко,  ул. Полевая, 1</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: OOO',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+
+
+
+
+
+
+
+
+
+	mkprcrb1 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.530472,40.176756]
+        },
+        properties: {
+		hintContent: 'Тульская ЦРБ<br/>Майкопский район, п. Тульский,  ул. Танюкова, 14 ',
+		balloonContentBody: [
+            '<strong>Тульская ЦРБ',
+			'<br/>',
+			'Майкопский район, п. Тульский,  ул. Танюкова, 14 </strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</li></ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#nightHomeCircleIcon',
+    });
+
+
+
+
+
+
+	mkprpol1 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.310148, 40.195990]
+        },
+        properties: {
+		hintContent: 'Каменномостская поликлиника<br/>улица Гагарина, 32В',
+		balloonContentBody: [
+            '<strong>Каменномостская поликлиника',
+			'<br/>',
+			'улица Гагарина, 32В</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</li></ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#blueHomeCircleIcon',
+    });
+
+	mkprpol2 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.509561, 40.179435]
+        },
+        properties: {
+		hintContent: 'Тульская поликлиника<br/>улица Комсомольская, 14',
+		balloonContentBody: [
+            '<strong>Тульская поликлиника',
+			'<br/>',
+			'улица Комсомольская, 14</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</li></ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#blueHomeCircleIcon',
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+	mkpramb1 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.674084,40.303769]
+        },
+        properties: {
+		hintContent: 'Кужорская амбулатория<br/>Майкопский район, ст.Кужорская,  ул. Школьная, 31',
+		balloonContentBody: [
+            '<strong>НАЗВАНИЕ',
+			'<br/>',
+			'Майкопский район, ст.Кужорская,  ул. Школьная, 31</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</li></ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#blueHomeCircleIcon',
+    });
+
+	mkpramb2 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.389569,40.21806]
+        },
+        properties: {
+		hintContent: 'Абадзехская амбулатория<br/>Майкопский район, ст. Абадзехская,  ул. Винника, 58 ',
+		balloonContentBody: [
+            '<strong>Абадзехская амбулатория',
+			'<br/>',
+			'Майкопский район, ст. Абадзехская,  ул. Винника, 58 </strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</li></ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#blueHomeCircleIcon',
+    });
+
+	mkpramb3 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.577111,40.071563]
+        },
+        properties: {
+		hintContent: 'Краснооктябрьская амбулатория<br/>Майкопский район, п.Краснооктябрьский,  ул. Шоссейная, 91',
+		balloonContentBody: [
+            '<strong>Краснооктябрьская амбулатория',
+			'<br/>',
+			'Майкопский район, п.Краснооктябрьский,  ул. Шоссейная, 91</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</li></ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#blueHomeCircleIcon',
+    });
+
+	mkpramb4 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.637825,40.135829]
+        },
+        properties: {
+		hintContent: 'Амбулатория х.Северо-Восточные Сады<br/>Майкопский район, х. Северо-Восточные Сады,  ул. Суворова, 7',
+		balloonContentBody: [
+            '<strong>Амбулатория х.Северо-Восточные Сады',
+			'<br/>',
+			'Майкопский район, х. Северо-Восточные Сады,  ул. Суворова, 7</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</li></ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#blueHomeCircleIcon',
+    });
+
+	mkpramb5 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.561269,40.142566]
+        },
+        properties: {
+		hintContent: 'Побединская амбулатория<br/>Майкопский район, п. Победа,  ул. Шоссейная, 105',
+		balloonContentBody: [
+            '<strong>Побединская амбулатория',
+			'<br/>',
+			'Майкопский район, п. Победа,  ул. Шоссейная, 105</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</li></ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#blueHomeCircleIcon',
+    });
+
+	mkpr_neotl1 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.674084,40.303769]
+        },
+        properties: {
+		hintContent: 'Кабинет неотложной помощи (Кужорская амбулатория)<br/>Майкопский район, ст.Кужорская,  ул. Школьная, 31',
+		balloonContentBody: [
+            '<strong>Кабинет неотложной помощи (Кужорская амбулатория)',
+			'<br/>',
+			'Майкопский район, ст.Кужорская,  ул. Школьная, 31</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</li></ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redMedicalCircleIcon',
+    });
+
+	mkpr_neotl2 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.637825,40.135829]
+        },
+        properties: {
+		hintContent: 'Кабинет неотложной помощи (Амбулатория Северо-Восточные Сады)<br/>Майкопский район, х. Северо-Восточные Сады,  ул. Суворова, 7',
+		balloonContentBody: [
+            '<strong>Кабинет неотложной помощи (Амбулатория Северо-Восточные Сады)',
+			'<br/>',
+			'Майкопский район, х. Северо-Восточные Сады,  ул. Суворова, 7</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</li></ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redMedicalCircleIcon',
+    });
+
+	mkpr_neotl3 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.561269,40.142566]
+        },
+        properties: {
+		hintContent: 'Кабинет неотложной помощи (Побединская амбулатория)<br/>Майкопский район, п. Победа,  ул. Шоссейная, 105',
+		balloonContentBody: [
+            '<strong>Кабинет неотложной помощи (Побединская амбулатория)',
+			'<br/>',
+			'Майкопский район, п. Победа,  ул. Шоссейная, 105</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</li></ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redMedicalCircleIcon',
+    });
+
+	mkpr_neotl4 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.530472,40.176756]
+        },
+        properties: {
+		hintContent: 'Кабинет неотложной помощи (Тульская ЦРБ)<br/>Майкопский район, п. Тульский,  ул. Танюкова, 14 ',
+		balloonContentBody: [
+            '<strong>Кабинет неотложной помощи (Тульская ЦРБ)',
+			'<br/>',
+			'Майкопский район, п. Тульский,  ул. Танюкова, 14 </strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</li></ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redMedicalCircleIcon',
+    });
+
+	mkpr_neotl5 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.509561, 40.179435]
+        },
+        properties: {
+		hintContent: 'Кабинет неотложной помощи (Тульская поликлиника)<br/>улица Комсомольская, 14',
+		balloonContentBody: [
+            '<strong>Кабинет неотложной помощи (Тульская поликлиника)',
+			'<br/>',
+			'улица Комсомольская, 14</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</li></ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redMedicalCircleIcon',
+    });
+
+	mkpr_neotl6 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.389569,40.21806]
+        },
+        properties: {
+		hintContent: 'Кабинет неотложной помощи (Абадзехская амбулатория)<br/>Майкопский район, ст. Абадзехская,  ул. Винника, 58 ',
+		balloonContentBody: [
+            '<strong>Кабинет неотложной помощи (Абадзехская амбулатория)',
+			'<br/>',
+			'Майкопский район, ст. Абадзехская,  ул. Винника, 58 </strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</li></ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redMedicalCircleIcon',
+    });
+
+	mkpr_neotl7 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.310148, 40.195990]
+        },
+        properties: {
+		hintContent: 'Кабинет неотложной помощи (Каменномостская поликлиника)<br/>улица Гагарина, 32В',
+		balloonContentBody: [
+            '<strong>Кабинет неотложной помощи (Каменномостская поликлиника)',
+			'<br/>',
+			'улица Гагарина, 32В</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: OOO</li></ul>',
+			'Укладка: OOO',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redMedicalCircleIcon',
+    });
+
+
+
+
+
+
+
+
+		var gran_mkprcrb1 = new ymaps.GeoObject({
+        geometry: {type: "Polygon",coordinates: [[
+						[44.148765999999995,39.76181],[44.163508,39.764541],[44.169806,39.776292999999995],[44.176798999999995,39.769028999999996],[44.180324,39.768524],[44.180515,39.822887],[44.184318999999995,39.864895],[44.168042,39.877223],[44.163211,39.875628],[44.158625,39.880324],[44.148073,39.878028],[44.142374,39.885675],[44.124877999999995,39.895373],[44.117017999999995,39.920972],[44.111506999999996,39.929812999999996],[44.105168,39.935134],[44.099463,39.950154999999995],[44.102244999999996,39.963052],[44.104673,39.964662],[44.098039,39.970648],[44.095394999999996,39.970627],[44.091158,39.965219999999995],[44.088094999999996,39.967194],[44.085063999999996,39.972750999999995],[44.084444999999995,39.978888],[44.081970999999996,39.981334],[44.079094,39.980067999999996],[44.075938,39.989467],[44.081911,40.007127],[44.085082,40.010087999999996],[44.084602,40.014015],[44.094114,40.019337],[44.095845999999995,40.016933],[44.106421999999995,40.016096],[44.115280999999996,40.030601999999995],[44.125067,40.038996999999995],[44.136511,40.054629],[44.137530999999996,40.056945999999996],[44.129211999999995,40.062523],[44.122079,40.074432],[44.122071,40.07763],[44.125433,40.078799],[44.126422,40.085215],[44.123694,40.085505],[44.126044,40.091277],[44.132199,40.092841],[44.134997,40.086822999999995],[44.139168999999995,40.087241],[44.138717,40.08048],[44.14076,40.080341],[44.145621999999996,40.068819999999995],[44.154575,40.076547],[44.160951999999995,40.070526],[44.163292999999996,40.072936],[44.16972,40.072399],[44.174717,40.077954999999996],[44.178674,40.087621],[44.193335999999995,40.079164999999996],[44.196059999999996,40.080515999999996],[44.197472999999995,40.078976],[44.194835,40.078188999999995],[44.198676,40.075841],[44.221888,40.077207],[44.224878,40.067792],[44.22963,40.072156],[44.233309,40.071872],[44.251577,40.089554],[44.254095,40.077751],[44.261818,40.068233],[44.266920999999996,40.065306],[44.268682999999996,40.061173],[44.269825999999995,40.04342],[44.267643,40.032627999999995],[44.267069,40.010315],[44.261289999999995,39.989776],[44.273984999999996,39.977969],[44.274899,39.974323],[44.291197,39.974748],[44.293442,39.968408],[44.306452,39.966145999999995],[44.339434999999995,39.975072],[44.344876,39.966538],[44.348088,39.957826999999995],[44.348338999999996,39.946394],[44.340821,39.940534],[44.337402999999995,39.922112],[44.350981999999995,39.907516],[44.351728,39.896454],[44.347111999999996,39.879123],[44.338214,39.869958],[44.35338,39.844311],[44.396522,39.878963],[44.407121,39.863059],[44.414049999999996,39.862617],[44.432212,39.868521],[44.434112999999996,39.879615],[44.445420999999996,39.88075],[44.55504,39.884777],[44.555614999999996,39.872305],[44.591407,39.874041999999996],[44.591153999999996,39.883159],[44.589825999999995,39.883697999999995],[44.590489,39.929193999999995],[44.602871,39.932787],[44.609609999999996,39.926079],[44.615162999999995,39.935352],[44.607412,39.940238],[44.606789,39.944646999999996],[44.608964,39.948665999999996],[44.590286,39.981952],[44.598389,39.991662],[44.618263999999996,40.003208],[44.609992999999996,40.013348],[44.605962999999996,40.022701],[44.604976,40.026849999999996],[44.606539999999995,40.03365],[44.604707999999995,40.040772],[44.586807,40.052223999999995],[44.585172,40.068954999999995],[44.580236,40.074749],[44.582003,40.085071],[44.578889,40.097809],[44.570842,40.106759],[44.572897,40.116651],[44.575581,40.1162],[44.57588,40.118097999999996],[44.568405,40.123526999999996],[44.564411,40.123602],[44.565106,40.133694],[44.562979999999996,40.136288],[44.566461,40.13935],[44.56446,40.143553],[44.560131,40.146187999999995],[44.561824,40.153774],[44.563077,40.153725],[44.564304,40.164511999999995],[44.567333,40.168085999999995],[44.578975,40.149483],[44.606107,40.167640999999996],[44.610313999999995,40.156107],[44.615646,40.161027],[44.614031,40.141096999999995],[44.623695999999995,40.138807],[44.63053,40.1355],[44.629895999999995,40.133674],[44.646383,40.129874],[44.663092999999996,40.114360999999995],[44.673066,40.128699999999995],[44.695229,40.134809],[44.692397,40.123802999999995],[44.690296,40.125009999999996],[44.687097,40.116651999999995],[44.675453999999995,40.124098],[44.67158,40.120525],[44.672719,40.10615],[44.656492,40.089003],[44.666894,40.077877],[44.662966,40.072706],[44.678999,40.050416999999996],[44.68253,40.056076],[44.683994,40.054051],[44.687199,40.059912],[44.694328,40.05164],[44.702233,40.062514],[44.692032,40.076601],[44.683761999999994,40.065196],[44.677264,40.074219],[44.687200999999995,40.091221],[44.693988999999995,40.084931999999995],[44.703624,40.117515],[44.712132,40.112859],[44.7204,40.142268],[44.712284,40.147442],[44.726276999999996,40.197537],[44.731314999999995,40.200629],[44.744530999999995,40.195751],[44.744653,40.242219999999996],[44.746722999999996,40.253447],[44.726941,40.253268999999996],[44.726486,40.34579],[44.724072,40.345597],[44.722809999999996,40.348194],[44.721109999999996,40.346106999999996],[44.720608,40.348616],[44.717909,40.347214],[44.717081,40.343855],[44.714585,40.346967],[44.710598999999995,40.341781],[44.708701999999995,40.343685],[44.708497,40.366538999999996],[44.705377999999996,40.371947999999996],[44.702923999999996,40.372417],[44.701367,40.368359],[44.701266,40.370297],[44.6995,40.369597999999996],[44.700416999999995,40.367939],[44.696625,40.364656],[44.697883999999995,40.370852],[44.692243999999995,40.368314],[44.693062999999995,40.365949],[44.688610999999995,40.366505],[44.686561,40.370343999999996],[44.68795,40.373219999999996],[44.684425999999995,40.376906999999996],[44.680955,40.376346],[44.680454999999995,40.384451],[44.676212,40.382453],[44.678160999999996,40.388543999999996],[44.672533,40.390057],[44.671121,40.392534],[44.673541,40.39662],[44.675294,40.393285999999996],[44.676086,40.397738],[44.673051,40.401407],[44.673513,40.403983],[44.67111,40.404876],[44.668673999999996,40.400656],[44.667214,40.40171],[44.661314999999995,40.397572],[44.658873,40.398939],[44.659510999999995,40.40148],[44.654858999999995,40.401615],[44.653976,40.396401],[44.649795,40.395873],[44.647365,40.386354999999995],[44.642713,40.387406999999996],[44.635145,40.377041],[44.649364,40.350732],[44.645195,40.342326],[44.627536,40.339788999999996],[44.622402,40.343641999999996],[44.620335999999995,40.342863],[44.618356,40.348563],[44.614647,40.348482],[44.613616,40.351416],[44.60946,40.352793999999996],[44.603178,40.348453],[44.597362,40.354681],[44.579871999999995,40.341409],[44.572565999999995,40.340196],[44.573386,40.336326],[44.567564999999995,40.336434],[44.567521,40.34142],[44.557874999999996,40.342149],[44.557925,40.349655999999996],[44.547861999999995,40.349419],[44.548731,40.387442],[44.532277,40.396905],[44.535058,40.404618],[44.534569,40.414905],[44.532019,40.410934],[44.527414,40.410491],[44.523191,40.419461],[44.520500999999996,40.416875999999995],[44.51963,40.418721999999995],[44.51507,40.41786],[44.513282,40.424147],[44.512287,40.419866],[44.510653,40.420449999999995],[44.512083,40.41749],[44.509135,40.417401999999996],[44.508641999999995,40.415290999999996],[44.510489,40.414100999999995],[44.509184999999995,40.412104],[44.505651,40.41249],[44.505675,40.406603],[44.503153,40.410224],[44.499542,40.402653],[44.496111,40.400845],[44.494896,40.402885999999995],[44.492112,40.397220999999995],[44.48757,40.398195],[44.487701,40.393195999999996],[44.48497,40.393043999999996],[44.485552,40.390518],[44.482307,40.383798],[44.481038999999996,40.386103999999996],[44.479444,40.383569],[44.476600999999995,40.383818999999995],[44.478055999999995,40.385639],[44.476945,40.391258],[44.471678,40.388323],[44.471252,40.392691],[44.46734,40.393642],[44.466895,40.396178],[44.460640999999995,40.39693],[44.461917,40.398074],[44.460359,40.400256999999996],[44.458811,40.396924],[44.458652,40.40031],[44.455498,40.400866],[44.455967,40.404489],[44.453406,40.403197999999996],[44.451975,40.408545],[44.446842,40.409586],[44.443897,40.403814],[44.438410999999995,40.411282],[44.437951999999996,40.40891],[44.435204999999996,40.408629999999995],[44.43163,40.413692],[44.4296,40.411761999999996],[44.428546,40.415769999999995],[44.428031999999995,40.413598],[44.426989,40.415773],[44.42331,40.415217999999996],[44.42303,40.411985],[44.421622,40.434796999999996],[44.348579,40.462472],[44.315414999999994,40.483081],[44.305352,40.454629],[44.299175999999996,40.454122999999996],[44.285484,40.442384],[44.282759,40.436479],[44.280986999999996,40.423594],[44.247121,40.360177],[44.190953,40.396252],[44.184219,40.395029],[44.167412,40.406082999999995],[44.164142999999996,40.405788],[44.159686,40.399387999999995],[44.151824999999995,40.40332],[44.149725,40.410446],[44.140280999999995,40.405581999999995],[44.132715999999995,40.405651999999996],[44.128679,40.417021],[44.114083,40.429462],[44.114312999999996,40.432434],[44.10641,40.425072],[44.096484,40.426376],[44.073357,40.420107],[44.063848,40.412963999999995],[44.05208,40.429505],[44.036544,40.430903],[44.029328,40.439321],[44.016223,40.448644],[44.006789999999995,40.450904],[44.003326,40.457194],[43.999300999999996,40.457651999999996],[43.988109,40.467107999999996],[43.970977,40.471035],[43.967831,40.478756],[43.965125,40.480261999999996],[43.958203,40.474208999999995],[43.957485,40.453846],[43.951819,40.453264999999995],[43.947506999999995,40.448428],[43.942836,40.427212999999995],[43.942463,40.415555999999995],[43.937433,40.409092],[43.916615,40.407016999999996],[43.908634,40.402564999999996],[43.895043,40.402743],[43.881226999999996,40.420291],[43.872333,40.415352999999996],[43.869862999999995,40.407345],[43.867666,40.405896],[43.827287,40.39283],[43.820522,40.3807],[43.802001999999995,40.381972],[43.790931,40.372803999999995],[43.776931,40.370498999999995],[43.773235,40.365663],[43.774226,40.35489],[43.772389,40.346788],[43.777699999999996,40.323812],[43.782084,40.31948],[43.782256,40.305724999999995],[43.779216999999996,40.298716999999996],[43.770821999999995,40.294661],[43.762353,40.280190999999995],[43.760355,40.274454],[43.761666,40.264761],[43.759893999999996,40.261724],[43.76139,40.251874],[43.766574999999996,40.244965],[43.766971,40.240586],[43.775315,40.233615],[43.779253,40.217132],[43.792153,40.214369999999995],[43.800892,40.204691],[43.819665,40.207972],[43.820848999999995,40.203465],[43.824000999999996,40.200733],[43.834778,40.200063],[43.845403,40.18934],[43.854257,40.19166],[43.861182,40.197654],[43.867757999999995,40.195561],[43.872909,40.190495999999996],[43.873908,40.1844],[43.872184,40.180921],[43.871704,40.169481],[43.867877,40.162642999999996],[43.861371999999996,40.159749999999995],[43.857653,40.151759],[43.867644999999996,40.113098],[43.866868,40.104935999999995],[43.863966999999995,40.106119],[43.85926,40.102032],[43.856721,40.102861],[43.854683,40.099109],[43.849233999999996,40.099485],[43.845791,40.095462],[43.84614,40.088588],[43.849875,40.087246],[43.856207,40.075876],[43.862297,40.070263],[43.866704999999996,40.070237999999996],[43.867574,40.064982],[43.880199,40.044138],[43.880751,40.035176],[43.878867,40.027257999999996],[43.882526999999996,40.020072],[43.883457,40.013039],[43.885028,40.014252],[43.892087,40.008838],[43.891234,40.005897999999995],[43.897169999999996,40.003471999999995],[43.907795,39.991375999999995],[43.907768,39.987745],[43.912302,39.978598999999996],[43.919311,39.972908],[43.920294,39.968125],[43.923666,39.966318],[43.932804,39.953699],[43.942519999999995,39.949706],[43.947998,39.942827],[43.95021,39.944462],[43.955914,39.942958999999995],[43.958368,39.940605999999995],[43.958847,39.933191],[43.961392,39.92798],[43.964453999999996,39.925678],[43.968615,39.927264],[43.972466999999995,39.923207],[43.973802,39.908798999999995],[43.95361,39.902642],[43.939462999999996,39.912718],[43.933706,39.887862],[43.934998,39.88366],[43.931255,39.879587],[43.929928,39.873954999999995],[43.931114,39.870039999999996],[43.924186,39.851427],[43.924326,39.844159],[43.930934,39.824352],[43.933569,39.807792],[43.938856,39.804787],[43.942851,39.7983],[43.954549,39.790572999999995],[43.961718,39.777846],[43.98365,39.819161],[43.986301,39.817695],[43.987691,39.810406],[43.997245,39.796993],[44.010405,39.798998999999995],[44.017488,39.796786],[44.043060999999994,39.808510999999996],[44.065421,39.828448],[44.082274999999996,39.830476999999995],[44.100195,39.815290999999995],[44.122096,39.801494999999996],[44.127326,39.793847],[44.129562,39.776568],[44.136835999999995,39.773998]
+]],},properties:{}},{
+        fillColor: 'AD66D5',
+        strokeColor: '#0000FF',
+        opacity: 0.2,
+        strokeWidth: 1
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2997,6 +4395,13 @@ function addObjs(...objs) {
 		shovgcrb1,
 		gran_shovgmamh1, gran_shovgcrb1,
 		gran_shovgfap1, gran_shovgfap2, gran_shovgfap3, gran_shovgfap4, gran_shovgfap5, gran_shovgfap6, gran_shovgfap7, gran_shovgfap8, gran_shovgfap9, gran_shovgfap10, gran_shovgfap11, gran_shovgfap12, gran_shovgfap13, gran_shovgfap14, gran_shovgfap15, gran_shovgfap16,
+
+
+		mkprfap1, mkprfap2, mkprfap3, mkprfap4, mkprfap5, mkprfap6, mkprfap7, mkprfap8, mkprfap9, mkprfap10, mkprfap11, mkprfap12, mkprfap13, mkprfap14, mkprfap15, mkprfap16, mkprfap17, mkprfap18, mkprfap19, mkprfap20, mkprfap21, mkprfap22, mkprfap23, mkprfap24, mkprfap25, mkprfap26, mkprfap27, mkprfap28, mkprfap29, mkprfap30,
+        mkpramb1, mkpramb2, mkpramb3, mkpramb4, mkpramb5,
+        mkprcrb1, mkprpol1, mkprpol2,
+        mkpr_neotl1, mkpr_neotl2, mkpr_neotl3, mkpr_neotl4, mkpr_neotl5, mkpr_neotl6, mkpr_neotl7,
+        gran_mkprcrb1,
 	]
 	window.myObjects = ymaps.geoQuery(obj).addToMap(myMap);
 	ymaps.ready(checkState);

@@ -36,7 +36,7 @@ ymaps.regions.load('RU', {
         if ($('#neotlozh').prop('checked'))
 		{
 			fap = myObjects.search('geometry.type = "Point"');
-			main = main.add(neotl).add(shovg_neotl1).add(giagneotl1).add(shovg_neotl2).add(shovg_neotl3).add(shovg_neotl4).add(shovg_neotl5).add(shovg_neotl6).add(shovg_neotl7).add(mkpr_neotl1).add(mkpr_neotl2).add(mkpr_neotl3).add(mkpr_neotl4).add(mkpr_neotl5).add(mkpr_neotl6).add(mkpr_neotl7).add(krasnneotl1);
+			main = main.add(neotl).add(shovg_neotl1).add(giagneotl1).add(shovg_neotl2).add(shovg_neotl3).add(shovg_neotl4).add(shovg_neotl5).add(shovg_neotl6).add(shovg_neotl7).add(mkpr_neotl1).add(mkpr_neotl2).add(mkpr_neotl3).add(mkpr_neotl4).add(mkpr_neotl5).add(mkpr_neotl6).add(mkpr_neotl7).add(krasnneotl1).add(ambneotl1).add(ambneotl2).add(ambneotl3).add(ambneotl4).add(ambneotl5).add(ambneotl6).add(ambneotl7).add(ambneotl8);
 		}
 
   //       if ($('#ter').prop('checked'))
@@ -48,19 +48,19 @@ ymaps.regions.load('RU', {
         if ($('#grans').prop('checked'))
 		{
 			grans = myObjects.search('geometry.type = "Point"');
-			main = main.add(gran_mkp).add(gran_krasncrb1).add(gran_egeruhay).add(gran_polit).add(gran_chatchemsiy).add(gran_krasnfars).add(gran_komsomol).add(gran_ignat).add(gran_blech).add(gran_may).add(gran_krasn).add(gran_nat).add(gran_kazen).add(gran_voln).add(gran_karmolin).add(gran_shelk).add(gran_hodz).add(gran_drujba).add(gran_kosh).add(gran_giagpol1).add(gran_giagcrb1).add(gran_giagfap1).add(gran_giagfap2).add(gran_giagfap3).add(gran_giagfap4).add(gran_giagfap5).add(gran_giagfap6).add(gran_giagfap7).add(gran_giagfap8).add(gran_giagfap9).add(gran_giagfap10).add(gran_giagfap11).add(gran_shovgmamh1).add(gran_shovgcrb1).add(gran_shovgfap1).add(gran_shovgfap2).add(gran_shovgfap3).add(gran_shovgfap4).add(gran_shovgfap5).add(gran_shovgfap6).add(gran_shovgfap7).add(gran_shovgfap8).add(gran_shovgfap9).add(gran_shovgfap10).add(gran_shovgfap11).add(gran_shovgfap12).add(gran_shovgfap13).add(gran_shovgfap14).add(gran_shovgfap15).add(gran_shovgfap16).add(gran_mkprcrb1).add(gran_ambcrb1).add(gran_ambpol1);
+			main = main.add(gran_mkp).add(gran_tachtcrb1).add(gran_krasncrb1).add(gran_egeruhay).add(gran_polit).add(gran_chatchemsiy).add(gran_krasnfars).add(gran_komsomol).add(gran_ignat).add(gran_blech).add(gran_may).add(gran_krasn).add(gran_nat).add(gran_kazen).add(gran_voln).add(gran_karmolin).add(gran_shelk).add(gran_hodz).add(gran_drujba).add(gran_kosh).add(gran_giagpol1).add(gran_giagcrb1).add(gran_giagfap1).add(gran_giagfap2).add(gran_giagfap3).add(gran_giagfap4).add(gran_giagfap5).add(gran_giagfap6).add(gran_giagfap7).add(gran_giagfap8).add(gran_giagfap9).add(gran_giagfap10).add(gran_giagfap11).add(gran_shovgmamh1).add(gran_shovgcrb1).add(gran_shovgfap1).add(gran_shovgfap2).add(gran_shovgfap3).add(gran_shovgfap4).add(gran_shovgfap5).add(gran_shovgfap6).add(gran_shovgfap7).add(gran_shovgfap8).add(gran_shovgfap9).add(gran_shovgfap10).add(gran_shovgfap11).add(gran_shovgfap12).add(gran_shovgfap13).add(gran_shovgfap14).add(gran_shovgfap15).add(gran_shovgfap16).add(gran_mkprcrb1).add(gran_ambcrb1).add(gran_ambpol1);
 		}
 
         if ($('#fap').prop('checked'))
 		{
 			fap = myObjects.search('geometry.type = "Point"');
-			main = main.add(fap1).add(fap2).add(fap3).add(fap4).add(fap5).add(fap6).add(fap7).add(fap8).add(fap9).add(fap10).add(giagfap1).add(giagfap2).add(giagfap3).add(giagfap4).add(giagfap5).add(giagfap6).add(giagfap7).add(giagfap8).add(giagfap9).add(giagfap10).add(giagfap11).add(shovgfap1).add(shovgfap2).add(shovgfap3).add(shovgfap4).add(shovgfap5).add(shovgfap6).add(shovgfap7).add(shovgfap8).add(shovgfap9).add(shovgfap10).add(shovgfap11).add(shovgfap12).add(shovgfap13).add(shovgfap14).add(shovgfap15).add(shovgfap16).add(mkprfap1).add(mkprfap2).add(mkprfap3).add(mkprfap4).add(mkprfap5).add(mkprfap6).add(mkprfap7).add(mkprfap8).add(mkprfap9).add(mkprfap10).add(mkprfap11).add(mkprfap12).add(mkprfap13).add(mkprfap14).add(mkprfap15).add(mkprfap16).add(mkprfap17).add(mkprfap18).add(mkprfap19).add(mkprfap20).add(mkprfap21).add(mkprfap22).add(mkprfap23).add(mkprfap24).add(mkprfap25).add(mkprfap26).add(mkprfap27).add(mkprfap28).add(mkprfap29).add(mkprfap30).add(krasnfap1).add(krasnfap2).add(krasnfap3).add(krasnfap4).add(krasnfap5).add(krasnfap6).add(krasnfap7).add(krasnfap8).add(krasnfap9).add(krasnfap10).add(ambfap1).add(ambfap2).add(ambfap3).add(ambfap4).add(ambfap5).add(ambfap6).add(ambfap7).add(ambfap8).add(ambfap9).add(ambfap10).add(ambfap11).add(ambfap12).add(ambfap13).add(ambfap14).add(ambfap15).add(ambfap16).add(ambfap17).add(ambfap18).add(ambfap19);
+			main = main.add(fap1).add(fap2).add(fap3).add(fap4).add(fap5).add(fap6).add(fap7).add(fap8).add(fap9).add(fap10).add(giagfap1).add(giagfap2).add(giagfap3).add(giagfap4).add(giagfap5).add(giagfap6).add(giagfap7).add(giagfap8).add(giagfap9).add(giagfap10).add(giagfap11).add(shovgfap1).add(shovgfap2).add(shovgfap3).add(shovgfap4).add(shovgfap5).add(shovgfap6).add(shovgfap7).add(shovgfap8).add(shovgfap9).add(shovgfap10).add(shovgfap11).add(shovgfap12).add(shovgfap13).add(shovgfap14).add(shovgfap15).add(shovgfap16).add(mkprfap1).add(mkprfap2).add(mkprfap3).add(mkprfap4).add(mkprfap5).add(mkprfap6).add(mkprfap7).add(mkprfap8).add(mkprfap9).add(mkprfap10).add(mkprfap11).add(mkprfap12).add(mkprfap13).add(mkprfap14).add(mkprfap15).add(mkprfap16).add(mkprfap17).add(mkprfap18).add(mkprfap19).add(mkprfap20).add(mkprfap21).add(mkprfap22).add(mkprfap23).add(mkprfap24).add(mkprfap25).add(mkprfap26).add(mkprfap27).add(mkprfap28).add(mkprfap29).add(mkprfap30).add(krasnfap1).add(krasnfap2).add(krasnfap3).add(krasnfap4).add(krasnfap5).add(krasnfap6).add(krasnfap7).add(krasnfap8).add(krasnfap9).add(krasnfap10).add(ambfap1).add(ambfap2).add(ambfap3).add(ambfap4).add(ambfap5).add(ambfap6).add(ambfap7).add(ambfap8).add(ambfap9).add(ambfap10).add(ambfap11).add(ambfap12).add(ambfap13).add(ambfap14).add(ambfap15).add(ambfap16).add(ambfap17).add(ambfap18).add(ambfap19).add(tachtfap1).add(tachtfap2).add(tachtfap3).add(tachtfap4).add(tachtfap5).add(tachtfap6).add(tachtfap7).add(tachtfap8).add(tachtfap9).add(tachtfap10).add(tachtfap11).add(tachtfap12).add(tachtfap13).add(tachtfap14).add(tachtfap15);
 		}
 
         if ($('#amb').prop('checked'))
 		{
 			amb = myObjects.search('geometry.type = "Point"');
-			main = main.add(crb).add(amb1).add(amb2).add(amb3).add(amb4).add(amb5).add(amb6).add(giagcrb1).add(giagpol1).add(shovgcrb1).add(mkprcrb1).add(mkpramb1).add(mkpramb2).add(mkpramb3).add(mkpramb4).add(mkpramb5).add(mkprpol1).add(mkprpol2).add(krasnamb1).add(krasnamb2).add(krasnamb3).add(krasnamb4).add(krasnamb5).add(krasnamb6).add(krasncrb1).add(ambamb1).add(ambamb2).add(ambamb3);
+			main = main.add(crb).add(amb1).add(amb2).add(amb3).add(amb4).add(amb5).add(amb6).add(giagcrb1).add(giagpol1).add(shovgcrb1).add(mkprcrb1).add(mkpramb1).add(mkpramb2).add(mkpramb3).add(mkpramb4).add(mkpramb5).add(mkprpol1).add(mkprpol2).add(krasnamb1).add(krasnamb2).add(krasnamb3).add(krasnamb4).add(krasnamb5).add(krasnamb6).add(krasncrb1).add(ambamb1).add(ambamb2).add(ambamb3).add(tachtcrb1).add(tachtamb1).add(tachtamb2);
 		}
         shownObjects = main.addToMap(myMap);
         myObjects.remove(shownObjects).removeFromMap(myMap);
@@ -73,6 +73,599 @@ ymaps.regions.load('RU', {
 
 
 	var circleLayout = ymaps.templateLayoutFactory.createClass('<div class="placemark_layout_container"><div class="circle_layout">A</div></div>');
+
+
+
+
+	tachtfap1 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.956485,38.89318]
+        },
+        properties: {
+		hintContent: 'ФАП п. Дружный<br/>Тахтамукайский район, п. Дружный,  ул. Рабочая, 14',
+		balloonContentBody: [
+            '<strong>ФАП п. Дружный',
+			'<br/>',
+			'Тахтамукайский район, п. Дружный,  ул. Рабочая, 14</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	tachtfap2 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.865426,38.988033]
+        },
+        properties: {
+		hintContent: 'ФАП а. Натухай<br/>Тахтамукайский район, а. Натухай,  ул. Ленина, 33',
+		balloonContentBody: [
+            '<strong>ФАП а. Натухай',
+			'<br/>',
+			'Тахтамукайский район, а. Натухай,  ул. Ленина, 33</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	tachtfap3 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [45.024915,38.93603]
+        },
+        properties: {
+		hintContent: 'ФАП а. Новая Адыгея<br/>Тахтамукайский район, а. Новая Адыгея,  ул. Шовгенова, 50',
+		balloonContentBody: [
+            '<strong>ФАП а. Новая Адыгея',
+			'<br/>',
+			'Тахтамукайский район, а. Новая Адыгея,  ул. Шовгенова, 50</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	tachtfap4 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.931036,38.841752]
+        },
+        properties: {
+		hintContent: 'ФАП а.Новообжегокай<br/>Тахтамукайский район,а. Новобжегокай,  ул. Хатита Махмуда, 16',
+		balloonContentBody: [
+            '<strong>ФАП а.Новообжегокай',
+			'<br/>',
+			'Тахтамукайский район,а. Новобжегокай,  ул. Хатита Махмуда, 16</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	tachtfap5 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [45.006049,38.980559]
+        },
+        properties: {
+		hintContent: 'ФАП п. Новый<br/>Тахтамукайский район, п. Новый,  ул. Ленина, 1',
+		balloonContentBody: [
+            '<strong>ФАП п. Новый',
+			'<br/>',
+			'Тахтамукайский район, п. Новый,  ул. Ленина, 1</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	tachtfap6 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.904708,38.907823]
+        },
+        properties: {
+		hintContent: 'ФАП х. Новый сад<br/>Тахтамукайский район, х. Новый Сад,  ул. Дружбы, 26',
+		balloonContentBody: [
+            '<strong>ФАП х. Новый сад',
+			'<br/>',
+			'Тахтамукайский район, х. Новый Сад,  ул. Дружбы, 26</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	tachtfap7 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.872619,38.95546]
+        },
+        properties: {
+		hintContent: 'ФАП п. Отрадный<br/>Тахтамукайский район, п. Отрадный,  ул. Павлова, 10/1',
+		balloonContentBody: [
+            '<strong>ФАП п. Отрадный',
+			'<br/>',
+			'Тахтамукайский район, п. Отрадный,  ул. Павлова, 10/1</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	tachtfap8 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.986436,38.715862]
+        },
+        properties: {
+		hintContent: 'ФАП а. Панахес<br/>Тахтамукайский район, а. Панахес,  ул. Схакумидова, 2',
+		balloonContentBody: [
+            '<strong>ФАП а. Панахес',
+			'<br/>',
+			'Тахтамукайский район, а. Панахес,  ул. Схакумидова, 2</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	tachtfap9 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.957231,39.026274]
+        },
+        properties: {
+		hintContent: 'ФАП п Прикубанский<br/>Тахтамукайский район, п. Прикубанский, ул. Комсомольская, 1',
+		balloonContentBody: [
+            '<strong>ФАП п Прикубанский',
+			'<br/>',
+			'Тахтамукайский район, п. Прикубанский, ул. Комсомольская, 1</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	tachtfap10 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [45.051035,38.708855]
+        },
+        properties: {
+		hintContent: 'ФАП а. Псейтук<br/>Тахтамукайский район, а. Псейтук,  ул. Шапсугская, 46',
+		balloonContentBody: [
+            '<strong>ФАП а. Псейтук',
+			'<br/>',
+			'Тахтамукайский район, а. Псейтук,  ул. Шапсугская, 46</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	tachtfap11 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [45.038674,38.894087]
+        },
+        properties: {
+		hintContent: 'ФАП а. Старобжегокай<br/>Тахтамукайский район, а. Старобжегокай,  ул. Ленина, 35',
+		balloonContentBody: [
+            '<strong>ФАП а. Старобжегокай',
+			'<br/>',
+			'Тахтамукайский район, а. Старобжегокай,  ул. Ленина, 35</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	tachtfap12 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.905404,38.946109]
+        },
+        properties: {
+		hintContent: 'ФАП х.Суповский<br/>Тахтамукайский район, х. Суповский,  ул. Ленина, 86',
+		balloonContentBody: [
+            '<strong>ФАП х.Суповский',
+			'<br/>',
+			'Тахтамукайский район, х. Суповский,  ул. Ленина, 86</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	tachtfap13 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [45.042203,38.751624]
+        },
+        properties: {
+		hintContent: 'ФАП а. Хаштук<br/>Тахтамукайский район, а. Хаштук,  ул. Школьная, 16',
+		balloonContentBody: [
+            '<strong>ФАП а. Хаштук',
+			'<br/>',
+			'Тахтамукайский район, а. Хаштук,  ул. Школьная, 16</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	tachtfap14 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.998739,38.86491]
+        },
+        properties: {
+		hintContent: 'ФАП х. Хомуты<br/>Тахтамукайский район, х.  Хомуты,  ул. Мира, 3',
+		balloonContentBody: [
+            '<strong>ФАП х. Хомуты',
+			'<br/>',
+			'Тахтамукайский район, х.  Хомуты,  ул. Мира, 3</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+	tachtfap15 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.883528,39.070669]
+        },
+        properties: {
+		hintContent: 'ФАП а. Шенджий<br/>Тахтамукайский район, а.  Шенджий,  ул. Красная, 25',
+		balloonContentBody: [
+            '<strong>ФАП а. Шенджий',
+			'<br/>',
+			'Тахтамукайский район, а.  Шенджий,  ул. Красная, 25</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redHomeCircleIcon',
+    });
+
+
+
+	tachtamb1 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [45.001868,38.776749]
+        },
+        properties: {
+		hintContent: 'Афипсипская врачебная амбулатория<br/>Тахтамукайский район, Афипсип,  ул. Хакурате, 6',
+		balloonContentBody: [
+            '<strong>Афипсипская врачебная амбулатория',
+			'<br/>',
+			'Тахтамукайский район, Афипсип,  ул. Хакурате, 6</strong>',
+			'<br/>',
+			'Обслуживаемое население: 0000',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: ???</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#blueHomeCircleIcon',
+    });
+
+	tachtamb2 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.996055,38.997304]
+        },
+        properties: {
+		hintContent: 'Козетская врачебная амбулатория<br/>Тахтамукайский район, а. Козет,  ул. Памяти, 2',
+		balloonContentBody: [
+            '<strong>Козетская врачебная амбулатория',
+			'<br/>',
+			'Тахтамукайский район, а. Козет,  ул. Памяти, 2</strong>',
+			'<br/>',
+			'Обслуживаемое население: 0000',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: ???</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#blueHomeCircleIcon',
+    });
+
+	tachtcrb1 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.927297,38.983658]
+        },
+        properties: {
+		hintContent: 'Тахтамукайская ЦРБ<br/>Тахтамукайский район, а. Тахтамукай,  ул. Ленина, 15/2',
+		balloonContentBody: [
+            '<strong>Тахтамукайская ЦРБ',
+			'<br/>',
+			'Тахтамукайский район, а. Тахтамукай,  ул. Ленина, 15/2</strong>',
+			'<br/>',
+			'Обслуживаемое население: 000000',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: ???</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#nightHomeCircleIcon',
+    });
+
+		var gran_tachtcrb1 = new ymaps.GeoObject({
+        geometry: {type: "Polygon",coordinates: [[
+						[44.951395,38.683836],[45.039080999999996,38.686098],[45.039076,38.68918],[45.060444,38.689972],[45.060407,38.692913999999995],[45.06675,38.693236999999996],[45.06655,38.69901],[45.064136999999995,38.707926],[45.061639,38.713069999999995],[45.05634,38.717363999999996],[45.044613999999996,38.718834],[45.041486,38.720844],[45.040186999999996,38.723828],[45.040529,38.727435],[45.042656,38.731846],[45.044931999999996,38.734947999999996],[45.054221999999996,38.741844],[45.059355,38.750326],[45.060345999999996,38.755725],[45.060179999999995,38.759471999999995],[45.057083,38.766915],[45.054221,38.769647],[45.052091,38.769439999999996],[45.048164,38.767044999999996],[45.043661,38.759983],[45.038917,38.755662],[45.036229,38.754849],[45.033550999999996,38.755899],[45.031045,38.759288],[45.029311,38.767329],[45.026326999999995,38.771474],[45.015617999999996,38.775225],[45.011851,38.779314],[45.005055999999996,38.784247],[44.998366,38.797081999999996],[44.996586,38.803368999999996],[44.996511999999996,38.805485999999995],[44.998799,38.810818],[45.001079,38.811997],[45.009164,38.812885],[45.011441,38.814181999999995],[45.012071999999996,38.817029999999995],[45.012052999999995,38.819174],[45.01103,38.82169],[45.007273,38.826937],[45.005468,38.830816],[45.005134,38.833419],[45.007512999999996,38.84104],[45.007174,38.844060999999996],[45.007743999999995,38.847518],[45.006862999999996,38.850089],[45.002683,38.854669],[45.000879999999995,38.858174999999996],[45.002660999999996,38.863358],[45.005399999999995,38.865294],[45.012091,38.866246],[45.014907,38.864326],[45.018848999999996,38.856952],[45.021587,38.854999],[45.026044,38.854290999999996],[45.029551999999995,38.855131],[45.031804,38.856708],[45.033645,38.859412],[45.037214,38.875237],[45.042683,38.883182999999995],[45.049034999999996,38.889026],[45.052713999999995,38.89487],[45.053584,38.897937999999996],[45.05347,38.90211],[45.051753999999995,38.907477],[45.049454999999995,38.909197],[45.045764999999996,38.909943],[45.041371999999996,38.908381],[45.036286,38.903095],[45.032168999999996,38.900349],[45.023933,38.89956],[45.021332,38.901966],[45.021071,38.905044],[45.024012,38.912887],[45.028557,38.92397],[45.033809999999995,38.932155],[45.035151,38.935688],[45.035956,38.939789],[45.036173999999995,38.950606],[45.03415,38.955587],[45.032447999999995,38.957015999999996],[45.029013,38.957519999999995],[45.025532999999996,38.955455],[45.023823,38.950945],[45.018505,38.94703],[45.010926,38.948029999999996],[45.007945,38.950618],[44.998764,38.95248],[44.991366,38.964306],[44.990938,38.966635],[44.992532999999995,38.970438],[44.994763,38.971264999999995],[45.003457,38.971446],[45.006726,38.973189],[45.009903,38.97698],[45.010498,38.979348],[45.010349,38.983795],[45.006812,38.989740999999995],[45.005666,38.990328],[45.003927,38.994417],[45.003018,39.000873999999996],[45.003589,39.005164],[45.002871,39.009558],[45.004252,39.013256999999996],[45.002764,39.016655],[45.000785,39.018994],[44.996986,39.018029],[44.995411,39.015899],[44.99444,39.015738],[44.985696999999995,39.019839],[44.981714,39.020576999999996],[44.972561,39.018222],[44.970292,39.019048999999995],[44.968823,39.020773],[44.968219,39.023623],[44.968723999999995,39.026658999999995],[44.971025,39.029166],[44.976279,39.031192],[44.981125999999996,39.034828],[44.984274,39.040465],[44.984631,39.044788],[44.983405999999995,39.049203],[44.975829,39.056346999999995],[44.974914,39.058278],[44.973932,39.063888],[44.975656,39.06988],[44.974433999999995,39.071754999999996],[44.973524,39.072265],[44.969218,39.063198],[44.967545,39.064662],[44.963896999999996,39.096381],[44.966122,39.103327],[44.958033,39.107099],[44.946424,39.101468],[44.945420999999996,39.099032],[44.9452,39.09597],[44.946791999999995,39.088333999999996],[44.943656999999995,39.081987],[44.945077999999995,39.100792],[44.946169,39.107413],[44.945488999999995,39.106424],[44.919252,39.111990999999996],[44.917946,39.114135],[44.92003,39.131979],[44.913971,39.125949],[44.908024999999995,39.12634],[44.908406,39.112713],[44.909244,39.110732999999996],[44.905752,39.102226],[44.903059,39.103363],[44.902145999999995,39.105368999999996],[44.900152,39.105320999999996],[44.895376,39.109170999999996],[44.892444,39.108342],[44.888878,39.113735999999996],[44.886488,39.119282],[44.884859,39.119031],[44.884512,39.116883],[44.882411999999995,39.113327999999996],[44.879645,39.117747],[44.873329,39.123047],[44.872022,39.121663999999996],[44.872274999999995,39.119904999999996],[44.870028999999995,39.122057],[44.86985,39.12052],[44.867852,39.125262],[44.864585999999996,39.128417],[44.863257999999995,39.128309],[44.860037999999996,39.125498],[44.846759,39.124812],[44.847248,39.131935999999996],[44.848675,39.133587999999996],[44.851804,39.133899],[44.851865,39.138588],[44.852917999999995,39.141452],[44.851963999999995,39.143512],[44.853688999999996,39.148779999999995],[44.84966,39.148607999999996],[44.849049,39.146719999999995],[44.847034,39.145948],[44.844041999999995,39.146547999999996],[44.843430999999995,39.145239],[44.842667999999996,39.145669],[44.841598999999995,39.142427999999995],[44.839416,39.14275],[44.839324999999995,39.146892],[44.841336,39.147171],[44.840855,39.149122999999996],[44.841454,39.15246],[44.840503,39.156535999999996],[44.837475999999995,39.16804],[44.833175999999995,39.168451],[44.835975,39.153276999999996],[44.834835,39.139503],[44.818225999999996,39.091892],[44.823882,39.088639],[44.825263,39.073082],[44.835111999999995,39.042823999999996],[44.842084,39.026713],[44.842433,39.019251],[44.84117,39.008534],[44.844012,38.995899],[44.844291999999996,38.98976],[44.856929,38.989759],[44.859423,38.983505],[44.862134,38.974728999999996],[44.862457,38.961318],[44.875924,38.932435],[44.888783,38.882597],[44.894428999999995,38.854198],[44.897092,38.854954],[44.897937,38.856062],[44.897558,38.860315],[44.898384,38.862124],[44.903482,38.862865],[44.906974,38.861655999999996],[44.907982999999994,38.860417],[44.908165,38.853843],[44.910066,38.85096],[44.912372999999995,38.850484],[44.914719,38.853353999999996],[44.915867999999996,38.853052999999996],[44.917044,38.849872],[44.916472,38.846492],[44.917341,38.843681],[44.918698,38.843606],[44.921727999999995,38.846269],[44.925048,38.844825],[44.92639,38.836424],[44.928962999999996,38.834748],[44.932362,38.834537999999995],[44.933496999999996,38.829881],[44.937388999999996,38.828241999999996],[44.938243,38.823951],[44.943734,38.816179999999996],[44.943954999999995,38.813722999999996],[44.943292,38.811653],[44.939867,38.809638],[44.939074,38.807235],[44.942647,38.796704999999996],[44.94302,38.788669],[44.944815999999996,38.785325],[44.94685,38.783533],[44.952636999999996,38.782472999999996],[44.954785,38.783727999999996],[44.956562999999996,38.787167],[44.959267999999994,38.786502],[44.964476999999995,38.787729999999996],[44.965688,38.786989999999996],[44.966846,38.782737],[44.968475,38.780995],[44.966775999999996,38.780254],[44.966525999999995,38.777705999999995],[44.964999,38.777192],[44.964489,38.774656],[44.962387,38.77619],[44.960491999999995,38.77469],[44.958836,38.7757],[44.959129,38.772664],[44.960767,38.772385],[44.959816,38.7714],[44.959607,38.769501],[44.955059999999996,38.764527],[44.955028999999996,38.762419],[44.95409,38.76124],[44.955099,38.758606],[44.953998,38.758311],[44.953492,38.756916],[44.952757,38.757689],[44.951812,38.757281],[44.951099,38.756222],[44.951091999999996,38.753792],[44.950334,38.754000999999995],[44.9499,38.756479],[44.948025,38.756972999999995],[44.94793,38.755176999999996],[44.949393,38.754611]
+]],},properties:{}},{
+        fillColor: '007241',
+        strokeColor: '#0000FF',
+        opacity: 0.7,
+        strokeWidth: 1
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -680,7 +1273,213 @@ ymaps.regions.load('RU', {
         preset: 'islands#nightHomeCircleIcon',
     });
 
+	ambneotl1 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.981763,39.090944]
+        },
+        properties: {
+		hintContent: 'Кабинет неотложной помощи - Тлюстенхабльская врачебная амбулатория <br/>Теучежский район, пгт. Тлюстенхабль,  ул. Ленина, 30',
+		balloonContentBody: [
+            '<strong>Кабинет неотложной помощи - Тлюстенхабльская врачебная амбулатория ',
+			'<br/>',
+			'Теучежский район, пгт. Тлюстенхабль,  ул. Ленина, 30</strong>',
+			'<br/>',
+			'Обслуживаемое население: 0000',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: ???</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redMedicalCircleIcon',
+    });
 
+	ambneotl2 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.850724,39.169879]
+        },
+        properties: {
+		hintContent: 'Кабинет неотложной помощи - ФАП п. Красненский<br/>Теучежский район, п. Красненский,  ул. Школьная, 1',
+		balloonContentBody: [
+            '<strong>Кабинет неотложной помощи - ФАП п. Красненский',
+			'<br/>',
+			'Теучежский район, п. Красненский,  ул. Школьная, 1</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redMedicalCircleIcon',
+    });
+
+	ambneotl3 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.875506,39.18895]
+        },
+        properties: {
+		hintContent: 'Кабинет неотложной помощи - Поликлиника (Адыгейская межрайонная больница  им. К.М. Батмена)<br/>г. Адыгейск, Пролетарская, 4',
+		balloonContentBody: [
+            '<strong>Кабинет неотложной помощи - Поликлиника (Адыгейская межрайонная больница  им. К.М. Батмена)',
+			'<br/>',
+			'г. Адыгейск, Пролетарская, 4</strong>',
+			'<br/>',
+			'Обслуживаемое население: 000000',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: ???</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redMedicalCircleIcon',
+    });
+
+	ambneotl4 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.876355,39.284378]
+        },
+        properties: {
+		hintContent: 'Кабинет неотложной помощи - ФАП а. Вочепший<br/>Теучежский район, а. Вочепший,  ул. Ленина, 51',
+		balloonContentBody: [
+            '<strong>Кабинет неотложной помощи - ФАП а. Вочепший',
+			'<br/>',
+			'Теучежский район, а. Вочепший,  ул. Ленина, 51</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redMedicalCircleIcon',
+    });
+
+	ambneotl5 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.881897, 39.387307]
+        },
+        properties: {
+		hintContent: 'Кабинет неотложной помощи - Понежукайская поликлиника<br/>Теучежский район, аул Понежукай,  ул. Карницкого, 1',
+		balloonContentBody: [
+            '<strong>Кабинет неотложной помощи - Понежукайская поликлиника',
+			'<br/>',
+			'Теучежский район, аул Понежукай,  ул. Карницкого, 1</strong>',
+			'<br/>',
+			'Обслуживаемое население: 0000',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: ???</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redMedicalCircleIcon',
+    });
+
+	ambneotl6 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.949909,39.402785]
+        },
+        properties: {
+		hintContent: 'Кабинет неотложной помощи - Джиджихабльская врачебная амбулатория<br/>Теучежский район, а. Джиджихабль, ул. Больничная, 1',
+		balloonContentBody: [
+            '<strong>Кабинет неотложной помощи - Джиджихабльская врачебная амбулатория',
+			'<br/>',
+			'Теучежский район, а. Джиджихабль, ул. Больничная, 1</strong>',
+			'<br/>',
+			'Обслуживаемое население: 0000',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: ???</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redMedicalCircleIcon',
+    });
+
+	ambneotl7 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.927488,39.560781]
+        },
+        properties: {
+		hintContent: 'Кабинет неотложной помощи - Габукайская врачебная амбулатория<br/>Теучежский район, а. Габукай,  ул. Хуажева, 1',
+		balloonContentBody: [
+            '<strong>Кабинет неотложной помощи - Габукайская врачебная амбулатория',
+			'<br/>',
+			'Теучежский район, а. Габукай,  ул. Хуажева, 1</strong>',
+			'<br/>',
+			'Обслуживаемое население: 0000',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая медсестра: ???</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: Есть',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redMedicalCircleIcon',
+    });
+
+	ambneotl8 = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: [44.84487,39.467186]
+        },
+        properties: {
+		hintContent: 'Кабинет неотложной помощи - ФАП а. Ассоколай<br/>Теучежский район, а. Ассоколай,  ул. Ленина, 47а', // <3
+		balloonContentBody: [
+            '<strong>Кабинет неотложной помощи - ФАП а. Ассоколай',
+			'<br/>',
+			'Теучежский район, а. Ассоколай,  ул. Ленина, 47а</strong>',
+			'<br/>',
+			'Обслуживаемое население: OOOO',
+			'<br/>',
+			'Мед.работники:',
+			'<ul><li>Заведующая акушерка: OOOO</li></ul>',
+			'Укладка: ?',
+			'<br/>',
+			'Авто: ?',
+			'<br/>',
+        ].join('')
+        }
+    }, {
+        preset: 'islands#redMedicalCircleIcon',
+    });
 
 
 		var gran_ambpol1 = new ymaps.GeoObject({
@@ -5989,7 +6788,7 @@ function addObjs(...objs) {
 
 
 
-
+		ambneotl1, ambneotl2, ambneotl3, ambneotl4, ambneotl5, ambneotl6, ambneotl7, ambneotl8,
         ambfap1,
 		ambfap2,
 		ambfap3,
@@ -6003,6 +6802,23 @@ function addObjs(...objs) {
 		ambcrb1,
 		ambamb1, ambamb2, ambamb3,
         gran_ambpol1, gran_ambcrb1,
+
+
+
+
+		tachtfap1,
+		tachtfap2,
+		tachtfap3,
+		tachtfap4,
+		tachtfap5,
+		tachtfap6,
+		tachtfap7,
+		tachtfap8,
+		tachtfap9,
+		tachtfap10, tachtfap11, tachtfap12, tachtfap13, tachtfap14, tachtfap15,
+		tachtcrb1,
+		tachtamb1, tachtamb2,
+		gran_tachtcrb1,
 
 
 

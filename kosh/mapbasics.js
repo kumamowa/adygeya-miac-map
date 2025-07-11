@@ -65,12 +65,12 @@ ymaps.regions.load('RU', {
         shownObjects = main.addToMap(myMap);
         myObjects.remove(shownObjects).removeFromMap(myMap);
     }
-
+    $('#neotlozh').click(checkState);
 	$('#ter').click(checkState);
 	$('#grans').click(checkState);
     $('#fap').click(checkState);
     $('#amb').click(checkState);
-    $('#neotlozh').click(checkState);
+
 
 	var circleLayout = ymaps.templateLayoutFactory.createClass('<div class="placemark_layout_container"><div class="circle_layout">A</div></div>');
 
@@ -5007,6 +5007,7 @@ function addObjs(...objs) {
 
 	var obj = 
 	[
+        neotl,
 		fap1,
 		fap2,
 		fap3,
@@ -5026,10 +5027,10 @@ function addObjs(...objs) {
 		amb4,
 		amb5,
 		amb6,
-        neotl,
         gran_egeruhay_sel,gran_dmitr_sel,gran_kosh_sel,gran_ignat_sel,gran_blech_sel,gran_may_sel,gran_nat_sel,gran_voln_sel,gran_hodz_sel,
-        gran_egeruhay,gran_polit,gran_kosh,gran_ignat,gran_blech,gran_may,gran_nat,gran_voln,gran_hodz,gran_chatchemsiy,gran_krasnfars,gran_komsomol,gran_krasn,gran_kazen,gran_karmolin,gran_shelk,neotl,
+        gran_egeruhay,gran_polit,gran_kosh,gran_ignat,gran_blech,gran_may,gran_nat,gran_voln,gran_hodz,gran_chatchemsiy,gran_krasnfars,gran_komsomol,gran_krasn,gran_kazen,gran_karmolin,gran_shelk,
 
+        giagneotl1,
         giagfap1,
 		giagfap2,
 		giagfap3,
@@ -5043,8 +5044,12 @@ function addObjs(...objs) {
         giagfap11,
 		giagcrb1,
 		giagpol1,
-        gran_giagfap1, gran_giagfap2, gran_giagfap3, gran_giagfap4, gran_giagfap5, gran_giagfap6, gran_giagfap7, gran_giagfap8, gran_giagfap9, gran_giagfap10, gran_giagfap11, gran_giagpol1, gran_giagcrb1, giagneotl1,
+        gran_giagfap1, gran_giagfap2, gran_giagfap3, gran_giagfap4, gran_giagfap5, gran_giagfap6, gran_giagfap7, gran_giagfap8, gran_giagfap9, gran_giagfap10, gran_giagfap11, gran_giagpol1, gran_giagcrb1,
 
+
+
+
+        shovg_neotl1, shovg_neotl2, shovg_neotl3, shovg_neotl4, shovg_neotl5, shovg_neotl6, shovg_neotl7,
         shovgfap1,
 		shovgfap2,
 		shovgfap3,
@@ -5055,20 +5060,18 @@ function addObjs(...objs) {
 		shovgfap8,
 		shovgfap9,
 		shovgfap10, shovgfap11, shovgfap12, shovgfap13, shovgfap14, shovgfap15, shovgfap16,
-        shovg_neotl1, shovg_neotl2, shovg_neotl3, shovg_neotl4, shovg_neotl5, shovg_neotl6, shovg_neotl7,
 		shovgcrb1,
 		gran_shovgmamh1, gran_shovgcrb1,
 		gran_shovgfap1, gran_shovgfap2, gran_shovgfap3, gran_shovgfap4, gran_shovgfap5, gran_shovgfap6, gran_shovgfap7, gran_shovgfap8, gran_shovgfap9, gran_shovgfap10, gran_shovgfap11, gran_shovgfap12, gran_shovgfap13, gran_shovgfap14, gran_shovgfap15, gran_shovgfap16,
 
-
+        mkpr_neotl1, mkpr_neotl2, mkpr_neotl3, mkpr_neotl4, mkpr_neotl5, mkpr_neotl6, mkpr_neotl7,
 		mkprfap1, mkprfap2, mkprfap3, mkprfap4, mkprfap5, mkprfap6, mkprfap7, mkprfap8, mkprfap9, mkprfap10, mkprfap11, mkprfap12, mkprfap13, mkprfap14, mkprfap15, mkprfap16, mkprfap17, mkprfap18, mkprfap19, mkprfap20, mkprfap21, mkprfap22, mkprfap23, mkprfap24, mkprfap25, mkprfap26, mkprfap27, mkprfap28, mkprfap29, mkprfap30,
         mkpramb1, mkpramb2, mkpramb3, mkpramb4, mkpramb5,
         mkprcrb1, mkprpol1, mkprpol2,
-        mkpr_neotl1, mkpr_neotl2, mkpr_neotl3, mkpr_neotl4, mkpr_neotl5, mkpr_neotl6, mkpr_neotl7,
         gran_mkprcrb1,
 
 
-
+		krasnneotl1,
         krasnfap1,
 		krasnfap2,
 		krasnfap3,
@@ -5081,7 +5084,7 @@ function addObjs(...objs) {
 		krasnfap10,
 		krasncrb1,
 		krasnamb1, krasnamb2, krasnamb3, krasnamb4, krasnamb5, krasnamb6,
-		krasnneotl1,
+
         gran_krasncrb1,
 
 
